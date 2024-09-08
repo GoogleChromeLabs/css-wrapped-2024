@@ -1,5 +1,11 @@
 ---
+import '../styles/global.css';
 
+import HeaderPrimary from '../components/header.primary.astro';
+import Hero from '../components/hero.astro';
+import FeatureFillstrip from '../components/feature.fillstrip.astro';
+import SectionQualityoflife from '../components/section.qualityoflife.astro';
+import Footer from '../components/footer.astro';
 ---
 
 <html lang="en">
@@ -7,10 +13,28 @@
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>CSS Wrapped 2024</title>
+		<script type="module" src="https://cdn.jsdelivr.net/npm/baseline-status@1.0.4/baseline-status.min.js"></script>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<HeaderPrimary />
+		<Hero />
+		<FeatureFillstrip />
+
+		<main>
+			<SectionQualityoflife />
+			<SectionQualityoflife />
+			<SectionQualityoflife />
+		</main>
+
+		<Footer />
 	</body>
 </html>
+
+<style>
+	main {
+    display: grid;
+    gap: var(--size-14);
+    padding-inline: var(--size-5);
+  }
+</style>

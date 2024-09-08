@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components';
+import ThemeSwitch from './theme.switch.astro';
+---
+
+<header>
+  <a href="https://www.google.com/chrome/dr/download/">
+    <Icon name="chrome" size="1.5rem" />
+  </a>
+  <div class="page-controls">
+    <ThemeSwitch />
+  </div> 
+</header>
+
+<style>
+  header {
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+    padding: var(--size-5);
+  }
+</style>

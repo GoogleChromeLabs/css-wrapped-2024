@@ -1,0 +1,160 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<aside>
+  <div class="track">
+    <Icon name="van" size="1.5rem" />
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#feature-1">Feature #1</a></li>
+      <li><a href="#feature-2">Feature #2</a></li>
+      <li><a href="#feature-3">Feature #3</a></li>
+      <li><a href="#feature-4">Feature #4</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<style>
+  aside {
+    grid-column: 2;
+    grid-row: 2;
+
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    padding-block: var(--size-3);
+    padding-inline: var(--size-3);
+    align-self: start;
+    position: sticky;
+    top: var(--size-3);
+    block-size: calc(100dvh - (var(--size-3) * 2));
+    
+    @media (width < 900px) {
+      grid-template-columns: auto 1fr;
+      gap: var(--size-1);
+      
+      a {
+        width: 1ch;
+        display: inline-block;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-indent: 100vw;
+        background: var(--link);
+        aspect-ratio: 1;
+        border-radius: var(--radius-round);
+      }
+      
+      .track {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+    
+    > nav {
+      display: grid;
+    }
+    
+    ul {
+      padding: 0;
+      display: grid;
+      grid-auto-rows: 1fr;
+      place-content: start;
+      
+      > li {
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        place-items: start;
+      }
+    }
+  }
+  
+  .track {
+    container-type: size;
+    position: relative;
+    width: 2px;
+    border-right: 2px dashed var(--surface-2);
+
+    > [data-icon] {
+      max-inline-size: initial;
+    }
+    
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: view()) {
+        > [data-icon] {
+          animation: truck-ride linear both;
+          animation-timeline: view();
+          view-timeline: --features-view;
+          animation-range-start: entry calc(100vh - 3rem);
+        }   
+      }
+    }
+    
+    @media (width > 900px) {
+      &::before,
+      &::after {
+        content: "";
+        aspect-ratio: 1;
+        background: var(--surface-3);
+        border-radius: var(--radius-round);
+        display: block;
+        top: -10px;
+        left: -4px;
+        width: 10px;
+        position: absolute;
+      }
+
+      &::after {
+        top: auto;
+        bottom: -10px;
+      }
+    }
+  }
+</style>
+
+<style is:global>
+  @keyframes truck-ride {
+    from {
+      transform: rotate(.25turn) translateX(0cqb) scaleX(calc(var(--scroll-direction, 0) + var(--when-not-scrolling, 1)));
+    }
+    
+    to {
+      transform: rotate(.25turn) translateX(calc(100cqb - 1ch)) scaleX(calc(var(--scroll-direction, 0) + var(--when-not-scrolling, 1)));
+    }
+  }
+  
+  @property --scroll-position {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --scroll-position-delayed {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  
+  @keyframes adjust-pos {
+    to {
+      --scroll-position: 1;
+      --scroll-position-delayed: 1;
+    }
+  }
+  
+  @supports (z-index: sign(5)) {
+    :root {
+      animation: adjust-pos linear both;
+      animation-timeline: scroll(root);
+    }
+
+    body {
+      transition: --scroll-position-delayed 0.15s linear;
+      --scroll-velocity: calc(var(--scroll-position) - var(--scroll-position-delayed));
+      --scroll-direction: sign(var(--scroll-velocity));
+      --when-scrolling: abs(var(--scroll-direction));
+      --when-not-scrolling: abs(var(--when-scrolling) - 1);
+    } 
+  }
+</style>

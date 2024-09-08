@@ -1,0 +1,51 @@
+---
+import SectionAside from './section.aside.astro'; 
+import Example from '../features/example.astro';
+---
+
+<section class="graffiti">
+  <header>
+    <h2>Quality of Life</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  </header>
+  <SectionAside />
+
+  <div class="features-list">
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+  </div>
+</section>
+
+<style>
+  section {
+    max-inline-size: 1024px;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--size-3);
+    grid-template-columns: 1fr var(--size-content-1);
+    
+    @media (width < 900px) {
+      grid-template-columns: 1fr 5ch;
+    }
+    
+    > header {
+      margin-block-end: var(--size-8);
+    }
+    
+    > .features-list {
+      grid-column: 1;
+      
+      &:not(:first-of-type) {
+        margin-block-start: var(--size-11);
+      }
+    }
+  }
+
+  .features-list {
+    animation-timeline: --features-view;
+    display: grid;
+    gap: var(--size-10);
+  }
+</style>

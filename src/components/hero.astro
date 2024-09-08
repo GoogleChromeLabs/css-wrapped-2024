@@ -1,0 +1,75 @@
+---
+import { Icon } from 'astro-icon/components';
+import NavBento from './nav.bento.astro';
+---
+
+<section class="hero">
+  <h1>CSS Wrapped <span>2024</span></h1>
+  <div class="video">
+    <Icon name="play" />
+  </div>
+  <div>
+    <p class="hero-title">Driving The Web Forward</p>
+    <p>2024 in 3 main categories</p>
+  </div>
+  <NavBento />
+</section> 
+
+<style>
+  .hero {
+    margin-block: var(--size-12);
+    max-inline-size: 1024px;
+    margin-inline: auto;
+    padding-inline: var(--size-5);
+    display: grid;
+    gap: var(--size-8);
+    
+    > h1 {
+      font-size: var(--font-size-4);
+      text-align: center;
+      max-inline-size: 100%;
+      
+      > span {
+        border-radius: var(--radius-2);
+        margin-inline-start: var(--size-2);
+        padding-inline: var(--size-2);
+        padding-block: var(--size-1);
+        box-shadow: 0 0 0 var(--border-size-2);
+      }
+    }
+    
+    p {
+      text-align: center;
+      max-inline-size: max-content;
+      margin-inline: auto;
+    }
+    
+    .hero-title {
+      margin-block-start: var(--size-12);
+      font-size: var(--font-size-7);
+    }
+  }
+
+  .video {
+    aspect-ratio: 16/9;
+    background: var(--surface-3);
+    border-radius: var(--radius-3);
+    
+    display: grid;
+    place-content: center;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: clip-path 3s var(--ease-2);
+      clip-path: inset(0 0 0 0 round 30px);
+
+      @starting-style {
+        clip-path: inset(100px 100px 100px 100px round 30px);
+      }
+    }
+
+    > svg {
+      block-size: 5rem;
+      inline-size: 5rem;
+    }
+  }
+</style>

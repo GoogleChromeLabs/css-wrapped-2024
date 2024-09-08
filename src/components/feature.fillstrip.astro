@@ -1,0 +1,82 @@
+---
+---
+
+<div class="feature-grid">
+  <div class="row">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  <div class="row">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+</div>
+
+<style>
+  @keyframes pan-x {
+    from {
+      transform: translateX(-15vw);
+    }
+    to {
+      transform: translateX(5vw);
+    }
+  }
+  
+  .feature-grid {
+    display: grid;
+    place-content: center;
+    gap: var(--size-3);
+    padding-block: var(--size-10) var(--size-13);
+    max-inline-size: 100vw;
+    overflow: clip;
+    
+    > .row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: max(10vw, 15ch);
+      gap: var(--size-3);
+      
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          animation: pan-x linear both;
+          animation-timeline: view(block);
+        }
+      }
+      
+      &:first-of-type {
+        animation-direction: reverse;
+      }
+      
+      > .card {
+        aspect-ratio: 3/4;
+        background: var(--surface-3);
+        border-radius: var(--radius-3);
+        box-shadow: var(--shadow-1);
+      }
+    }
+  }
+</style>

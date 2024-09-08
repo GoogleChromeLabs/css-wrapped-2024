@@ -1,0 +1,16 @@
+@import "open-props/style";
+@import "open-props/normalize";
+@import "open-props/switch/light";
+@import "open-props/switch/dark";
+
+@view-transition {
+  navigation: auto;
+}
+
+html {
+  background-color: light-dark(white, var(--surface-1));
+}
+
+body {
+  gap: var(--size-5);
+}
