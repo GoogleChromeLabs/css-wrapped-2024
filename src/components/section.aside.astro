@@ -90,6 +90,11 @@ import { Icon } from 'astro-icon/components';
           animation-range-start: entry calc(100vh - 3rem);
         }   
       }
+      @supports not (animation-timeline: view()) {
+        > [data-icon] {
+          display: none;
+        }
+      }
     }
     
     @media (width > 900px) {
