@@ -4,6 +4,7 @@
 
 <script is:inline>
   const storageKey = "theme-preference";
+  let pageLoading = true;
 
   const onClick = () => {
     // flip current value
@@ -35,7 +36,7 @@
         ?.setAttribute("aria-label", theme.value);
     }
 
-    if (document.startViewTransition)
+    if (!pageLoading && document.startViewTransition)
       document.startViewTransition(() => mutate());
     else mutate();
   };
@@ -56,6 +57,7 @@
 
     // remove the inline style that hides the VT
     document.firstElementChild.style = null;
+    pageLoading = false;
   };
 
   // sync with system changes
