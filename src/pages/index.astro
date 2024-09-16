@@ -10,7 +10,8 @@ import SectionInteractions from '../components/section.interactions.astro';
 import Footer from '../components/footer.astro';
 ---
 
-<html lang="en">
+<!-- remove the VT until the clientside theme switch is loaded so we dont flash a VT -->
+<html lang="en" style="view-transition-name: none">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
