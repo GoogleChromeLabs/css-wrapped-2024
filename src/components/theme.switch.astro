@@ -117,13 +117,15 @@
       clip-path: circle(150% at top right);
     }
   }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(root) {
+      animation: none;
+    }
 
-  ::view-transition-old(root) {
-    animation: none;
-  }
-
-  ::view-transition-new(root) {
-    animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-top-right forwards;
+    ::view-transition-new(root) {
+      animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-top-right forwards;
+    }
   }
 </style>
 
