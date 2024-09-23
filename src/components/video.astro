@@ -1,8 +1,22 @@
 ---
-const { src } = Astro.props;
+interface Props {
+  src: string;
+  width?: number;
+  height?: number;
+}
+
+const { src, width = 720, height = 480 } = Astro.props;
 ---
 
-<video src={src} controls muted loop playsinline preload="metadata"></video>
+<video
+  src={src}
+  width={width}
+  height={height}
+  controls
+  muted
+  loop
+  playsinline
+  preload="metadata"></video>
 
 <style>
   @keyframes rounded-mask-reveal {
