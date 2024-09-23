@@ -24,14 +24,18 @@ import { Icon } from "astro-icon/components";
     "scroll",
     (e) => {
       const st = window.pageYOffset || document.documentElement.scrollTop;
+      // @ts-ignore
       const direction = st > e.target.lastScrollTop ? "down" : "up";
-      
-      for (let track of tracks)
+
+      for (let track of tracks) {
+        // @ts-ignore
         track.style.setProperty(
           "--scroll-direction",
           direction == "down" ? 1 : -1
         );
-        
+      }
+
+      // @ts-ignore
       e.target.lastScrollTop = st <= 0 ? 0 : st;
     },
     { passive: true }
