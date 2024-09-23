@@ -10,7 +10,3 @@
 html {
   background-color: light-dark(white, var(--surface-1));
 }
-
-body {
-  gap: var(--size-5);
-}

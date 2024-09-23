@@ -25,19 +25,19 @@
       gap: var(--size-5);
     }
 
-    > h3 {
-      border-block-end: 1px solid var(--surface-2);
-      padding-block-end: var(--size-3);
-      scroll-margin-block-start: 8vh;
-    }
+    > header {
+      display: grid;
+      gap: var(--size-6);
 
-    > baseline-status {
-      padding-inline: 0;
+      > h3 {
+        scroll-margin-block-start: 8vh;
+      }
     }
 
     > footer {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: var(--size-2);
       border-block-start: 1px solid var(--surface-2);
       padding-block-start: var(--size-6);
@@ -45,20 +45,42 @@
 
       > .articles {
         display: flex;
-        gap: var(--size-3);
+        flex-wrap: wrap;
+        gap: var(--size-2) var(--_inline-padding);
+
+        > a {
+          white-space: nowrap;
+        }
       }
     }
 
-    & .video {
+    & .video-placeholder {
       aspect-ratio: 16 / 9;
       background: var(--surface-3);
       border-radius: var(--radius-3);
+      overflow: clip;
+
       display: grid;
       place-content: center;
 
       > svg {
         block-size: 5rem;
         inline-size: 5rem;
+      }
+    }
+
+    & .resources {
+      display: grid;
+      gap: var(--size-3);
+
+      > ul {
+        display: grid;
+        gap: var(--size-3);
+        padding-inline: var(--size-3);
+
+        > li {
+          padding-inline-start: 0;
+        }
       }
     }
 
