@@ -1,0 +1,78 @@
+---
+
+---
+
+<article>
+  <slot />
+</article>
+
+<style>
+  article {
+    --_inline-padding: var(--size-8);
+
+    display: grid;
+    gap: var(--size-8);
+    padding: var(--size-7) var(--_inline-padding);
+    border: 1px solid var(--surface-2);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-3);
+    font-weight: 300;
+    backdrop-filter: blur(5px);
+    background: oklch(from var(--surface-1) l c h / 10%);
+
+    @media (width <= 720px) {
+      --_inline-padding: var(--size-3);
+      gap: var(--size-5);
+    }
+
+    > h3 {
+      border-block-end: 1px solid var(--surface-2);
+      padding-block-end: var(--size-3);
+      scroll-margin-block-start: 8vh;
+    }
+
+    > baseline-status {
+      padding-inline: 0;
+    }
+
+    > footer {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--size-2);
+      border-block-start: 1px solid var(--surface-2);
+      padding-block-start: var(--size-6);
+      margin-block-start: var(--size-5);
+
+      > .articles {
+        display: flex;
+        gap: var(--size-3);
+      }
+    }
+
+    & .video {
+      aspect-ratio: 16 / 9;
+      background: var(--surface-3);
+      border-radius: var(--radius-3);
+      display: grid;
+      place-content: center;
+
+      > svg {
+        block-size: 5rem;
+        inline-size: 5rem;
+      }
+    }
+
+    & .support {
+      display: grid;
+      gap: var(--size-3);
+      background: light-dark(var(--surface-1), var(--gray-10));
+      margin-inline: calc(var(--_inline-padding) * -1);
+      padding-inline: var(--_inline-padding);
+      padding-block: var(--size-6) var(--size-3);
+
+      > baseline-status {
+        padding: 0;
+      }
+    }
+  }
+</style>
