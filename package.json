@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "license": "Apache-2.0",
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "astro": "^4.15.9",
