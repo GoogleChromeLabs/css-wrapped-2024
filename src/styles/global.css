@@ -1,3 +1,8 @@
+/**
+ * Copyright 2024 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 @import "open-props/style";
 @import "open-props/normalize";
 @import "open-props/switch/light";
