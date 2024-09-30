@@ -1,9 +1,10 @@
 ---
-import SectionAside from './section.aside.astro'; 
-import ScrollbarStyling from "../features/interactions/scrollbar-styling.astro";
-import ViewTransitionsMPA from "../features/interactions/view-transitions-mpa.astro";
-import ScrollDrivenAnimations from "../features/interactions/scroll-driven-animations.astro";
-import ScrollSnapEvents from "../features/interactions/scroll-snap-events.astro";
+import SectionAside from "./section.aside.astro";
+
+import * as ScrollbarStyling from "../features/interactions/scrollbar-styling.astro";
+import * as ViewTransitionsMPA from "../features/interactions/view-transitions-mpa.astro";
+import * as ScrollDrivenAnimations from "../features/interactions/scroll-driven-animations.astro";
+import * as ScrollSnapEvents from "../features/interactions/scroll-snap-events.astro";
 
 const features = [
   ScrollbarStyling,
@@ -11,6 +12,9 @@ const features = [
   ScrollDrivenAnimations,
   ScrollSnapEvents,
 ];
+
+const titles = features.map((Feature) => Feature.title);
+const components = features.map((Feature) => Feature.default);
 ---
 
 <section>
@@ -18,12 +22,10 @@ const features = [
     <h2>Interactions</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside features={features}/>
+  <SectionAside features={titles} />
 
   <div class="features-list">
-    {features.map((Feature) => (
-      <Feature />
-    ))}
+    {components.map((Feature) => <Feature />)}
   </div>
 </section>
 
@@ -34,18 +36,18 @@ const features = [
     display: grid;
     gap: var(--size-3);
     grid-template-columns: 1fr var(--size-content-1);
-    
+
     @media (width < 900px) {
       grid-template-columns: 1fr 5ch;
     }
-    
+
     > header {
       margin-block-end: var(--size-8);
     }
-    
+
     > .features-list {
       grid-column: 1;
-      
+
       &:not(:first-of-type) {
         margin-block-start: var(--size-11);
       }

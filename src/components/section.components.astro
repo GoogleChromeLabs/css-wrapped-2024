@@ -1,11 +1,12 @@
 ---
-import SectionAside from './section.aside.astro';
-import FieldSizing from "../features/components/field-sizing.astro";
-import AnimateToHeightAuto from "../features/components/animate-to-height-auto.astro";
-import ExclusiveDetails from "../features/components/exclusive-details.astro";
-import StyleableDetails from "../features/components/styleable-details.astro";
-import AnchorPositioning from "../features/components/anchor-positioning.astro";
-import CustomizableSelect from "../features/components/customizable-select.astro";
+import SectionAside from "./section.aside.astro";
+
+import * as FieldSizing from "../features/components/field-sizing.astro";
+import * as AnimateToHeightAuto from "../features/components/animate-to-height-auto.astro";
+import * as ExclusiveDetails from "../features/components/exclusive-details.astro";
+import * as StyleableDetails from "../features/components/styleable-details.astro";
+import * as AnchorPositioning from "../features/components/anchor-positioning.astro";
+import * as CustomizableSelect from "../features/components/customizable-select.astro";
 
 const features = [
   FieldSizing,
@@ -14,7 +15,10 @@ const features = [
   StyleableDetails,
   AnchorPositioning,
   CustomizableSelect,
-]
+];
+
+const titles = features.map((Feature) => Feature.title);
+const components = features.map((Feature) => Feature.default);
 ---
 
 <section>
@@ -22,12 +26,10 @@ const features = [
     <h2>Components</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside features={features}/>
+  <SectionAside features={titles} />
 
   <div class="features-list">
-    {features.map((Feature) => (
-      <Feature />
-    ))}
+    {components.map((Feature) => <Feature />)}
   </div>
 </section>
 
@@ -38,18 +40,18 @@ const features = [
     display: grid;
     gap: var(--size-3);
     grid-template-columns: 1fr var(--size-content-1);
-    
+
     @media (width < 900px) {
       grid-template-columns: 1fr 5ch;
     }
-    
+
     > header {
       margin-block-end: var(--size-8);
     }
-    
+
     > .features-list {
       grid-column: 1;
-      
+
       &:not(:first-of-type) {
         margin-block-start: var(--size-11);
       }

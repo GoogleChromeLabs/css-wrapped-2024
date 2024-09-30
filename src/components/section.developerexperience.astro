@@ -1,18 +1,19 @@
 ---
 import SectionAside from "./section.aside.astro";
-import BackdropInheritance from "../features/developerexperience/backdrop-inheritance.astro";
-import HighlightInheritance from "../features/developerexperience/highlight-inheritance.astro";
-import LightDarkFunction from "../features/developerexperience/light-dark.astro";
-import TextBoxTrim from "../features/developerexperience/text-box-trim.astro";
-import AtProperty from "../features/developerexperience/at-property.astro";
-import Popover from "../features/developerexperience/popover.astro";
-import StartingStyle from "../features/developerexperience/starting-style.astro";
-import RubyAlign from "../features/developerexperience/ruby-align.astro";
-import LineClamp from "../features/developerexperience/line-clamp.astro";
-import PaintOrder from "../features/developerexperience/paint-order.astro";
-import Masonry from "../features/developerexperience/masonry.astro";
-import ReadingFlow from "../features/developerexperience/reading-flow.astro";
-import CSSOMNestedDeclarations from "../features/developerexperience/cssom-nested-declarations.astro";
+
+import * as BackdropInheritance from "../features/developerexperience/backdrop-inheritance.astro";
+import * as HighlightInheritance from "../features/developerexperience/highlight-inheritance.astro";
+import * as LightDarkFunction from "../features/developerexperience/light-dark.astro";
+import * as TextBoxTrim from "../features/developerexperience/text-box-trim.astro";
+import * as AtProperty from "../features/developerexperience/at-property.astro";
+import * as Popover from "../features/developerexperience/popover.astro";
+import * as StartingStyle from "../features/developerexperience/starting-style.astro";
+import * as RubyAlign from "../features/developerexperience/ruby-align.astro";
+import * as LineClamp from "../features/developerexperience/line-clamp.astro";
+import * as PaintOrder from "../features/developerexperience/paint-order.astro";
+import * as Masonry from "../features/developerexperience/masonry.astro";
+import * as ReadingFlow from "../features/developerexperience/reading-flow.astro";
+import * as CSSOMNestedDeclarations from "../features/developerexperience/cssom-nested-declarations.astro";
 
 const features = [
   BackdropInheritance,
@@ -29,6 +30,9 @@ const features = [
   ReadingFlow,
   CSSOMNestedDeclarations,
 ];
+
+const titles = features.map((Feature) => Feature.title);
+const components = features.map((Feature) => Feature.default);
 ---
 
 <section>
@@ -36,12 +40,10 @@ const features = [
     <h2>Developer Experience</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside features={features}/>
+  <SectionAside features={titles} />
 
   <div class="features-list">
-    {features.map((Feature) => (
-      <Feature />
-    ))}
+    {components.map((Feature) => <Feature />)}
   </div>
 </section>
 

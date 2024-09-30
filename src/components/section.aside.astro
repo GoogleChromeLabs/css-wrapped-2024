@@ -11,9 +11,8 @@ const {features} = Astro.props;
   </div>
   <nav>
     <ul>
-      {features.map((Feature) => {
-        // @TODO(bramus) Get the actual .title from the component here …
-        return <li><a href={`#${slugify(Feature.name)}`} set:html={Feature.name}></a></li>
+      {features.map((title) => {
+        return <li><a href={`#${slugify(title)}`} set:html={title}></a></li>
       })}
     </ul>
   </nav>
