@@ -1,24 +1,22 @@
 ---
-import FeatureLayout from "./_layout.astro";
-import Video from "../components/video.astro";
+import FeatureLayout from "./../_layout.astro";
 import { Icon } from "astro-icon/components";
 ---
 
 <FeatureLayout>
   <header>
-    <h3 id="feature">Custom Scrollbars</h3>
-    <div class="support">
+    <h3 id="feature">Backdrop Inheritance</h3>
+    <!-- <div class="support">
       <baseline-status featureId="scrollbar-color"></baseline-status>
-      <baseline-status featureId="scrollbar-width"></baseline-status>
-    </div>
+    </div> -->
   </header>
   <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
     nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
     culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
   </p>
-  <div class="video">
-    <Video src="/scrollbar-color.mp4" />
+  <div class="video-placeholder">
+    <Icon name="play" />
   </div>
   <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
@@ -26,11 +24,11 @@ import { Icon } from "astro-icon/components";
     culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
   </p>
   <iframe
-    height="500"
+    height="300"
     style="width: 100%;"
     scrolling="no"
     title="CSS Logo?"
-    src="https://codepen.io/web-dot-dev/embed/preview/yLwMexO?default-tab=result&editable=true&theme-id=43079"
+    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
     frameborder="no"
     loading="lazy"
     allowtransparency="true"
@@ -39,29 +37,11 @@ import { Icon } from "astro-icon/components";
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
     officia tenetur expedita, quidem nisi itaque.
   </p>
-  <section class="resources">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color"
-          ><code>scrollbar-color</code> on MDN</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width"
-          ><code>scrollbar-width</code> on MDN</a
-        >
-      </li>
-    </ul>
-  </section>
   <footer>
-    <a href="https://codepen.io/web-dot-dev/pen/yLwMexO">Try demo</a>
+    <a href="#">Try demo</a>
     <div class="articles">
-      <a href="https://developer.chrome.com/docs/css-ui/scrollbar-styling"
-        >Article on developer.chrome</a
-      >
+      <a href="#">Article on web.dev</a>
+      <a href="#">MDN</a>
     </div>
   </footer>
 </FeatureLayout>

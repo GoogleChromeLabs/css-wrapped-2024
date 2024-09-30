@@ -1,6 +1,11 @@
 ---
-import SectionAside from './section.aside.astro'; 
-import Example from '../features/example.astro';
+import SectionAside from './section.aside.astro';
+import FieldSizing from "../features/components/field-sizing.astro";
+import AnimateToHeightAuto from "../features/components/animate-to-height-auto.astro";
+import ExclusiveDetails from "../features/components/exclusive-details.astro";
+import StyleableDetails from "../features/components/styleable-details.astro";
+import AnchorPositioning from "../features/components/anchor-positioning.astro";
+import CustomizableSelect from "../features/components/customizable-select.astro";
 ---
 
 <section>
@@ -11,10 +16,12 @@ import Example from '../features/example.astro';
   <SectionAside />
 
   <div class="features-list">
-    <Example />
-    <Example />
-    <Example />
-    <Example />
+    <FieldSizing />
+    <AnimateToHeightAuto />
+    <ExclusiveDetails />
+    <StyleableDetails />
+    <AnchorPositioning />
+    <CustomizableSelect />
   </div>
 </section>
 

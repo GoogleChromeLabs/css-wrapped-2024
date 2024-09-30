@@ -1,6 +1,10 @@
 ---
 import SectionAside from './section.aside.astro'; 
 import Example from '../features/example.astro';
+import ScrollbarStyling from "../features/interactions/scrollbar-styling.astro";
+import ViewTransitionsMPA from "../features/interactions/view-transitions-mpa.astro";
+import ScrollDrivenAnimations from "../features/interactions/scroll-driven-animations.astro";
+import ScrollSnapEvents from "../features/interactions/scroll-snap-events.astro";
 ---
 
 <section>
@@ -11,10 +15,10 @@ import Example from '../features/example.astro';
   <SectionAside />
 
   <div class="features-list">
-    <Example />
-    <Example />
-    <Example />
-    <Example />
+    <ScrollbarStyling />
+    <ViewTransitionsMPA />
+    <ScrollDrivenAnimations />
+    <ScrollSnapEvents />
   </div>
 </section>
 
