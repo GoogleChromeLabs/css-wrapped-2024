@@ -1,46 +1,87 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
-import HeaderPrimary from '../components/header.primary.astro';
-import Hero from '../components/hero.astro';
-import FeatureFillstrip from '../components/feature.fillstrip.astro';
-import SectionDeveloperExperience from '../components/section.developerexperience.astro';
-import SectionComponents from '../components/section.components.astro';
-import SectionInteractions from '../components/section.interactions.astro';
-import Footer from '../components/footer.astro';
+import HeaderPrimary from "../components/header.primary.astro";
+import Hero from "../components/hero.astro";
+import FeatureFillstrip from "../components/feature.fillstrip.astro";
+import SectionDeveloperExperience from "../components/section.developerexperience.astro";
+import SectionComponents from "../components/section.components.astro";
+import SectionInteractions from "../components/section.interactions.astro";
+import Footer from "../components/footer.astro";
 ---
+
 <!--
  Copyright 2024 Google LLC
  SPDX-License-Identifier: Apache-2.0
--->
-<!-- remove the VT until the clientside theme switch is loaded so we dont flash a VT -->
+--><!-- remove the VT until the clientside theme switch is loaded so we dont flash a VT -->
 <html lang="en" style="view-transition-name: none">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>CSS Wrapped 2024</title>
-		<script type="module" src="https://cdn.jsdelivr.net/npm/baseline-status@1.0.4/baseline-status.min.js"></script>
-	</head>
-	<body>
-		<HeaderPrimary />
-		<Hero />
-		<FeatureFillstrip />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CSS Wrapped 2024</title>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/baseline-status@1.0.4/baseline-status.min.js"
+    ></script>
+  </head>
+  <body>
+    <HeaderPrimary />
+    <Hero />
+    <FeatureFillstrip />
 
-		<main>
-			<SectionDeveloperExperience />
-			<SectionComponents />
-			<SectionInteractions />
-		</main>
+    <main>
+      <div class="biome glitch">
+        <div class="--start"></div>
+        <SectionDeveloperExperience />
+        <div class="--end"></div>
+      </div>
+      <div class="biome desert">
+        <div class="--start"></div>
+        <SectionComponents />
+        <div class="--end"></div>
+      </div>
+      <div class="biome jungle">
+        <div class="--start"></div>
+        <SectionInteractions />
+        <div class="--end"></div>
+      </div>
+    </main>
 
-		<Footer />
-	</body>
+    <Footer />
+  </body>
 </html>
 
 <style>
-	main {
+  main {
     display: grid;
     gap: var(--size-14);
-    padding-inline: var(--size-5);
+  }
+
+  .biome {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+
+    > .--start {
+      background-image: url(/desert-side.jpg);
+      background-position: right top;
+    }
+
+    > section {
+      background: url(/desert-middle.jpg) fixed;
+    }
+
+    > .--end {
+      background-image: url(/desert-side.jpg);
+      background-position: left top;
+    }
+
+    > .--end,
+    .--start {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background-size: auto 100vh;
+    }
   }
 </style>
