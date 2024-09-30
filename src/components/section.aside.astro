@@ -1,5 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import slugify from "./../util/slugify";
+
+const {features} = Astro.props;
 ---
 
 <aside>
@@ -8,10 +11,10 @@ import { Icon } from "astro-icon/components";
   </div>
   <nav>
     <ul>
-      <li><a href="#feature-1">Feature #1</a></li>
-      <li><a href="#feature-2">Feature #2</a></li>
-      <li><a href="#feature-3">Feature #3</a></li>
-      <li><a href="#feature-4">Feature #4</a></li>
+      {features.map((Feature) => {
+        // @TODO(bramus) Get the actual .title from the component here …
+        return <li><a href={`#${slugify(Feature.name)}`} set:html={Feature.name}></a></li>
+      })}
     </ul>
   </nav>
 </aside>

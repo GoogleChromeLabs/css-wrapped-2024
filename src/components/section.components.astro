@@ -6,6 +6,15 @@ import ExclusiveDetails from "../features/components/exclusive-details.astro";
 import StyleableDetails from "../features/components/styleable-details.astro";
 import AnchorPositioning from "../features/components/anchor-positioning.astro";
 import CustomizableSelect from "../features/components/customizable-select.astro";
+
+const features = [
+  FieldSizing,
+  AnimateToHeightAuto,
+  ExclusiveDetails,
+  StyleableDetails,
+  AnchorPositioning,
+  CustomizableSelect,
+]
 ---
 
 <section>
@@ -13,15 +22,12 @@ import CustomizableSelect from "../features/components/customizable-select.astro
     <h2>Components</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside />
+  <SectionAside features={features}/>
 
   <div class="features-list">
-    <FieldSizing />
-    <AnimateToHeightAuto />
-    <ExclusiveDetails />
-    <StyleableDetails />
-    <AnchorPositioning />
-    <CustomizableSelect />
+    {features.map((Feature) => (
+      <Feature />
+    ))}
   </div>
 </section>
 

@@ -2,11 +2,14 @@
 import FeatureLayout from "../_layout.astro";
 import Video from "../../components/video.astro";
 import { Icon } from "astro-icon/components";
+import slugify from "./../../util/slugify";
+export const title = "Custom Scrollbars";
+const slug = slugify(title);
 ---
 
 <FeatureLayout>
   <header>
-    <h3 id="feature">Custom Scrollbars</h3>
+    <h3 id={slug} set:html={title}></h3>
     <div class="support">
       <baseline-status featureId="scrollbar-color"></baseline-status>
       <baseline-status featureId="scrollbar-width"></baseline-status>

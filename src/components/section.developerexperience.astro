@@ -13,6 +13,22 @@ import PaintOrder from "../features/developerexperience/paint-order.astro";
 import Masonry from "../features/developerexperience/masonry.astro";
 import ReadingFlow from "../features/developerexperience/reading-flow.astro";
 import CSSOMNestedDeclarations from "../features/developerexperience/cssom-nested-declarations.astro";
+
+const features = [
+  BackdropInheritance,
+  HighlightInheritance,
+  LightDarkFunction,
+  TextBoxTrim,
+  AtProperty,
+  Popover,
+  StartingStyle,
+  RubyAlign,
+  LineClamp,
+  PaintOrder,
+  Masonry,
+  ReadingFlow,
+  CSSOMNestedDeclarations,
+];
 ---
 
 <section>
@@ -20,22 +36,12 @@ import CSSOMNestedDeclarations from "../features/developerexperience/cssom-neste
     <h2>Developer Experience</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside />
+  <SectionAside features={features}/>
 
   <div class="features-list">
-    <BackdropInheritance />
-    <HighlightInheritance />
-    <LightDarkFunction />
-    <TextBoxTrim />
-    <AtProperty />
-    <Popover />
-    <StartingStyle />
-    <RubyAlign />
-    <LineClamp />
-    <PaintOrder />
-    <Masonry />
-    <ReadingFlow />
-    <CSSOMNestedDeclarations />
+    {features.map((Feature) => (
+      <Feature />
+    ))}
   </div>
 </section>
 

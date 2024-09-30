@@ -1,11 +1,14 @@
 ---
 import FeatureLayout from "./../_layout.astro";
 import { Icon } from "astro-icon/components";
+import slugify from "./../../util/slugify";
+export const title = "Highlight Pseudo Inheritance Changes";
+const slug = slugify(title);
 ---
 
 <FeatureLayout>
   <header>
-    <h3 id="feature">Highlight Pseudo Inheritance Changes</h3>
+    <h3 id={slug} set:html={title}></h3>
     <!-- <div class="support">
       <baseline-status featureId="scrollbar-color"></baseline-status>
     </div> -->

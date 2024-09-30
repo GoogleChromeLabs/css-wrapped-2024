@@ -1,10 +1,16 @@
 ---
 import SectionAside from './section.aside.astro'; 
-import Example from '../features/example.astro';
 import ScrollbarStyling from "../features/interactions/scrollbar-styling.astro";
 import ViewTransitionsMPA from "../features/interactions/view-transitions-mpa.astro";
 import ScrollDrivenAnimations from "../features/interactions/scroll-driven-animations.astro";
 import ScrollSnapEvents from "../features/interactions/scroll-snap-events.astro";
+
+const features = [
+  ScrollbarStyling,
+  ViewTransitionsMPA,
+  ScrollDrivenAnimations,
+  ScrollSnapEvents,
+];
 ---
 
 <section>
@@ -12,13 +18,12 @@ import ScrollSnapEvents from "../features/interactions/scroll-snap-events.astro"
     <h2>Interactions</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside />
+  <SectionAside features={features}/>
 
   <div class="features-list">
-    <ScrollbarStyling />
-    <ViewTransitionsMPA />
-    <ScrollDrivenAnimations />
-    <ScrollSnapEvents />
+    {features.map((Feature) => (
+      <Feature />
+    ))}
   </div>
 </section>
 
