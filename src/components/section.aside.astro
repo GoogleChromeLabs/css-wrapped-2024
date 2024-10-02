@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import slugify from "./../util/slugify";
 
-const {features} = Astro.props;
+const { features } = Astro.props;
 ---
 
 <aside>
@@ -11,9 +11,15 @@ const {features} = Astro.props;
   </div>
   <nav>
     <ul>
-      {features.map((title) => {
-        return <li><a href={`#${slugify(title)}`} set:html={title}></a></li>
-      })}
+      {
+        features.map((title) => {
+          return (
+            <li>
+              <a href={`#${slugify(title)}`} set:html={title} />
+            </li>
+          );
+        })
+      }
     </ul>
   </nav>
 </aside>
@@ -89,12 +95,23 @@ const {features} = Astro.props;
       display: grid;
       grid-auto-rows: 1fr;
       place-content: start;
+      place-items: center start;
 
       > li {
+        max-inline-size: 90%;
         padding: 0;
         list-style-type: none;
         display: flex;
-        place-items: start;
+
+        background: var(--surface-1);
+        border-radius: var(--radius-2);
+        padding-inline: var(--size-3);
+        padding-block: var(--size-2);
+
+        & code {
+          padding: 0;
+          background: none;
+        }
       }
     }
   }
@@ -110,6 +127,7 @@ const {features} = Astro.props;
 
     > [data-icon] {
       max-inline-size: initial;
+      color: black;
     }
 
     @media (prefers-reduced-motion: no-preference) {
