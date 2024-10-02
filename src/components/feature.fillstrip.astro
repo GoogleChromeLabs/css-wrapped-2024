@@ -1,38 +1,74 @@
 ---
+import slugify from "./../util/slugify";
+import shuffle from "./../util/shuffle";
+
+import { title as FieldSizing } from "../features/components/field-sizing.astro";
+import { title as AnimateToHeightAuto } from "../features/components/animate-to-height-auto.astro";
+import { title as ExclusiveDetails } from "../features/components/exclusive-details.astro";
+import { title as StyleableDetails } from "../features/components/styleable-details.astro";
+import { title as AnchorPositioning } from "../features/components/anchor-positioning.astro";
+import { title as CustomizableSelect } from "../features/components/customizable-select.astro";
+
+import { title as BackdropInheritance } from "../features/developerexperience/backdrop-inheritance.astro";
+import { title as HighlightInheritance } from "../features/developerexperience/highlight-inheritance.astro";
+import { title as LightDarkFunction } from "../features/developerexperience/light-dark.astro";
+import { title as TextBoxTrim } from "../features/developerexperience/text-box-trim.astro";
+import { title as AtProperty } from "../features/developerexperience/at-property.astro";
+import { title as Popover } from "../features/developerexperience/popover.astro";
+import { title as StartingStyle } from "../features/developerexperience/starting-style.astro";
+import { title as RubyAlign } from "../features/developerexperience/ruby-align.astro";
+import { title as LineClamp } from "../features/developerexperience/line-clamp.astro";
+import { title as PaintOrder } from "../features/developerexperience/paint-order.astro";
+import { title as Masonry } from "../features/developerexperience/masonry.astro";
+import { title as ReadingFlow } from "../features/developerexperience/reading-flow.astro";
+import { title as CSSOMNestedDeclarations } from "../features/developerexperience/cssom-nested-declarations.astro";
+
+import { title as ScrollbarStyling } from "../features/interactions/scrollbar-styling.astro";
+import { title as ViewTransitionsMPA } from "../features/interactions/view-transitions-mpa.astro";
+import { title as ScrollDrivenAnimations } from "../features/interactions/scroll-driven-animations.astro";
+import { title as ScrollSnapEvents } from "../features/interactions/scroll-snap-events.astro";
+
+const features = [
+  FieldSizing,
+  AnimateToHeightAuto,
+  ExclusiveDetails,
+  StyleableDetails,
+  AnchorPositioning,
+  CustomizableSelect,
+  ScrollbarStyling,
+  ViewTransitionsMPA,
+  ScrollDrivenAnimations,
+  ScrollSnapEvents,
+  BackdropInheritance,
+  HighlightInheritance,
+  LightDarkFunction,
+  TextBoxTrim,
+  AtProperty,
+  Popover,
+  StartingStyle,
+  RubyAlign,
+  LineClamp,
+  PaintOrder,
+  Masonry,
+  ReadingFlow,
+  CSSOMNestedDeclarations,
+];
 ---
 
 <div class="feature-grid">
   <div class="row">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    {
+      shuffle(features).map((Feature) => (
+        <a class="card" href={`#${slugify(Feature)}`} set:html={Feature} />
+      ))
+    }
   </div>
   <div class="row">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    {
+      shuffle(features).map((Feature) => (
+        <a class="card" href={`#${slugify(Feature)}`} set:html={Feature} />
+      ))
+    }
   </div>
 </div>
 
@@ -45,7 +81,7 @@
       transform: translateX(5vw);
     }
   }
-  
+
   .feature-grid {
     display: grid;
     place-content: center;
@@ -53,29 +89,39 @@
     padding-block: var(--size-10) var(--size-13);
     max-inline-size: 100vw;
     overflow: clip;
-    
+
     > .row {
       display: grid;
       grid-auto-flow: column;
       grid-auto-columns: max(10vw, 15ch);
       gap: var(--size-3);
-      
+
       @media (prefers-reduced-motion: no-preference) {
         @supports (animation-timeline: view()) {
           animation: pan-x linear both;
           animation-timeline: view(block);
         }
       }
-      
+
       &:first-of-type {
         animation-direction: reverse;
       }
-      
+
       > .card {
         aspect-ratio: 3/4;
+        padding: var(--size-3);
         background: var(--surface-3);
         border-radius: var(--radius-3);
         box-shadow: var(--shadow-1);
+
+        display: grid;
+        place-content: center;
+        place-items: center;
+        text-align: center;
+        overflow: clip;
+
+        font-size: var(--font-size-4);
+        font-weight: 100;
       }
     }
   }
