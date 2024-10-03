@@ -57,12 +57,10 @@ const { features } = Astro.props;
 
     display: grid;
     grid-template-columns: 40px 1fr;
-    padding-block: var(--size-3);
-    padding-inline: var(--size-3);
     align-self: start;
     position: sticky;
     top: var(--size-3);
-    block-size: calc(100dvh - (var(--size-3) * 2));
+    /* block-size: calc(100dvh - (var(--size-3) * 2)); */
 
     @media (width < 900px) {
       grid-template-columns: auto 1fr;
@@ -88,23 +86,18 @@ const { features } = Astro.props;
 
     > nav {
       display: grid;
+      border-radius: var(--radius-3);
+      overflow: clip;
     }
 
     ul {
       padding: 0;
       display: grid;
-      grid-auto-rows: 1fr;
-      place-content: start;
-      place-items: center start;
 
       > li {
-        max-inline-size: 90%;
-        padding: 0;
-        list-style-type: none;
         display: flex;
 
         background: var(--surface-1);
-        border-radius: var(--radius-2);
         padding-inline: var(--size-3);
         padding-block: var(--size-2);
 
