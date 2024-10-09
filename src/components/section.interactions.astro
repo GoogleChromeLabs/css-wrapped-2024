@@ -19,12 +19,12 @@ const titles = features.map((Feature) => Feature.title);
 const components = features.map((Feature) => Feature.default);
 ---
 
-<section>
+<section id="interactions">
   <header>
     <h2>Interactions</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside features={titles} />
+  <SectionAside features={titles} sectionTitle="Interactions" previousSection="Components" nextSection="Outro" />
 
   <div class="features-list">
     {components.map((Feature) => <Feature />)}

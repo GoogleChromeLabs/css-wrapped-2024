@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import slugify from "./../util/slugify";
 
-const { features } = Astro.props;
+const { features, sectionTitle, previousSection, nextSection } = Astro.props;
 ---
 
 <aside>
@@ -10,6 +10,8 @@ const { features } = Astro.props;
     <Icon name="dino" size="1.5rem" />
   </div>
   <nav>
+    {previousSection && <p><a href={`#${slugify(previousSection)}`}>&uarr; {previousSection}</a></p>}
+    <h3>{ sectionTitle }</h3>
     <ul>
       {
         features.map((title) => {
@@ -21,6 +23,7 @@ const { features } = Astro.props;
         })
       }
     </ul>
+    {nextSection && <p><a href={`#${slugify(nextSection)}`}>{nextSection} &darr; </a></p>}
   </nav>
 </aside>
 
@@ -88,6 +91,7 @@ const { features } = Astro.props;
       display: grid;
       border-radius: var(--radius-3);
       overflow: clip;
+      background: var(--surface-1);
     }
 
     ul {
@@ -97,7 +101,6 @@ const { features } = Astro.props;
       > li {
         display: flex;
 
-        background: var(--surface-1);
         padding-inline: var(--size-3);
         padding-block: var(--size-2);
 
