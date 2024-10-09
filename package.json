@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "gsutil -m rsync -rd dist gs://chrome-dev-demos/public/css-wrapped-2024",
+    "predeploy": "astro check && astro build --base css-wrapped-2024 && touch ./dist/.ignore"
   },
   "license": "Apache-2.0",
   "dependencies": {
