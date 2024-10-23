@@ -117,7 +117,7 @@
       clip-path: circle(150% at top right);
     }
   }
-  
+
   @media (prefers-reduced-motion: no-preference) {
     ::view-transition-old(root) {
       animation: none;
@@ -164,6 +164,10 @@
     @media (hover: none) {
       --size: 48px;
     }
+
+    &:is(:hover, :focus-visible) :is(.moon, .sun, .sun-beams) {
+      fill: var(--icon-fill-hover);
+    }
   }
 
   .sun-and-moon {
@@ -171,21 +175,13 @@
       transform-origin: center center;
     }
 
-    & > :is(.moon, .sun) {
+    & > :where(.moon, .sun) {
       fill: var(--icon-fill);
-
-      .theme-toggle:is(:hover, :focus-visible) > & {
-        fill: var(--icon-fill-hover);
-      }
     }
 
     & > .sun-beams {
       stroke: var(--icon-fill);
       stroke-width: 2px;
-
-      .theme-toggle:is(:hover, :focus-visible) & {
-        stroke: var(--icon-fill-hover);
-      }
     }
 
     [data-theme="dark"] & {

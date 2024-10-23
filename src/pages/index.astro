@@ -8,6 +8,7 @@ import SectionDeveloperExperience from "../components/section.developerexperienc
 import SectionComponents from "../components/section.components.astro";
 import SectionInteractions from "../components/section.interactions.astro";
 import Footer from "../components/footer.astro";
+import MainAside from "../components/main.aside.astro";
 ---
 
 <!--
@@ -31,20 +32,18 @@ import Footer from "../components/footer.astro";
     <FeatureFillstrip />
 
     <main>
-      <div class="biome glitch">
-        <div class="--start"></div>
-        <SectionDeveloperExperience />
-        <div class="--end"></div>
-      </div>
-      <div class="biome desert">
-        <div class="--start"></div>
-        <SectionComponents />
-        <div class="--end"></div>
-      </div>
-      <div class="biome jungle">
-        <div class="--start"></div>
-        <SectionInteractions />
-        <div class="--end"></div>
+      <MainAside />
+
+      <div class="biomes">
+        <div class="biome desert">
+          <SectionComponents />
+        </div>
+        <div class="biome arctic">
+          <SectionInteractions />
+        </div>
+        <div class="biome jungle">
+          <SectionDeveloperExperience />
+        </div>
       </div>
     </main>
 
@@ -55,33 +54,61 @@ import Footer from "../components/footer.astro";
 <style>
   main {
     display: grid;
-    gap: var(--size-14);
+    gap: var(--size-4);
+    grid-template-areas: ". main-features main-sidenav .";
+    grid-template-columns:
+      [fullbleed-start]
+      auto
+      fit-content(720px)
+      minmax(0, 30ch)
+      auto
+      [fullbleed-end];
+
+    @media (width <= 960px) {
+      grid-template-areas: ". main-features .";
+      grid-template-columns:
+        [fullbleed-start]
+        auto
+        fit-content(720px)
+        auto
+        [fullbleed-end];
+    }
+  }
+
+  .biomes {
+    grid-column: fullbleed;
+    grid-row: 1;
+
+    display: grid;
+    row-gap: 10vh;
+    grid-template-columns: subgrid;
   }
 
   .biome {
+    grid-column: fullbleed;
+
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: subgrid;
 
-    > .--start {
-      background-image: url(/desert-side.jpg);
-      background-position: right top;
+    padding-block-end: var(--size-8);
+
+    background-attachment: fixed;
+    background-size: auto 100dvh;
+    background-position: top center;
+    background-image: 
+      var(--_biome-image),
+      linear-gradient(to bottom, #c0d6fc, 28%, #ffe5bb 0);
+
+    &.desert {
+      --_biome-image: url(/biomes/desert.svg);
     }
 
-    > section {
-      background: url(/desert-middle.jpg) fixed;
+    &.arctic {
+      --_biome-image: url(/biomes/arctic.svg);
     }
 
-    > .--end {
-      background-image: url(/desert-side.jpg);
-      background-position: left top;
-    }
-
-    > .--end,
-    .--start {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      background-size: auto 100vh;
+    &.jungle {
+      --_biome-image: url(/biomes/jungle.svg);
     }
   }
 </style>

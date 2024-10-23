@@ -1,6 +1,4 @@
 ---
-import SectionAside from "./section.aside.astro";
-
 import * as FieldSizing from "../features/components/field-sizing.astro";
 import * as AnimateToHeightAuto from "../features/components/animate-to-height-auto.astro";
 import * as ExclusiveDetails from "../features/components/exclusive-details.astro";
@@ -17,7 +15,6 @@ const features = [
   CustomizableSelect,
 ];
 
-const titles = features.map((Feature) => Feature.title);
 const components = features.map((Feature) => Feature.default);
 ---
 
@@ -26,7 +23,6 @@ const components = features.map((Feature) => Feature.default);
     <h2>Components</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </header>
-  <SectionAside features={titles} sectionTitle="Components" previousSection="Developer Experience" nextSection="Interactions" />
 
   <div class="features-list">
     {components.map((Feature) => <Feature />)}
@@ -35,19 +31,20 @@ const components = features.map((Feature) => Feature.default);
 
 <style>
   section {
-    max-inline-size: 1024px;
-    margin-inline: auto;
     display: grid;
     gap: var(--size-3);
-    grid-template-columns: 1fr 30ch;
-
-    @media (width < 900px) {
-      grid-template-columns: 1fr 5ch;
-      padding-inline: var(--size-3);
-    }
+    grid-column: main-features;
 
     > header {
       margin-block-end: var(--size-8);
+      background: var(--surface-1);
+      border-image: conic-gradient(var(--surface-document) 0 0) fill 0 //0 100vw;;
+
+      > h2 {
+        font-family: "Jersey10", sans-serif;
+        font-weight: normal;
+        font-size: var(--font-size-8);
+      }
     }
 
     > .features-list {

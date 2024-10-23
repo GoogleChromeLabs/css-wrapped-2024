@@ -3,15 +3,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-@import "open-props/style";
+@import "open-props/style"; /* todo: import only what's needed */
 @import "open-props/normalize";
 @import "open-props/switch/light";
 @import "open-props/switch/dark";
+
+@font-face {
+	font-family: 'Jersey10';
+	src: url(/Jersey10-Regular.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 
 @view-transition {
   navigation: auto;
 }
 
+:root {
+	--surface-document: light-dark(white, var(--surface-1));
+}
+
 html {
-  background-color: light-dark(white, var(--surface-1));
+  background-color: var(--surface-document);
 }

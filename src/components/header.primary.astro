@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-import ThemeSwitch from './theme.switch.astro';
+import { Icon } from "astro-icon/components";
+import ThemeSwitch from "./theme.switch.astro";
 ---
 
 <header id="intro">
@@ -9,7 +9,14 @@ import ThemeSwitch from './theme.switch.astro';
   </a>
   <div class="page-controls">
     <ThemeSwitch />
-  </div> 
+    <button
+      class="hamburger"
+      popovertarget="mobile-menu"
+      title="Mobile Navigation Menu"
+    >
+      <Icon name="hamburger" size="1.5rem" />
+    </button>
+  </div>
 </header>
 
 <style>
@@ -17,6 +24,34 @@ import ThemeSwitch from './theme.switch.astro';
     display: flex;
     place-items: center;
     justify-content: space-between;
-    padding: var(--size-5);
+    padding-block: var(--size-3);
+    padding-inline: var(--size-5);
+    background: var(--surface-document);
+
+    @media (width <= 960px) {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    > .page-controls {
+      display: flex;
+      place-items: center;
+      gap: var(--size-3);
+    }
+  }
+
+  .hamburger {
+    color: var(--text-2);
+    border-radius: var(--radius-round);
+    aspect-ratio: var(--ratio-square);
+
+    &:is(:hover, :focus-visible) {
+      color: var(--text-1);
+    }
+
+    @media (width >= 960px) {
+      display: none;
+    }
   }
 </style>

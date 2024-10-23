@@ -1,0 +1,375 @@
+---
+import { Icon } from "astro-icon/components";
+import slugify from "./../util/slugify";
+
+import { title as FieldSizing } from "../features/components/field-sizing.astro";
+import { title as AnimateToHeightAuto } from "../features/components/animate-to-height-auto.astro";
+import { title as ExclusiveDetails } from "../features/components/exclusive-details.astro";
+import { title as StyleableDetails } from "../features/components/styleable-details.astro";
+import { title as AnchorPositioning } from "../features/components/anchor-positioning.astro";
+import { title as CustomizableSelect } from "../features/components/customizable-select.astro";
+
+import { title as BackdropInheritance } from "../features/developerexperience/backdrop-inheritance.astro";
+import { title as HighlightInheritance } from "../features/developerexperience/highlight-inheritance.astro";
+import { title as LightDarkFunction } from "../features/developerexperience/light-dark.astro";
+import { title as TextBoxTrim } from "../features/developerexperience/text-box-trim.astro";
+import { title as AtProperty } from "../features/developerexperience/at-property.astro";
+import { title as Popover } from "../features/developerexperience/popover.astro";
+import { title as StartingStyle } from "../features/developerexperience/starting-style.astro";
+import { title as RubyAlign } from "../features/developerexperience/ruby-align.astro";
+import { title as LineClamp } from "../features/developerexperience/line-clamp.astro";
+import { title as PaintOrder } from "../features/developerexperience/paint-order.astro";
+import { title as Masonry } from "../features/developerexperience/masonry.astro";
+import { title as CSSOMNestedDeclarations } from "../features/developerexperience/cssom-nested-declarations.astro";
+
+import { title as ScrollbarStyling } from "../features/interactions/scrollbar-styling.astro";
+import { title as ViewTransitionsMPA } from "../features/interactions/view-transitions-mpa.astro";
+import { title as ScrollDrivenAnimations } from "../features/interactions/scroll-driven-animations.astro";
+import { title as ScrollSnapEvents } from "../features/interactions/scroll-snap-events.astro";
+import { title as ReadingFlow } from "../features/interactions/reading-flow.astro";
+
+const features = [
+  {
+    section: "Components",
+    features: [
+      FieldSizing,
+      AnimateToHeightAuto,
+      ExclusiveDetails,
+      StyleableDetails,
+      AnchorPositioning,
+      CustomizableSelect,
+    ],
+  },
+  {
+    section: "Interactions",
+    features: [
+      ScrollbarStyling,
+      ViewTransitionsMPA,
+      ScrollDrivenAnimations,
+      ScrollSnapEvents,
+      ReadingFlow,
+    ],
+  },
+  {
+    section: "Developer Experience",
+    features: [
+      BackdropInheritance,
+      HighlightInheritance,
+      LightDarkFunction,
+      TextBoxTrim,
+      AtProperty,
+      Popover,
+      StartingStyle,
+      RubyAlign,
+      LineClamp,
+      PaintOrder,
+      Masonry,
+      CSSOMNestedDeclarations,
+    ],
+  },
+];
+---
+
+<nav popover id="mobile-menu" class="mobile-sidenav">
+  <header>
+    <h2>CSS Wrapped</h2>
+  </header>
+  {
+    features.map(({ section, features }) => {
+      return (
+        <section>
+          <h2>{section}</h2>
+          <ul>
+            {features.map((title) => {
+              return (
+                <li>
+                  <a href={`#${slugify(title)}`} set:html={title} />
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      );
+    })
+  }
+</nav>
+
+<aside>
+  <div class="dynamic-aside">
+    <div class="track">
+      <Icon name="dino" size="1.5rem" />
+    </div>
+    <nav>
+      {
+        features.map(({ section, features }, i) => {
+          return (
+            <details name="main-aside" open={i === 0 ? "open" : null}>
+              <summary>{section}</summary>
+              <ul>
+                {features.map((title) => {
+                  return (
+                    <li>
+                      <a href={`#${slugify(title)}`} set:html={title} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </details>
+          );
+        })
+      }
+    </nav>
+  </div>
+</aside>
+
+<!-- flip car based on scroll direction -->
+<script>
+  const tracks = document.querySelectorAll(".track");
+
+  document.addEventListener(
+    "scroll",
+    (e) => {
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      // @ts-ignore
+      const direction = st > e.target.lastScrollTop ? "down" : "up";
+
+      for (let track of tracks) {
+        // @ts-ignore
+        track.style.setProperty(
+          "--scroll-direction",
+          direction == "down" ? 1 : -1
+        );
+      }
+
+      // @ts-ignore
+      e.target.lastScrollTop = st <= 0 ? 0 : st;
+    },
+    { passive: true }
+  );
+</script>
+
+<style>
+  aside {
+    grid-area: main-sidenav;
+    grid-row: 1;
+    container: main-aside / inline-size;
+
+    @media (width <= 960px) {
+      display: none;
+    }
+  }
+
+  .dynamic-aside {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-self: start;
+    position: sticky;
+    top: var(--size-3);
+    block-size: calc(100dvh - (var(--size-3) * 2));
+
+    > nav {
+      block-size: max-content;
+      display: grid;
+      border-radius: var(--radius-3);
+      overflow: clip;
+
+      > details {
+        @media (prefers-reduced-motion: no-preference) {
+          interpolate-size: allow-keywords;
+        }
+
+        &::details-content {
+          opacity: 0;
+          block-size: 0;
+          overflow-y: clip;
+          transition:
+            content-visibility 0.5s allow-discrete,
+            opacity 0.5s,
+            block-size 0.5s;
+        }
+
+        &[open]::details-content {
+          opacity: 1;
+          block-size: auto;
+        }
+      }
+
+      > details:nth-child(1) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      > details:nth-child(2) {
+        border-radius: 0;
+      }
+
+      > details:nth-child(3) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+
+    ul {
+      padding: 0;
+      display: grid;
+
+      > li {
+        display: flex;
+
+        padding-inline: var(--size-3);
+        padding-block: var(--size-2);
+
+        & code {
+          padding: 0;
+          background: none;
+        }
+      }
+    }
+  }
+
+  .track {
+    /* managed by script */
+    --scroll-direction: 1;
+
+    container-type: size;
+    position: relative;
+    width: 2px;
+    border-right: 2px dashed var(--surface-2);
+
+    > [data-icon] {
+      max-inline-size: initial;
+      color: black;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: view()) {
+        > [data-icon] {
+          animation: truck-ride linear both;
+          animation-timeline: view();
+          view-timeline: --features-view;
+          animation-range-start: entry calc(100vh - 3rem);
+        }
+      }
+      @supports not (animation-timeline: view()) {
+        > [data-icon] {
+          display: none;
+        }
+      }
+    }
+
+    @container (width >= 30ch) {
+      &::before,
+      &::after {
+        content: "";
+        aspect-ratio: 1;
+        background: var(--surface-3);
+        border-radius: var(--radius-round);
+        display: block;
+        top: -10px;
+        left: -4px;
+        width: 10px;
+        position: absolute;
+      }
+
+      &::after {
+        top: auto;
+        bottom: -10px;
+      }
+    }
+  }
+
+  .mobile-sidenav {
+    --_left-pad: var(--size-8);
+    --_x: calc(var(--_left-pad) / 2 * -1);
+
+    block-size: 100dvh;
+    max-block-size: 100dvh;
+    overflow: auto;
+
+    display: grid;
+    align-content: start;
+    gap: var(--size-7);
+
+    padding-block: var(--size-3);
+    padding-inline: var(--_left-pad) var(--size-5);
+
+    @media (width > 960px) {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        translate 0.5s var(--ease-spring-1),
+        box-shadow 0.5s ease,
+        display 0.5s linear allow-discrete,
+        overlay 0.5s linear allow-discrete;
+    }
+
+    &:not(:popover-open) {
+      translate: -100% 0;
+    }
+
+    &:popover-open {
+      translate: var(--_x) 0;
+      box-shadow:
+        3px 0px 2px #00000005,
+        8px 0px 5px #00000007,
+        15px 0px 10px #00000008,
+        27px 0px 18px #0000000a,
+        50px 0px 33px #0000000c,
+        119px 0px 80px #00000011;
+
+      @starting-style {
+        translate: -100% 0;
+      }
+    }
+
+    > header {
+      > h2 {
+        color: light-dark(deeppink, yellow);
+        font-size: var(--font-size-5);
+      }
+    }
+
+    > section {
+      display: grid;
+      gap: var(--size-2);
+    }
+
+    h2 {
+      font-family: "Jersey10", sans-serif;
+      font-weight: normal;
+      font-size: var(--font-size-4);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      gap: var(--size-2);
+      border-left: 1px solid var(--surface-2);
+
+      > li {
+        padding-inline-start: var(--size-5);
+
+        > a:not(:hover, :focus-visible) {
+          color: var(--text-2);
+        }
+      }
+    }
+  }
+</style>
+
+<style is:global>
+  @keyframes truck-ride {
+    from {
+      transform: rotate(0.25turn) translateX(0cqb)
+        scaleX(calc(var(--scroll-direction, 0)));
+    }
+
+    to {
+      transform: rotate(0.25turn) translateX(calc(100cqb - 1ch))
+        scaleX(calc(var(--scroll-direction, 0)));
+    }
+  }
+</style>

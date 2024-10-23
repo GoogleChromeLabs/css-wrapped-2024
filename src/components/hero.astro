@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-import NavBento from './nav.bento.astro';
+import { Icon } from "astro-icon/components";
+import NavBento from "./nav.bento.astro";
 ---
 
 <section class="hero">
@@ -13,7 +13,7 @@ import NavBento from './nav.bento.astro';
     <p>2024 in 3 main categories</p>
   </div>
   <NavBento />
-</section> 
+</section>
 
 <style>
   .hero {
@@ -23,12 +23,14 @@ import NavBento from './nav.bento.astro';
     padding-inline: var(--size-5);
     display: grid;
     gap: var(--size-8);
-    
+
     > h1 {
-      font-size: var(--font-size-4);
+      font-family: "Jersey10", sans-serif;
+      font-size: var(--font-size-6);
+      font-weight: normal;
       text-align: center;
       max-inline-size: 100%;
-      
+
       > span {
         border-radius: var(--radius-2);
         margin-inline-start: var(--size-2);
@@ -37,16 +39,18 @@ import NavBento from './nav.bento.astro';
         box-shadow: 0 0 0 var(--border-size-2);
       }
     }
-    
+
     p {
       text-align: center;
       max-inline-size: max-content;
       margin-inline: auto;
     }
-    
+
     .hero-title {
+      font-family: "Jersey10", sans-serif;
+      font-weight: normal;
       margin-block-start: var(--size-12);
-      font-size: var(--font-size-7);
+      font-size: var(--font-size-8);
     }
   }
 
@@ -54,7 +58,7 @@ import NavBento from './nav.bento.astro';
     aspect-ratio: 16/9;
     background: var(--surface-3);
     border-radius: var(--radius-3);
-    
+
     display: grid;
     place-content: center;
 
