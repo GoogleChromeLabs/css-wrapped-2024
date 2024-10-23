@@ -3,7 +3,7 @@ import "../styles/global.css";
 
 import HeaderPrimary from "../components/header.primary.astro";
 import Hero from "../components/hero.astro";
-import FeatureFillstrip from "../components/feature.fillstrip.astro";
+import FeatureFilmstrip from "../components/feature.filmstrip.astro";
 import SectionDeveloperExperience from "../components/section.developerexperience.astro";
 import SectionComponents from "../components/section.components.astro";
 import SectionInteractions from "../components/section.interactions.astro";
@@ -29,7 +29,7 @@ import MainAside from "../components/main.aside.astro";
   <body>
     <HeaderPrimary />
     <Hero />
-    <FeatureFillstrip />
+    <FeatureFilmstrip />
 
     <main>
       <MainAside />
@@ -95,20 +95,17 @@ import MainAside from "../components/main.aside.astro";
     background-attachment: fixed;
     background-size: auto 100dvh;
     background-position: top center;
-    background-image: 
-      var(--_biome-image),
-      linear-gradient(to bottom, #c0d6fc, 28%, #ffe5bb 0);
 
     &.desert {
-      --_biome-image: url(/biomes/desert.svg);
+      background-image: url(/biomes/desert.svg);
     }
 
     &.arctic {
-      --_biome-image: url(/biomes/arctic.svg);
+      background-image: url(/biomes/arctic.svg);
     }
 
     &.jungle {
-      --_biome-image: url(/biomes/jungle.svg);
+      background-image: url(/biomes/jungle.svg);
     }
   }
 </style>
