@@ -17,8 +17,13 @@ const { biomes } = Astro.props;
           <ul>
             {biome.features.map((feature) => {
               return (
-                <li>
-                  <a href={`#${slugify(feature.title)}`} set:html={feature.title} />
+                <li
+                  style={`animation-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
+                >
+                  <a
+                    href={`#${slugify(feature.title)}`}
+                    set:html={feature.title}
+                  />
                 </li>
               );
             })}
@@ -43,8 +48,13 @@ const { biomes } = Astro.props;
               <ul>
                 {biome.features.map((feature) => {
                   return (
-                    <li>
-                      <a href={`#${slugify(feature.title)}`} set:html={feature.title} />
+                    <li
+                      style={`animation-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
+                    >
+                      <a
+                        href={`#${slugify(feature.title)}`}
+                        set:html={feature.title}
+                      />
                     </li>
                   );
                 })}
@@ -153,6 +163,9 @@ const { biomes } = Astro.props;
 
         padding-inline: var(--size-3);
         padding-block: var(--size-2);
+
+        border-inline-start: 2px solid transparent;
+        animation: highlight linear;
 
         & code {
           padding: 0;
@@ -287,6 +300,9 @@ const { biomes } = Astro.props;
       > li {
         padding-inline-start: var(--size-5);
 
+        border-inline-start: 2px solid transparent;
+        animation: highlight linear;
+
         > a:not(:hover, :focus-visible) {
           color: var(--text-2);
         }
@@ -305,6 +321,22 @@ const { biomes } = Astro.props;
     to {
       transform: rotate(0.25turn) translateX(calc(100cqb - 1ch))
         scaleX(calc(var(--scroll-direction, 0)));
+    }
+  }
+
+  @keyframes highlight {
+    entry 0% {
+      border-inline-start-color: #0000;
+    }
+    entry 25% {
+      border-inline-start-color: var(--surface-3);
+    }
+
+    exit 75% {
+      border-inline-start-color: var(--surface-3);
+    }
+    exit 100% {
+      border-inline-start-color: #0000;
     }
   }
 </style>
