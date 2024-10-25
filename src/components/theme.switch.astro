@@ -55,8 +55,8 @@
     // now this script can find and listen for clicks on the control
     document.querySelector("#theme-toggle").addEventListener("click", onClick);
 
-    // remove the inline style that hides the VT
-    document.firstElementChild.style = null;
+    // Restore :root have a viewTransitionName
+    document.documentElement.style.viewTransitionName = 'root';
     pageLoading = false;
   };
 
