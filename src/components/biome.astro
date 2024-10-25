@@ -1,18 +1,24 @@
 ---
-
 import slugify from "./../util/slugify";
 const { title, description, features } = Astro.props;
-
 ---
 
-<section id={slugify(title)}>
+<section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
   <header>
     <h2>{title}</h2>
     <p>{description}</p>
   </header>
 
   <div class="features-list">
-    {features.map((Feature) => <Feature.default />)}
+    {
+      features.map((Feature) => (
+        <div
+          style={`view-timeline-name: --vtl--${slugify(title)}--${slugify(Feature.title)}`}
+        >
+          <Feature.default />
+        </div>
+      ))
+    }
   </div>
 </section>
 
@@ -24,8 +30,10 @@ const { title, description, features } = Astro.props;
 
     > header {
       margin-block-end: var(--size-8);
+      padding-block-end: var(--size-10);
       background: var(--surface-1);
-      border-image: conic-gradient(var(--surface-document) 0 0) fill 0 //0 100vw;;
+      border-image: conic-gradient(var(--surface-document) 0 0) fill 0
+        //0 100vw;;
 
       > h2 {
         font-family: "Jersey10", sans-serif;

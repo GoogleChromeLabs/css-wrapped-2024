@@ -8,21 +8,21 @@ const { biomes } = Astro.props;
 const features = biomes.reduce(
   (features, biome) => [...features, ...biome.features],
   []
-);
+).map((feature) => feature.title);
 ---
 
 <div class="feature-grid">
   <div class="row">
     {
       shuffle(features).map((feature) => (
-        <a class="card" href={`#${slugify(feature.title)}`} set:html={feature.title} />
+        <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
       ))
     }
   </div>
   <div class="row">
     {
       shuffle(features).map((feature) => (
-        <a class="card" href={`#${slugify(feature.title)}`} set:html={feature.title} />
+        <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
       ))
     }
   </div>
