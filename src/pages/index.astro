@@ -4,11 +4,82 @@ import "../styles/global.css";
 import HeaderPrimary from "../components/header.primary.astro";
 import Hero from "../components/hero.astro";
 import FeatureFilmstrip from "../components/feature.filmstrip.astro";
-import SectionDeveloperExperience from "../components/section.developerexperience.astro";
-import SectionComponents from "../components/section.components.astro";
-import SectionInteractions from "../components/section.interactions.astro";
+import Biome from "../components/biome.astro";
 import Footer from "../components/footer.astro";
 import MainAside from "../components/main.aside.astro";
+
+import * as FieldSizing from "../features/components/field-sizing.astro";
+import * as AnimateToHeightAuto from "../features/components/animate-to-height-auto.astro";
+import * as ExclusiveDetails from "../features/components/exclusive-details.astro";
+import * as StyleableDetails from "../features/components/styleable-details.astro";
+import * as AnchorPositioning from "../features/components/anchor-positioning.astro";
+import * as CustomizableSelect from "../features/components/customizable-select.astro";
+
+import * as BackdropInheritance from "../features/developerexperience/backdrop-inheritance.astro";
+import * as HighlightInheritance from "../features/developerexperience/highlight-inheritance.astro";
+import * as LightDarkFunction from "../features/developerexperience/light-dark.astro";
+import * as TextBoxTrim from "../features/developerexperience/text-box-trim.astro";
+import * as AtProperty from "../features/developerexperience/at-property.astro";
+import * as Popover from "../features/developerexperience/popover.astro";
+import * as StartingStyle from "../features/developerexperience/starting-style.astro";
+import * as RubyAlign from "../features/developerexperience/ruby-align.astro";
+import * as LineClamp from "../features/developerexperience/line-clamp.astro";
+import * as PaintOrder from "../features/developerexperience/paint-order.astro";
+import * as Masonry from "../features/developerexperience/masonry.astro";
+import * as CSSOMNestedDeclarations from "../features/developerexperience/cssom-nested-declarations.astro";
+
+import * as ScrollbarStyling from "../features/interactions/scrollbar-styling.astro";
+import * as ViewTransitionsMPA from "../features/interactions/view-transitions-mpa.astro";
+import * as ScrollDrivenAnimations from "../features/interactions/scroll-driven-animations.astro";
+import * as ScrollSnapEvents from "../features/interactions/scroll-snap-events.astro";
+import * as ReadingFlow from "../features/interactions/reading-flow.astro";
+
+const biomes = [
+  {
+    title: "Components",
+    description: "Lorem ipsum dolor sit amet components adipisicing elit.",
+    backdrop: "desert",
+    features: [
+      FieldSizing,
+      AnimateToHeightAuto,
+      ExclusiveDetails,
+      StyleableDetails,
+      AnchorPositioning,
+      CustomizableSelect,
+    ],
+  },
+  {
+    title: "Interactions",
+    description: "Lorem ipsum dolor sit amet interactions adipisicing elit.",
+    backdrop: "arctic",
+    features: [
+      ScrollbarStyling,
+      ViewTransitionsMPA,
+      ScrollDrivenAnimations,
+      ScrollSnapEvents,
+      ReadingFlow,
+    ],
+  },
+  {
+    title: "Developer Experience",
+    description: "Lorem ipsum dolor sit amet developer experience adipisicing elit.",
+    backdrop: "jungle",
+    features: [
+      BackdropInheritance,
+      HighlightInheritance,
+      LightDarkFunction,
+      TextBoxTrim,
+      AtProperty,
+      Popover,
+      StartingStyle,
+      RubyAlign,
+      LineClamp,
+      PaintOrder,
+      Masonry,
+      CSSOMNestedDeclarations,
+    ],
+  },
+];
 ---
 
 <!--
@@ -29,21 +100,21 @@ import MainAside from "../components/main.aside.astro";
   <body>
     <HeaderPrimary />
     <Hero />
-    <FeatureFilmstrip />
+    <FeatureFilmstrip biomes={biomes} />
 
     <main>
-      <MainAside />
+      <MainAside biomes={biomes} />
 
       <div class="biomes">
-        <div class="biome desert">
-          <SectionComponents />
-        </div>
-        <div class="biome arctic">
-          <SectionInteractions />
-        </div>
-        <div class="biome jungle">
-          <SectionDeveloperExperience />
-        </div>
+        {
+          biomes.map((biome) => {
+            return (
+              <div class={`biome ${biome.backdrop}`}>
+                <Biome {...biome} />
+              </div>
+            );
+          })
+        }
       </div>
     </main>
 

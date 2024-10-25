@@ -2,72 +2,7 @@
 import { Icon } from "astro-icon/components";
 import slugify from "./../util/slugify";
 
-import { title as FieldSizing } from "../features/components/field-sizing.astro";
-import { title as AnimateToHeightAuto } from "../features/components/animate-to-height-auto.astro";
-import { title as ExclusiveDetails } from "../features/components/exclusive-details.astro";
-import { title as StyleableDetails } from "../features/components/styleable-details.astro";
-import { title as AnchorPositioning } from "../features/components/anchor-positioning.astro";
-import { title as CustomizableSelect } from "../features/components/customizable-select.astro";
-
-import { title as BackdropInheritance } from "../features/developerexperience/backdrop-inheritance.astro";
-import { title as HighlightInheritance } from "../features/developerexperience/highlight-inheritance.astro";
-import { title as LightDarkFunction } from "../features/developerexperience/light-dark.astro";
-import { title as TextBoxTrim } from "../features/developerexperience/text-box-trim.astro";
-import { title as AtProperty } from "../features/developerexperience/at-property.astro";
-import { title as Popover } from "../features/developerexperience/popover.astro";
-import { title as StartingStyle } from "../features/developerexperience/starting-style.astro";
-import { title as RubyAlign } from "../features/developerexperience/ruby-align.astro";
-import { title as LineClamp } from "../features/developerexperience/line-clamp.astro";
-import { title as PaintOrder } from "../features/developerexperience/paint-order.astro";
-import { title as Masonry } from "../features/developerexperience/masonry.astro";
-import { title as CSSOMNestedDeclarations } from "../features/developerexperience/cssom-nested-declarations.astro";
-
-import { title as ScrollbarStyling } from "../features/interactions/scrollbar-styling.astro";
-import { title as ViewTransitionsMPA } from "../features/interactions/view-transitions-mpa.astro";
-import { title as ScrollDrivenAnimations } from "../features/interactions/scroll-driven-animations.astro";
-import { title as ScrollSnapEvents } from "../features/interactions/scroll-snap-events.astro";
-import { title as ReadingFlow } from "../features/interactions/reading-flow.astro";
-
-const features = [
-  {
-    section: "Components",
-    features: [
-      FieldSizing,
-      AnimateToHeightAuto,
-      ExclusiveDetails,
-      StyleableDetails,
-      AnchorPositioning,
-      CustomizableSelect,
-    ],
-  },
-  {
-    section: "Interactions",
-    features: [
-      ScrollbarStyling,
-      ViewTransitionsMPA,
-      ScrollDrivenAnimations,
-      ScrollSnapEvents,
-      ReadingFlow,
-    ],
-  },
-  {
-    section: "Developer Experience",
-    features: [
-      BackdropInheritance,
-      HighlightInheritance,
-      LightDarkFunction,
-      TextBoxTrim,
-      AtProperty,
-      Popover,
-      StartingStyle,
-      RubyAlign,
-      LineClamp,
-      PaintOrder,
-      Masonry,
-      CSSOMNestedDeclarations,
-    ],
-  },
-];
+const { biomes } = Astro.props;
 ---
 
 <nav popover id="mobile-menu" class="mobile-sidenav">
@@ -75,15 +10,15 @@ const features = [
     <h2>CSS Wrapped</h2>
   </header>
   {
-    features.map(({ section, features }) => {
+    biomes.map((biome) => {
       return (
         <section>
-          <h2>{section}</h2>
+          <h2>{biome.title}</h2>
           <ul>
-            {features.map((title) => {
+            {biome.features.map((feature) => {
               return (
                 <li>
-                  <a href={`#${slugify(title)}`} set:html={title} />
+                  <a href={`#${slugify(feature.title)}`} set:html={feature.title} />
                 </li>
               );
             })}
@@ -101,15 +36,15 @@ const features = [
     </div>
     <nav>
       {
-        features.map(({ section, features }, i) => {
+        biomes.map((biome, i) => {
           return (
             <details name="main-aside" open={i === 0 ? "open" : null}>
-              <summary>{section}</summary>
+              <summary>{biome.title}</summary>
               <ul>
-                {features.map((title) => {
+                {biome.features.map((feature) => {
                   return (
                     <li>
-                      <a href={`#${slugify(title)}`} set:html={title} />
+                      <a href={`#${slugify(feature.title)}`} set:html={feature.title} />
                     </li>
                   );
                 })}

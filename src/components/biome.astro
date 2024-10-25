@@ -1,0 +1,50 @@
+---
+
+import slugify from "./../util/slugify";
+const { title, description, features } = Astro.props;
+
+---
+
+<section id={slugify(title)}>
+  <header>
+    <h2>{title}</h2>
+    <p>{description}</p>
+  </header>
+
+  <div class="features-list">
+    {features.map((Feature) => <Feature.default />)}
+  </div>
+</section>
+
+<style>
+  section {
+    display: grid;
+    gap: var(--size-3);
+    grid-column: main-features;
+
+    > header {
+      margin-block-end: var(--size-8);
+      background: var(--surface-1);
+      border-image: conic-gradient(var(--surface-document) 0 0) fill 0 //0 100vw;;
+
+      > h2 {
+        font-family: "Jersey10", sans-serif;
+        font-weight: normal;
+        font-size: var(--font-size-8);
+      }
+    }
+
+    > .features-list {
+      grid-column: 1;
+
+      &:not(:first-of-type) {
+        margin-block-start: var(--size-11);
+      }
+    }
+  }
+
+  .features-list {
+    display: grid;
+    gap: var(--size-10);
+  }
+</style>
