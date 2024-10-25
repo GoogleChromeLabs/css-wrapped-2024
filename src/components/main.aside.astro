@@ -18,7 +18,7 @@ const { biomes } = Astro.props;
             {biome.features.map((feature) => {
               return (
                 <li
-                  style={`animation-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
+                  style={`--_view-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
                 >
                   <a
                     href={`#${slugify(feature.title)}`}
@@ -43,13 +43,17 @@ const { biomes } = Astro.props;
       {
         biomes.map((biome, i) => {
           return (
-            <details name="main-aside" open={i === 0 ? "open" : null}>
+            <details
+              name="main-aside"
+              id={`details-${slugify(biome.title)}`}
+              open={i === 0 ? "open" : null}
+            >
               <summary>{biome.title}</summary>
               <ul>
                 {biome.features.map((feature) => {
                   return (
                     <li
-                      style={`animation-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
+                      style={`--_view-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
                     >
                       <a
                         href={`#${slugify(feature.title)}`}
@@ -91,6 +95,29 @@ const { biomes } = Astro.props;
     },
     { passive: true }
   );
+</script>
+
+<!-- open details to appropriate section -->
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const details = document.querySelector(
+            `#${entry.target.getAttribute("data-details-target")}`
+          );
+          details.setAttribute("open", "");
+        }
+      });
+    },
+    {
+      threshold: 0,
+    }
+  );
+
+  document.querySelectorAll(".biome > section").forEach((biome) => {
+    observer.observe(biome);
+  });
 </script>
 
 <style>
@@ -140,17 +167,26 @@ const { biomes } = Astro.props;
       }
 
       > details:nth-child(1) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+        &,
+        & > summary {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
       }
 
       > details:nth-child(2) {
-        border-radius: 0;
+        &,
+        & > summary {
+          border-radius: 0;
+        }
       }
 
       > details:nth-child(3) {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        &,
+        & > summary {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
       }
     }
 
@@ -160,12 +196,25 @@ const { biomes } = Astro.props;
 
       > li {
         display: flex;
+        position: relative;
 
         padding-inline: var(--size-3);
         padding-block: var(--size-2);
 
-        border-inline-start: 2px solid transparent;
-        animation: highlight linear;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: var(--link);
+
+          inline-size: 3px;
+          block-size: 100%;
+
+          transform: scaleY(0);
+          animation: i-spy linear;
+          animation-timeline: var(--_view-timeline);
+        }
 
         & code {
           padding: 0;
@@ -294,14 +343,26 @@ const { biomes } = Astro.props;
       list-style-type: none;
       padding: 0;
       display: grid;
-      gap: var(--size-2);
       border-left: 1px solid var(--surface-2);
 
       > li {
         padding-inline-start: var(--size-5);
+        line-height: 2;
+        position: relative;
 
-        border-inline-start: 2px solid transparent;
-        animation: highlight linear;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -2px;
+          background: var(--link);
+          inline-size: 4px;
+          block-size: 100%;
+
+          transform: scaleY(0);
+          animation: i-spy linear;
+          animation-timeline: var(--_view-timeline);
+        }
 
         > a:not(:hover, :focus-visible) {
           color: var(--text-2);
@@ -324,19 +385,23 @@ const { biomes } = Astro.props;
     }
   }
 
-  @keyframes highlight {
+  @keyframes i-spy {
     entry 0% {
-      border-inline-start-color: #0000;
+      transform-origin: top;
+      transform: scaleY(0);
     }
     entry 25% {
-      border-inline-start-color: var(--surface-3);
+      transform-origin: top;
+      transform: scaleY(1);
     }
 
     exit 75% {
-      border-inline-start-color: var(--surface-3);
+      transform-origin: bottom;
+      transform: scaleY(1);
     }
     exit 100% {
-      border-inline-start-color: #0000;
+      transform-origin: bottom;
+      transform: scaleY(0);
     }
   }
 </style>
