@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import slugify from "./../util/slugify";
 
 import HeaderPrimary from "../components/header.primary.astro";
 import Hero from "../components/hero.astro";
@@ -80,6 +81,16 @@ const biomes = [
     ],
   },
 ];
+
+// Flatten all Biome features to a list of CSS timeline names
+const timelines = biomes.reduce(
+  (timelines, biome) => [
+    `--vtl--${slugify(biome.title)}`,
+    ...(biome.features.map(feature => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`)),
+    ...timelines
+  ],
+  []
+);
 ---
 
 <!--
@@ -102,14 +113,14 @@ const biomes = [
     <Hero />
     <FeatureFilmstrip biomes={biomes} />
 
-    <main>
+    <main style={`timeline-scope: ${timelines.join(', ')}`}>
       <MainAside biomes={biomes} />
 
       <div class="biomes">
         {
           biomes.map((biome) => {
             return (
-              <div class={`biome ${biome.backdrop}`}>
+              <div class={`biome ${biome.backdrop}`} style={`view-timeline-name: --vtl--${slugify(biome.title)};`}>
                 <Biome {...biome} />
               </div>
             );

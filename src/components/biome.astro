@@ -12,7 +12,11 @@ const { title, description, features } = Astro.props;
   </header>
 
   <div class="features-list">
-    {features.map((Feature) => <Feature.default />)}
+    {features.map((Feature) => (
+      <div style={`view-timeline-name: --vtl--${slugify(title)}--${slugify(Feature.title)}`}>
+        <Feature.default />
+      </div>
+    ))}
   </div>
 </section>
 
