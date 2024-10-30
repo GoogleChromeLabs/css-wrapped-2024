@@ -1,6 +1,6 @@
 ---
 import FeatureLayout from "./../_layout.astro";
-import { Icon } from "astro-icon/components";
+import YouTube from "./../../components/youtube.astro";
 import slugify from "./../../util/slugify";
 export const title = "Scroll-Driven Animations";
 const slug = slugify(title);
@@ -18,9 +18,10 @@ const slug = slugify(title);
     nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
     culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
   </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
+  <figure>
+    <YouTube id="5noL_qFobm0">
+    <figcaption>The first episode of <a href="https://goo.gle/learn-scroll-driven-animations">“Unleash the Power of Scroll-Driven Animations”</a></figcaption>
+  </figure>
   <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
     nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos

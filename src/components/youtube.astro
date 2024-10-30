@@ -1,0 +1,30 @@
+---
+interface Props {
+  id: string;
+  width?: number;
+  height?: number;
+  title?: string;
+}
+
+const { id, width = 560, height = 315, title = 'YouTube video player' } = Astro.props;
+const src = `https://www.youtube.com/embed/${id}`;
+---
+
+<iframe
+  width={width}
+  height={height}
+  src={src}
+  title={title}
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  loading="lazy"
+  allowfullscreen></iframe>
+
+<style define:vars={{ aspectRatio: width / height }}>
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--aspectRatio);
+  }
+</style>
