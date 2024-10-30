@@ -2,36 +2,57 @@
 import FeatureLayout from "../_layout.astro";
 import CodePen from "../../components/codepen.astro";
 import slugify from "./../../util/slugify";
+import { Code } from "astro:components";
 export const title = "Custom Scrollbars";
 const slug = slugify(title);
 ---
 
 <FeatureLayout>
   <header>
-    <h3 id={slug} set:html={title}></h3>
+    <h3 id={slug} set:html={title} />
     <div class="support">
       <baseline-status featureId="scrollbar-color"></baseline-status>
       <baseline-status featureId="scrollbar-width"></baseline-status>
     </div>
   </header>
-  
-  <p>Styling scrollbars has long been possible with the <code>::-webkit-scrollbar-*</code> pseudo-elements. This approach works fine in Chrome and Safari, but was never standardized by the CSS Working Group.</p>
 
-  <p>Available from Chrome 121 are the <code>scrollbar-width</code> and <code>scrollbar-color</code> properties to style the width and, respectively, the color of the scrollbar.</p>
+  <p>
+    Styling scrollbars has long been possible with the <code
+      >::-webkit-scrollbar-*</code
+    > pseudo-elements. This approach works fine in Chrome and Safari, but was never
+    standardized by the CSS Working Group.
+  </p>
 
-  <!--   
-  <pre><code class="language-css">.scroller {
-    scrollbar-color: hotpink blue;
-    scrollbar-width: thin;
-  }</code></pre> -->
-  
-  <p>These properties are also supported by Firefox and have partial support in Safari.</p>
-  
+  <p>
+    Available from Chrome 121 are the <code>scrollbar-width</code> and <code
+      >scrollbar-color</code
+    > properties to style the width and, respectively, the color of the scrollbar.
+  </p>
+
+  <Code
+    lang="css"
+    theme="dracula"
+    code={`.scroller {
+  scrollbar-color: hotpink blue;
+  scrollbar-width: thin;
+}`}
+  />
+
+  <p>
+    These properties are also supported by Firefox and have partial support in
+    Safari.
+  </p>
+
   <figure>
     <CodePen id="web-dot-dev/yLwMexO" height={500}>
-    <figcaption>Custom Scrollbars demo, with a fallback to <code>::-webkit-scrollbar-*</code></figcaption>
+      <figcaption>
+        Custom Scrollbars demo, with a fallback to <code
+          >::-webkit-scrollbar-*</code
+        >
+      </figcaption>
+    </CodePen>
   </figure>
-  
+
   <section class="resources">
     <h4>Resources</h4>
     <ul>
