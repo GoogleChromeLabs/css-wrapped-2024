@@ -1,0 +1,17 @@
+---
+interface Props {
+  id: string;
+  width?: number;
+  height?: number;
+  title?: string;
+}
+
+const { id, height = 300, title = 'CodePen demo' } = Astro.props;
+const [ user, hash ] = id.split('/');
+const src = `https://codepen.io/${user}/embed/${hash}?default-tab=result`;
+const url = `https://codepen.io/${user}/pen/${hash}`;
+---
+
+<iframe height={height} style="width: 100%;" scrolling="no" title={title} src={src} frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  <span>See the Pen <a href={url}>{title} on <a href="https://codepen.io">CodePen</a>.</span>
+</iframe>

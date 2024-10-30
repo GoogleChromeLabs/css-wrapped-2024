@@ -1,7 +1,6 @@
 ---
 import FeatureLayout from "../_layout.astro";
-import Video from "../../components/video.astro";
-import { Icon } from "astro-icon/components";
+import CodePen from "../../components/codepen.astro";
 import slugify from "./../../util/slugify";
 export const title = "Custom Scrollbars";
 const slug = slugify(title);
@@ -15,33 +14,24 @@ const slug = slugify(title);
       <baseline-status featureId="scrollbar-width"></baseline-status>
     </div>
   </header>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video">
-    <Video src="/scrollbar-color.mp4" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="500"
-    style="width: 100%;"
-    scrolling="no"
-    title="CSS Logo?"
-    src="https://codepen.io/web-dot-dev/embed/preview/yLwMexO?default-tab=result&editable=true&theme-id=43079"
-    frameborder="no"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+  
+  <p>Styling scrollbars has long been possible with the <code>::-webkit-scrollbar-*</code> pseudo-elements. This approach works fine in Chrome and Safari, but was never standardized by the CSS Working Group.</p>
+
+  <p>Available from Chrome 121 are the <code>scrollbar-width</code> and <code>scrollbar-color</code> properties to style the width and, respectively, the color of the scrollbar.</p>
+
+  <!--   
+  <pre><code class="language-css">.scroller {
+    scrollbar-color: hotpink blue;
+    scrollbar-width: thin;
+  }</code></pre> -->
+  
+  <p>These properties are also supported by Firefox and have partial support in Safari.</p>
+  
+  <figure>
+    <CodePen id="web-dot-dev/yLwMexO" height={500}>
+    <figcaption>Custom Scrollbars demo, with a fallback to <code>::-webkit-scrollbar-*</code></figcaption>
+  </figure>
+  
   <section class="resources">
     <h4>Resources</h4>
     <ul>
