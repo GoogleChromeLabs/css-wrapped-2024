@@ -13,16 +13,29 @@ const features = biomes
 <div class="feature-grid">
   <div class="row">
     {
-      shuffle(features).map((feature) => (
-        <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
-      ))
+      shuffle(features)
+        .slice(0, 12)
+        .map((feature) => (
+          <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
+        ))
     }
   </div>
   <div class="row">
     {
-      shuffle(features).map((feature) => (
-        <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
-      ))
+      shuffle(features)
+        .slice(0, 12)
+        .map((feature) => (
+          <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
+        ))
+    }
+  </div>
+  <div class="row">
+    {
+      shuffle(features)
+        .slice(0, 12)
+        .map((feature) => (
+          <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
+        ))
     }
   </div>
 </div>
@@ -49,7 +62,7 @@ const features = biomes
       > .row {
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: max(10vw, 15ch);
+        place-content: center;
         gap: var(--size-3);
 
         @media (prefers-reduced-motion: no-preference) {
@@ -59,12 +72,25 @@ const features = biomes
           }
         }
 
-        &:first-of-type {
+        &:nth-child(2n-1) {
           animation-direction: reverse;
         }
 
+        &:nth-child(1) > .card {
+          block-size: 150px;
+        }
+
+        &:nth-child(2) > .card {
+          block-size: 200px;
+        }
+
+        &:nth-child(3) > .card {
+          block-size: 250px;
+        }
+
         > .card {
-          aspect-ratio: 3/4;
+          block-size: 200px;
+          aspect-ratio: var(--ratio-widescreen);
           padding: var(--size-3);
           background: var(--surface-3);
           border-radius: var(--radius-3);
@@ -76,8 +102,15 @@ const features = biomes
           text-align: center;
           overflow: clip;
 
-          font-size: var(--font-size-4);
+          font-family: "Fight", var(--font-sans);
+          font-weight: normal;
+          line-height: 0.75;
+          font-size: var(--font-size-8);
           font-weight: 100;
+
+          &:not(:hover) {
+            color: var(--text-1);
+          }
         }
       }
     }
