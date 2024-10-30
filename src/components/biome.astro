@@ -5,7 +5,7 @@ const { title, description, features } = Astro.props;
 
 <section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
   <header>
-    <h2>{title}</h2>
+    <h2 class="retro-title">{title}</h2>
     <p>{description}</p>
   </header>
 
@@ -39,16 +39,13 @@ const { title, description, features } = Astro.props;
         border-image: var(--_biome-image) repeat fill 0 //0 100vw;;
 
         > h2 {
-          line-height: 1;
-          font-family: "Jersey10", sans-serif;
-          font-weight: normal;
-          font-size: clamp(1.25rem, 5vw, 5rem);
+          font-size: clamp(5rem, 9vw, 10rem);
 
-          &,
+          /* &,
           & + p {
             color: lime;
             background: #000d;
-          }
+          } */
         }
       }
 

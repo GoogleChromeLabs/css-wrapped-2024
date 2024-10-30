@@ -1,0 +1,9 @@
+.retro-title,
+article > header > h3 {
+  font-family: "Fight", var(--font-sans);
+  font-weight: normal;
+  line-height: 0.75;
+  text-shadow:
+    0 .1ex 0 lime,
+    0 .2ex 0 light-dark(#999, #000);
+}

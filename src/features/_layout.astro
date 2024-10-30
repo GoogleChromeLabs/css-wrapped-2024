@@ -18,8 +18,6 @@
       border-radius: var(--radius-3);
       box-shadow: var(--shadow-3);
       font-weight: 300;
-      backdrop-filter: blur(5px);
-      background: var(--surface-1);
 
       @media (width <= 720px) {
         --_inline-padding: var(--size-3);
@@ -31,14 +29,12 @@
         gap: var(--size-6);
 
         > h3 {
-          font-family: "Jersey10", sans-serif;
-          font-size: var(--font-size-7);
-          font-weight: normal;
-          line-height: 0.9;
+          font-size: clamp(3rem, 5vw, 8rem);
           scroll-margin-block-start: 3.5rem;
 
           > code {
             font-size: 0.6em;
+            text-shadow: none;
           }
         }
       }

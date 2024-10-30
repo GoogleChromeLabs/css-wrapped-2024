@@ -7,7 +7,7 @@ const { biomes } = Astro.props;
 
 <nav popover id="mobile-menu" class="mobile-sidenav">
   <header>
-    <h2>CSS Wrapped</h2>
+    <h2 class="retro-title">CSS Wrapped</h2>
   </header>
   {
     biomes.map((biome) => {
@@ -324,8 +324,7 @@ const { biomes } = Astro.props;
 
       > header {
         > h2 {
-          color: light-dark(deeppink, yellow);
-          font-size: var(--font-size-5);
+          font-size: var(--font-size-8);
         }
       }
 
@@ -335,8 +334,6 @@ const { biomes } = Astro.props;
       }
 
       h2 {
-        font-family: "Jersey10", sans-serif;
-        font-weight: normal;
         font-size: var(--font-size-4);
       }
 

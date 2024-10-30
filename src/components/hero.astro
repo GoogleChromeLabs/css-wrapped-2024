@@ -4,12 +4,12 @@ import NavBento from "./nav.bento.astro";
 ---
 
 <section class="hero">
-  <h1>CSS Wrapped <span>2024</span></h1>
+  <h1 class="retro-title">CSS Wrapped <span>2024</span></h1>
   <div class="video">
     <Icon name="play" />
   </div>
   <div>
-    <p class="hero-title">Driving The Web Forward</p>
+    <p class="hero-title retro-title">Driving The Web Forward</p>
     <p>2024 in 3 main categories</p>
   </div>
   <NavBento />
@@ -26,17 +26,17 @@ import NavBento from "./nav.bento.astro";
       gap: var(--size-8);
 
       > h1 {
-        font-family: "Jersey10", sans-serif;
-        font-size: var(--font-size-6);
-        font-weight: normal;
+        font-size: clamp(3rem, 4vw, 8rem);
         text-align: center;
         max-inline-size: 100%;
 
         > span {
+          display: inline-block;
           border-radius: var(--radius-2);
           margin-inline-start: var(--size-2);
-          padding-inline: var(--size-2);
+          padding-inline: var(--size-3);
           padding-block: var(--size-1);
+          text-box: trim-both cap alphabetic;
           box-shadow: 0 0 0 var(--border-size-2);
         }
       }
@@ -48,10 +48,9 @@ import NavBento from "./nav.bento.astro";
       }
 
       .hero-title {
-        font-family: "Jersey10", sans-serif;
-        font-weight: normal;
         margin-block-start: var(--size-12);
-        font-size: var(--font-size-8);
+        margin-block-end: var(--size-5);
+        font-size: clamp(4rem, 8vw, 13rem);
       }
     }
 

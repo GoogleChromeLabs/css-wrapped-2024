@@ -11,10 +11,11 @@
 @import "open-props/switch/dark" layer(theme);
 
 @import "./code.css" layer(components.code);
+@import "./utilities.css" layer(utilities);
 
 @font-face {
-	font-family: 'Jersey10';
-	src: url(/Jersey10-Regular.ttf) format('truetype');
+	font-family: 'Fight';
+	src: url(/fight.otf);
 	font-weight: normal;
 	font-style: normal;
 }
