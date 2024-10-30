@@ -4,14 +4,14 @@
 
 <nav class="bento">
   <ul>
-    <li>
-      <a href="#"><span>Developer Experience</span></a>
+    <li class="arctic">
+      <a href="#developer-experience"><span>Developer Experience</span></a>
     </li>
-    <li>
-      <a href="#"><span>Components</span></a>
+    <li class="desert">
+      <a href="#components"><span>Components</span></a>
     </li>
-    <li>
-      <a href="#"><span>Interactions</span></a>
+    <li class="jungle">
+      <a href="#interactions"><span>Interactions</span></a>
     </li>
   </ul>
 </nav>
@@ -40,6 +40,18 @@
           max-inline-size: 100%;
         }
 
+        &.desert a::after {
+          background-image: url(/biomes/desert.svg);
+        }
+
+        &.arctic a::after {
+          background-image: url(/biomes/arctic.svg);
+        }
+
+        &.jungle a::after {
+          background-image: url(/biomes/jungle.svg);
+        }
+
         > a {
           display: grid;
 
@@ -51,10 +63,13 @@
           &::after {
             content: "";
             grid-area: 1 / 1;
-            background: var(--surface-3);
             border-radius: var(--radius-3);
             box-shadow: var(--shadow-2);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
           }
+
           @media (prefers-reduced-motion: no-preference) {
             &::after {
               transition: transform 0.75s var(--ease-bounce-2);
