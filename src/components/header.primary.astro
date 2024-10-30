@@ -20,38 +20,40 @@ import ThemeSwitch from "./theme.switch.astro";
 </header>
 
 <style>
-  header {
-    display: flex;
-    place-items: center;
-    justify-content: space-between;
-    padding-block: var(--size-3);
-    padding-inline: var(--size-5);
-    background: var(--surface-document);
-
-    @media (width <= 960px) {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-
-    > .page-controls {
+  @layer components.primary-header {
+    header {
       display: flex;
       place-items: center;
-      gap: var(--size-3);
+      justify-content: space-between;
+      padding-block: var(--size-3);
+      padding-inline: var(--size-5);
+      background: var(--surface-document);
+
+      @media (width <= 960px) {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      > .page-controls {
+        display: flex;
+        place-items: center;
+        gap: var(--size-3);
+      }
     }
-  }
 
-  .hamburger {
-    color: var(--text-2);
-    border-radius: var(--radius-round);
-    aspect-ratio: var(--ratio-square);
+    .hamburger {
+      color: var(--text-2);
+      border-radius: var(--radius-round);
+      aspect-ratio: var(--ratio-square);
 
-    &:is(:hover, :focus-visible) {
-      color: var(--text-1);
-    }
+      &:is(:hover, :focus-visible) {
+        color: var(--text-1);
+      }
 
-    @media (width >= 960px) {
-      display: none;
+      @media (width >= 960px) {
+        display: none;
+      }
     }
   }
 </style>

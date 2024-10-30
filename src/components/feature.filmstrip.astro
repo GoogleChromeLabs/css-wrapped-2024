@@ -5,10 +5,9 @@ import shuffle from "./../util/shuffle";
 const { biomes } = Astro.props;
 
 // Flatten all Biome features to one flat array
-const features = biomes.reduce(
-  (features, biome) => [...features, ...biome.features],
-  []
-).map((feature) => feature.title);
+const features = biomes
+  .reduce((features, biome) => [...features, ...biome.features], [])
+  .map((feature) => feature.title);
 ---
 
 <div class="feature-grid">
@@ -38,46 +37,48 @@ const features = biomes.reduce(
     }
   }
 
-  .feature-grid {
-    display: grid;
-    place-content: center;
-    gap: var(--size-3);
-    padding-block: var(--size-10) var(--size-13);
-    max-inline-size: 100vw;
-    overflow: clip;
-
-    > .row {
+  @layer components.feature-filmstrip {
+    .feature-grid {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: max(10vw, 15ch);
+      place-content: center;
       gap: var(--size-3);
+      padding-block: var(--size-10) var(--size-13);
+      max-inline-size: 100vw;
+      overflow: clip;
 
-      @media (prefers-reduced-motion: no-preference) {
-        @supports (animation-timeline: view()) {
-          animation: pan-x linear both;
-          animation-timeline: view(block);
-        }
-      }
-
-      &:first-of-type {
-        animation-direction: reverse;
-      }
-
-      > .card {
-        aspect-ratio: 3/4;
-        padding: var(--size-3);
-        background: var(--surface-3);
-        border-radius: var(--radius-3);
-        box-shadow: var(--shadow-1);
-
+      > .row {
         display: grid;
-        place-content: center;
-        place-items: center;
-        text-align: center;
-        overflow: clip;
+        grid-auto-flow: column;
+        grid-auto-columns: max(10vw, 15ch);
+        gap: var(--size-3);
 
-        font-size: var(--font-size-4);
-        font-weight: 100;
+        @media (prefers-reduced-motion: no-preference) {
+          @supports (animation-timeline: view()) {
+            animation: pan-x linear both;
+            animation-timeline: view(block);
+          }
+        }
+
+        &:first-of-type {
+          animation-direction: reverse;
+        }
+
+        > .card {
+          aspect-ratio: 3/4;
+          padding: var(--size-3);
+          background: var(--surface-3);
+          border-radius: var(--radius-3);
+          box-shadow: var(--shadow-1);
+
+          display: grid;
+          place-content: center;
+          place-items: center;
+          text-align: center;
+          overflow: clip;
+
+          font-size: var(--font-size-4);
+          font-weight: 100;
+        }
       }
     }
   }

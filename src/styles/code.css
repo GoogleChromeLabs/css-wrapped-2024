@@ -1,0 +1,16 @@
+.astro-code {
+  --astro-code-color-text: var(--text-1);
+  --astro-code-color-background: var(--surface-2);
+}
+
+[data-theme="light"] .astro-code {
+  --astro-code-token-function: var(--purple-8);
+  --astro-code-token-constant: var(--blue-9);
+  --astro-code-token-keyword: var(--pink-6);
+}
+
+[data-theme="dark"] .astro-code {
+  --astro-code-token-function: var(--green-3);
+  --astro-code-token-constant: var(--cyan-2);
+  --astro-code-token-keyword: var(--pink-4);
+}

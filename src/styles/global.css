@@ -3,10 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-@import "open-props/style"; /* todo: import only what's needed */
-@import "open-props/normalize";
-@import "open-props/switch/light";
-@import "open-props/switch/dark";
+@layer base, reset, theme, components, utilities;
+
+@import "open-props/style" layer(base); /* todo: import only what's needed */
+@import "open-props/normalize" layer(reset);
+@import "open-props/switch/light" layer(theme);
+@import "open-props/switch/dark" layer(theme);
+
+@import "./code.css" layer(components.code);
 
 @font-face {
 	font-family: 'Jersey10';
@@ -19,33 +23,18 @@
   navigation: auto;
 }
 
-:root {
-	--surface-document: light-dark(white, var(--surface-1));
-}
+@layer components.page {
+	:root {
+		--surface-document: light-dark(white, var(--surface-1));
+	}
 
-html {
-  background-color: var(--surface-document);
-}
+	html {
+		background-color: var(--surface-document);
+	}
 
-pre {
-	padding-block: var(--size-3);
-	padding-inline: var(--size-4);
-	border-radius: var(--radius-3);
-}
-
-.astro-code {
-	--astro-code-color-text: var(--text-1);
-	--astro-code-color-background: var(--surface-2);
-}
-
-[data-theme="light"] .astro-code {
-	--astro-code-token-function: var(--purple-8);
-	--astro-code-token-constant: var(--blue-9);
-	--astro-code-token-keyword: var(--pink-6);
-}
-
-[data-theme="dark"] .astro-code {
-	--astro-code-token-function: var(--green-3);
-	--astro-code-token-constant: var(--cyan-2);
-	--astro-code-token-keyword: var(--pink-4);
+	pre {
+		padding-block: var(--size-3);
+		padding-inline: var(--size-4);
+		border-radius: var(--radius-3);
+	}
 }

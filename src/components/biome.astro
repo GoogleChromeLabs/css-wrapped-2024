@@ -23,36 +23,38 @@ const { title, description, features } = Astro.props;
 </section>
 
 <style>
-  section {
-    display: grid;
-    gap: var(--size-3);
-    grid-column: main-features;
+  @layer components.biome {
+    section {
+      display: grid;
+      gap: var(--size-3);
+      grid-column: main-features;
 
-    > header {
-      margin-block-end: var(--size-8);
-      padding-block-end: var(--size-10);
-      background: var(--surface-1);
-      border-image: conic-gradient(var(--surface-document) 0 0) fill 0
-        //0 100vw;;
+      > header {
+        margin-block-end: var(--size-8);
+        padding-block-end: var(--size-10);
+        background: var(--surface-1);
+        border-image: conic-gradient(var(--surface-document) 0 0) fill 0
+          //0 100vw;;
 
-      > h2 {
-        font-family: "Jersey10", sans-serif;
-        font-weight: normal;
-        font-size: var(--font-size-8);
+        > h2 {
+          font-family: "Jersey10", sans-serif;
+          font-weight: normal;
+          font-size: var(--font-size-8);
+        }
+      }
+
+      > .features-list {
+        grid-column: 1;
+
+        &:not(:first-of-type) {
+          margin-block-start: var(--size-11);
+        }
       }
     }
 
-    > .features-list {
-      grid-column: 1;
-
-      &:not(:first-of-type) {
-        margin-block-start: var(--size-11);
-      }
+    .features-list {
+      display: grid;
+      gap: var(--size-10);
     }
-  }
-
-  .features-list {
-    display: grid;
-    gap: var(--size-10);
   }
 </style>

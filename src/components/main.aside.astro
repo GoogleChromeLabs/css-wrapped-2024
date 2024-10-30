@@ -121,251 +121,253 @@ const { biomes } = Astro.props;
 </script>
 
 <style>
-  aside {
-    grid-area: main-sidenav;
-    grid-row: 1;
-    container: main-aside / inline-size;
+  @layer components.aside {
+    aside {
+      grid-area: main-sidenav;
+      grid-row: 1;
+      container: main-aside / inline-size;
 
-    @media (width <= 960px) {
-      display: none;
-    }
-  }
-
-  .dynamic-aside {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    align-self: start;
-    position: sticky;
-    top: var(--size-3);
-    block-size: calc(100dvh - (var(--size-3) * 2));
-
-    > nav {
-      block-size: max-content;
-      display: grid;
-      border-radius: var(--radius-3);
-      overflow: clip;
-
-      > details {
-        @media (prefers-reduced-motion: no-preference) {
-          interpolate-size: allow-keywords;
-        }
-
-        &::details-content {
-          opacity: 0;
-          block-size: 0;
-          overflow-y: clip;
-          transition:
-            content-visibility 0.5s allow-discrete,
-            opacity 0.5s,
-            block-size 0.5s;
-        }
-
-        &[open]::details-content {
-          opacity: 1;
-          block-size: auto;
-        }
-      }
-
-      > details:nth-child(1) {
-        &,
-        & > summary {
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-      }
-
-      > details:nth-child(2) {
-        &,
-        & > summary {
-          border-radius: 0;
-        }
-      }
-
-      > details:nth-child(3) {
-        &,
-        & > summary {
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-        }
+      @media (width <= 960px) {
+        display: none;
       }
     }
 
-    ul {
-      padding: 0;
+    .dynamic-aside {
       display: grid;
+      grid-template-columns: 40px 1fr;
+      align-self: start;
+      position: sticky;
+      top: var(--size-3);
+      block-size: calc(100dvh - (var(--size-3) * 2));
 
-      > li {
-        display: flex;
-        position: relative;
+      > nav {
+        block-size: max-content;
+        display: grid;
+        border-radius: var(--radius-3);
+        overflow: clip;
 
-        padding-inline: var(--size-3);
-        padding-block: var(--size-2);
+        > details {
+          @media (prefers-reduced-motion: no-preference) {
+            interpolate-size: allow-keywords;
+          }
 
-        &::before {
+          &::details-content {
+            opacity: 0;
+            block-size: 0;
+            overflow-y: clip;
+            transition:
+              content-visibility 0.5s allow-discrete,
+              opacity 0.5s,
+              block-size 0.5s;
+          }
+
+          &[open]::details-content {
+            opacity: 1;
+            block-size: auto;
+          }
+        }
+
+        > details:nth-child(1) {
+          &,
+          & > summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        > details:nth-child(2) {
+          &,
+          & > summary {
+            border-radius: 0;
+          }
+        }
+
+        > details:nth-child(3) {
+          &,
+          & > summary {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+          }
+        }
+      }
+
+      ul {
+        padding: 0;
+        display: grid;
+
+        > li {
+          display: flex;
+          position: relative;
+
+          padding-inline: var(--size-3);
+          padding-block: var(--size-2);
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--link);
+
+            inline-size: 3px;
+            block-size: 100%;
+
+            transform: scaleY(0);
+            animation: i-spy linear;
+            animation-timeline: var(--_view-timeline);
+          }
+
+          & code {
+            padding: 0;
+            background: none;
+          }
+        }
+      }
+    }
+
+    .track {
+      /* managed by script */
+      --scroll-direction: 1;
+
+      container-type: size;
+      position: relative;
+      width: 2px;
+      border-right: 2px dashed var(--surface-2);
+
+      > [data-icon] {
+        max-inline-size: initial;
+        color: black;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          > [data-icon] {
+            animation: truck-ride linear both;
+            animation-timeline: view();
+            view-timeline: --features-view;
+            animation-range-start: entry calc(100vh - 3rem);
+          }
+        }
+        @supports not (animation-timeline: view()) {
+          > [data-icon] {
+            display: none;
+          }
+        }
+      }
+
+      @container (width >= 30ch) {
+        &::before,
+        &::after {
           content: "";
+          aspect-ratio: 1;
+          background: var(--surface-3);
+          border-radius: var(--radius-round);
+          display: block;
+          top: -10px;
+          left: -4px;
+          width: 10px;
           position: absolute;
-          top: 0;
-          left: 0;
-          background: var(--link);
-
-          inline-size: 3px;
-          block-size: 100%;
-
-          transform: scaleY(0);
-          animation: i-spy linear;
-          animation-timeline: var(--_view-timeline);
         }
 
-        & code {
-          padding: 0;
-          background: none;
-        }
-      }
-    }
-  }
-
-  .track {
-    /* managed by script */
-    --scroll-direction: 1;
-
-    container-type: size;
-    position: relative;
-    width: 2px;
-    border-right: 2px dashed var(--surface-2);
-
-    > [data-icon] {
-      max-inline-size: initial;
-      color: black;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      @supports (animation-timeline: view()) {
-        > [data-icon] {
-          animation: truck-ride linear both;
-          animation-timeline: view();
-          view-timeline: --features-view;
-          animation-range-start: entry calc(100vh - 3rem);
-        }
-      }
-      @supports not (animation-timeline: view()) {
-        > [data-icon] {
-          display: none;
+        &::after {
+          top: auto;
+          bottom: -10px;
         }
       }
     }
 
-    @container (width >= 30ch) {
-      &::before,
-      &::after {
-        content: "";
-        aspect-ratio: 1;
-        background: var(--surface-3);
-        border-radius: var(--radius-round);
-        display: block;
-        top: -10px;
-        left: -4px;
-        width: 10px;
-        position: absolute;
+    .mobile-sidenav {
+      --_left-pad: var(--size-8);
+      --_x: calc(var(--_left-pad) / 2 * -1);
+
+      block-size: 100dvh;
+      max-block-size: 100dvh;
+      overflow: auto;
+
+      display: grid;
+      align-content: start;
+      gap: var(--size-7);
+
+      padding-block: var(--size-3);
+      padding-inline: var(--_left-pad) var(--size-5);
+
+      @media (width > 960px) {
+        display: none;
       }
 
-      &::after {
-        top: auto;
-        bottom: -10px;
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          translate 0.5s var(--ease-spring-1),
+          box-shadow 0.5s ease,
+          display 0.5s linear allow-discrete,
+          overlay 0.5s linear allow-discrete;
       }
-    }
-  }
 
-  .mobile-sidenav {
-    --_left-pad: var(--size-8);
-    --_x: calc(var(--_left-pad) / 2 * -1);
-
-    block-size: 100dvh;
-    max-block-size: 100dvh;
-    overflow: auto;
-
-    display: grid;
-    align-content: start;
-    gap: var(--size-7);
-
-    padding-block: var(--size-3);
-    padding-inline: var(--_left-pad) var(--size-5);
-
-    @media (width > 960px) {
-      display: none;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      transition:
-        translate 0.5s var(--ease-spring-1),
-        box-shadow 0.5s ease,
-        display 0.5s linear allow-discrete,
-        overlay 0.5s linear allow-discrete;
-    }
-
-    &:not(:popover-open) {
-      translate: -100% 0;
-    }
-
-    &:popover-open {
-      translate: var(--_x) 0;
-      box-shadow:
-        3px 0px 2px #00000005,
-        8px 0px 5px #00000007,
-        15px 0px 10px #00000008,
-        27px 0px 18px #0000000a,
-        50px 0px 33px #0000000c,
-        119px 0px 80px #00000011;
-
-      @starting-style {
+      &:not(:popover-open) {
         translate: -100% 0;
       }
-    }
 
-    > header {
-      > h2 {
-        color: light-dark(deeppink, yellow);
-        font-size: var(--font-size-5);
-      }
-    }
+      &:popover-open {
+        translate: var(--_x) 0;
+        box-shadow:
+          3px 0px 2px #00000005,
+          8px 0px 5px #00000007,
+          15px 0px 10px #00000008,
+          27px 0px 18px #0000000a,
+          50px 0px 33px #0000000c,
+          119px 0px 80px #00000011;
 
-    > section {
-      display: grid;
-      gap: var(--size-2);
-    }
-
-    h2 {
-      font-family: "Jersey10", sans-serif;
-      font-weight: normal;
-      font-size: var(--font-size-4);
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      display: grid;
-      border-left: 1px solid var(--surface-2);
-
-      > li {
-        padding-inline-start: var(--size-5);
-        line-height: 2;
-        position: relative;
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -2px;
-          background: var(--link);
-          inline-size: 4px;
-          block-size: 100%;
-
-          transform: scaleY(0);
-          animation: i-spy linear;
-          animation-timeline: var(--_view-timeline);
+        @starting-style {
+          translate: -100% 0;
         }
+      }
 
-        > a:not(:hover, :focus-visible) {
-          color: var(--text-2);
+      > header {
+        > h2 {
+          color: light-dark(deeppink, yellow);
+          font-size: var(--font-size-5);
+        }
+      }
+
+      > section {
+        display: grid;
+        gap: var(--size-2);
+      }
+
+      h2 {
+        font-family: "Jersey10", sans-serif;
+        font-weight: normal;
+        font-size: var(--font-size-4);
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        display: grid;
+        border-left: 1px solid var(--surface-2);
+
+        > li {
+          padding-inline-start: var(--size-5);
+          line-height: 2;
+          position: relative;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -2px;
+            background: var(--link);
+            inline-size: 4px;
+            block-size: 100%;
+
+            transform: scaleY(0);
+            animation: i-spy linear;
+            animation-timeline: var(--_view-timeline);
+          }
+
+          > a:not(:hover, :focus-visible) {
+            color: var(--text-2);
+          }
         }
       }
     }

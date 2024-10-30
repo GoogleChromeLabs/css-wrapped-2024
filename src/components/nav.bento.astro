@@ -17,52 +17,54 @@
 </nav>
 
 <style>
-  nav.bento > ul {
-    display: grid;
-    --_size: 20vmin;
-    grid: repeat(2, var(--_size)) / repeat(3, var(--_size));
-    gap: var(--size-3);
-    max-inline-size: max-content;
-    margin-inline: auto;
-    padding: 0;
-
-    > li {
-      list-style-type: none;
-      padding: 0;
+  @layer components.bento {
+    nav.bento > ul {
       display: grid;
-      border-radius: var(--radius-3);
-      overflow: clip;
+      --_size: 20vmin;
+      grid: repeat(2, var(--_size)) / repeat(3, var(--_size));
+      gap: var(--size-3);
+      max-inline-size: max-content;
+      margin-inline: auto;
+      padding: 0;
 
-      &:first-of-type {
-        grid-row: span 2;
-        grid-column: span 2;
-        max-inline-size: 100%;
-      }
-
-      > a {
+      > li {
+        list-style-type: none;
+        padding: 0;
         display: grid;
+        border-radius: var(--radius-3);
+        overflow: clip;
 
-        > span {
-          grid-area: 1 / 1;
-          place-self: end center;
+        &:first-of-type {
+          grid-row: span 2;
+          grid-column: span 2;
+          max-inline-size: 100%;
         }
 
-        &::after {
-          content: "";
-          grid-area: 1 / 1;
-          background: var(--surface-3);
-          border-radius: var(--radius-3);
-          box-shadow: var(--shadow-2);
-        }
-        @media (prefers-reduced-motion: no-preference) {
-          &::after {
-            transition: transform 0.75s var(--ease-bounce-2);
+        > a {
+          display: grid;
+
+          > span {
+            grid-area: 1 / 1;
+            place-self: end center;
           }
 
-          &:hover::after {
-            transform: translateY(-1.5lh);
-            transition-duration: 1s;
-            transition-timing-function: var(--ease-spring-2);
+          &::after {
+            content: "";
+            grid-area: 1 / 1;
+            background: var(--surface-3);
+            border-radius: var(--radius-3);
+            box-shadow: var(--shadow-2);
+          }
+          @media (prefers-reduced-motion: no-preference) {
+            &::after {
+              transition: transform 0.75s var(--ease-bounce-2);
+            }
+
+            &:hover::after {
+              transform: translateY(-1.5lh);
+              transition-duration: 1s;
+              transition-timing-function: var(--ease-spring-2);
+            }
           }
         }
       }

@@ -7,101 +7,103 @@
 </article>
 
 <style>
-  article {
-    --_inline-padding: var(--size-8);
+  @layer components.feature {
+    article {
+      --_inline-padding: var(--size-8);
 
-    display: grid;
-    gap: var(--size-8);
-    padding: var(--size-7) var(--_inline-padding);
-    border: 1px solid var(--surface-2);
-    border-radius: var(--radius-3);
-    box-shadow: var(--shadow-3);
-    font-weight: 300;
-    backdrop-filter: blur(5px);
-    background: var(--surface-1);
-
-    @media (width <= 720px) {
-      --_inline-padding: var(--size-3);
-      gap: var(--size-5);
-    }
-
-    > header {
       display: grid;
-      gap: var(--size-6);
-
-      > h3 {
-        font-family: "Jersey10", sans-serif;
-        font-size: var(--font-size-7);
-        font-weight: normal;
-        line-height: .9;
-        scroll-margin-block-start: 3.5rem;
-
-        > code {
-          font-size: .6em
-        }
-      }
-    }
-
-    > footer {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: var(--size-2);
-      border-block-start: 1px solid var(--surface-2);
-      padding-block-start: var(--size-6);
-      margin-block-start: var(--size-5);
-
-      > .articles {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--size-2) var(--_inline-padding);
-
-        > a {
-          white-space: nowrap;
-        }
-      }
-    }
-
-    & .video-placeholder {
-      aspect-ratio: 16 / 9;
-      background: var(--surface-3);
+      gap: var(--size-8);
+      padding: var(--size-7) var(--_inline-padding);
+      border: 1px solid var(--surface-2);
       border-radius: var(--radius-3);
-      overflow: clip;
+      box-shadow: var(--shadow-3);
+      font-weight: 300;
+      backdrop-filter: blur(5px);
+      background: var(--surface-1);
 
-      display: grid;
-      place-content: center;
-
-      > svg {
-        block-size: 5rem;
-        inline-size: 5rem;
+      @media (width <= 720px) {
+        --_inline-padding: var(--size-3);
+        gap: var(--size-5);
       }
-    }
 
-    & .resources {
-      display: grid;
-      gap: var(--size-3);
+      > header {
+        display: grid;
+        gap: var(--size-6);
 
-      > ul {
+        > h3 {
+          font-family: "Jersey10", sans-serif;
+          font-size: var(--font-size-7);
+          font-weight: normal;
+          line-height: 0.9;
+          scroll-margin-block-start: 3.5rem;
+
+          > code {
+            font-size: 0.6em;
+          }
+        }
+      }
+
+      > footer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--size-2);
+        border-block-start: 1px solid var(--surface-2);
+        padding-block-start: var(--size-6);
+        margin-block-start: var(--size-5);
+
+        > .articles {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--size-2) var(--_inline-padding);
+
+          > a {
+            white-space: nowrap;
+          }
+        }
+      }
+
+      & .video-placeholder {
+        aspect-ratio: 16 / 9;
+        background: var(--surface-3);
+        border-radius: var(--radius-3);
+        overflow: clip;
+
+        display: grid;
+        place-content: center;
+
+        > svg {
+          block-size: 5rem;
+          inline-size: 5rem;
+        }
+      }
+
+      & .resources {
         display: grid;
         gap: var(--size-3);
-        padding-inline: var(--size-3);
 
-        > li {
-          padding-inline-start: 0;
+        > ul {
+          display: grid;
+          gap: var(--size-3);
+          padding-inline: var(--size-3);
+
+          > li {
+            padding-inline-start: 0;
+          }
         }
       }
-    }
 
-    & .support {
-      display: grid;
-      gap: var(--size-3);
-      background: light-dark(var(--surface-1), var(--gray-10));
-      margin-inline: calc(var(--_inline-padding) * -1);
-      padding-inline: var(--_inline-padding);
-      padding-block: var(--size-6) var(--size-3);
+      & .support {
+        display: grid;
+        gap: var(--size-3);
+        background: light-dark(var(--surface-1), var(--gray-10));
+        margin-inline: calc(var(--_inline-padding) * -1);
+        padding-inline: var(--_inline-padding);
+        padding-block: var(--size-6) var(--size-3);
 
-      > baseline-status {
-        padding: 0;
+        > baseline-status {
+          padding: 0;
+        }
       }
     }
   }

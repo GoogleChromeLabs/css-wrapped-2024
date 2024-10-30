@@ -28,16 +28,18 @@ const { src, width = 720, height = 480 } = Astro.props;
     }
   }
 
-  @supports (animation-timeline: view()) {
-    video {
-      animation: rounded-mask-reveal linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 25%;
+  @layer components.video {
+    @supports (animation-timeline: view()) {
+      video {
+        animation: rounded-mask-reveal linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 25%;
+      }
     }
-  }
 
-  video {
-    border-radius: var(--radius-3);
-    overflow: clip;
+    video {
+      border-radius: var(--radius-3);
+      overflow: clip;
+    }
   }
 </style>

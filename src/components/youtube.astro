@@ -6,7 +6,12 @@ interface Props {
   title?: string;
 }
 
-const { id, width = 560, height = 315, title = 'YouTube video player' } = Astro.props;
+const {
+  id,
+  width = 560,
+  height = 315,
+  title = "YouTube video player",
+} = Astro.props;
 const src = `https://www.youtube.com/embed/${id}`;
 ---
 
@@ -22,9 +27,11 @@ const src = `https://www.youtube.com/embed/${id}`;
   allowfullscreen></iframe>
 
 <style define:vars={{ aspectRatio: width / height }}>
-  iframe {
-    width: 100%;
-    height: auto;
-    aspect-ratio: var(--aspectRatio);
+  @layer components.youtube {
+    iframe {
+      width: 100%;
+      height: auto;
+      aspect-ratio: var(--aspectRatio);
+    }
   }
 </style>

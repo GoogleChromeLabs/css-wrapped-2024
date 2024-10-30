@@ -63,7 +63,8 @@ const biomes = [
   },
   {
     title: "Developer Experience",
-    description: "Lorem ipsum dolor sit amet developer experience adipisicing elit.",
+    description:
+      "Lorem ipsum dolor sit amet developer experience adipisicing elit.",
     backdrop: "jungle",
     features: [
       BackdropInheritance,
@@ -86,8 +87,10 @@ const biomes = [
 const timelines = biomes.reduce(
   (timelines, biome) => [
     `--vtl--${slugify(biome.title)}`,
-    ...(biome.features.map(feature => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`)),
-    ...timelines
+    ...biome.features.map(
+      (feature) => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`
+    ),
+    ...timelines,
   ],
   []
 );
@@ -113,14 +116,17 @@ const timelines = biomes.reduce(
     <Hero />
     <FeatureFilmstrip biomes={biomes} />
 
-    <main style={`timeline-scope: ${timelines.join(', ')}`}>
+    <main style={`timeline-scope: ${timelines.join(", ")}`}>
       <MainAside biomes={biomes} />
 
       <div class="biomes">
         {
           biomes.map((biome) => {
             return (
-              <div class={`biome ${biome.backdrop}`} style={`view-timeline-name: --vtl--${slugify(biome.title)};`}>
+              <div
+                class={`biome ${biome.backdrop}`}
+                style={`view-timeline-name: --vtl--${slugify(biome.title)};`}
+              >
                 <Biome {...biome} />
               </div>
             );
@@ -134,60 +140,62 @@ const timelines = biomes.reduce(
 </html>
 
 <style>
-  main {
-    display: grid;
-    gap: var(--size-4);
-    grid-template-areas: ". main-features main-sidenav .";
-    grid-template-columns:
-      [fullbleed-start]
-      auto
-      fit-content(720px)
-      minmax(0, 30ch)
-      auto
-      [fullbleed-end];
-
-    @media (width <= 960px) {
-      grid-template-areas: ". main-features .";
+  @layer page.biomes {
+    main {
+      display: grid;
+      gap: var(--size-4);
+      grid-template-areas: ". main-features main-sidenav .";
       grid-template-columns:
         [fullbleed-start]
         auto
         fit-content(720px)
+        minmax(0, 30ch)
         auto
         [fullbleed-end];
-    }
-  }
 
-  .biomes {
-    grid-column: fullbleed;
-    grid-row: 1;
-
-    display: grid;
-    row-gap: 10vh;
-    grid-template-columns: subgrid;
-  }
-
-  .biome {
-    grid-column: fullbleed;
-
-    display: grid;
-    grid-template-columns: subgrid;
-
-    padding-block-end: var(--size-8);
-
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: top center;
-
-    &.desert {
-      background-image: url(/biomes/desert.svg);
+      @media (width <= 960px) {
+        grid-template-areas: ". main-features .";
+        grid-template-columns:
+          [fullbleed-start]
+          auto
+          fit-content(720px)
+          auto
+          [fullbleed-end];
+      }
     }
 
-    &.arctic {
-      background-image: url(/biomes/arctic.svg);
+    .biomes {
+      grid-column: fullbleed;
+      grid-row: 1;
+
+      display: grid;
+      row-gap: 10vh;
+      grid-template-columns: subgrid;
     }
 
-    &.jungle {
-      background-image: url(/biomes/jungle.svg);
+    .biome {
+      grid-column: fullbleed;
+
+      display: grid;
+      grid-template-columns: subgrid;
+
+      padding-block-end: var(--size-8);
+
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: top center;
+
+      &.desert {
+        background-image: url(/biomes/desert.svg);
+      }
+
+      &.arctic {
+        background-image: url(/biomes/arctic.svg);
+      }
+
+      &.jungle {
+        background-image: url(/biomes/jungle.svg);
+      }
     }
   }
 </style>
