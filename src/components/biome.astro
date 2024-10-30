@@ -6,7 +6,7 @@ const { title, description, features } = Astro.props;
 <section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
   <header>
     <h2 class="retro-title">{title}</h2>
-    <p>{description}</p>
+    <!-- <p>{description}</p> -->
   </header>
 
   <div class="features-list">
@@ -34,7 +34,7 @@ const { title, description, features } = Astro.props;
         place-items: start;
         gap: var(--size-2);
         margin-block-end: var(--size-8);
-        padding-block: var(--size-10);
+        padding-block: var(--size-11);
         background: var(--surface-1);
         border-image: var(--_biome-image) repeat fill 0 //0 100vw;;
 

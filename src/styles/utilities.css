@@ -1,9 +1,15 @@
 .retro-title,
 article > header > h3 {
+  --_offset: .1ex;
+
   font-family: "Fight", var(--font-sans);
   font-weight: normal;
   line-height: 0.75;
   text-shadow:
-    0 .1ex 0 lime,
-    0 .2ex 0 light-dark(#999, #000);
+    0 var(--_offset) 0 lime,
+    0 calc(var(--_offset) * 2) 0 light-dark(#999, #000);
+
+  @media (width > 1280px) {
+    --_offset: 5px;
+  }
 }
