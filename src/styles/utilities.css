@@ -13,3 +13,11 @@
     --_offset: 5px;
   }
 }
+
+.grid-pile {
+  display: grid;
+
+  > * {
+    grid-area: 1/1;
+  }
+}
