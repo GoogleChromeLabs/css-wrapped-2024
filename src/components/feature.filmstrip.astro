@@ -85,16 +85,19 @@ const features = biomes
         }
 
         &:nth-child(3) > .card {
-          block-size: 250px;
+          block-size: 150px;
         }
 
         > .card {
           block-size: 200px;
           aspect-ratio: var(--ratio-widescreen);
           padding: var(--size-3);
-          background: var(--surface-3);
+          background: var(--surface-document);
           border-radius: var(--radius-3);
           box-shadow: var(--shadow-1);
+          border: 5px solid transparent;
+          border-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 0H8v4H4v4H0v8h4v4h4v4h8v-4h4v-4h4V8h-4V4h-4V0zm0 4v4h4v8h-4v4H8v-4H4V8h4V4h8z' fill='%2300FF00'/%3E%3C/svg%3E")
+            8 stretch;
 
           display: grid;
           place-content: center;
