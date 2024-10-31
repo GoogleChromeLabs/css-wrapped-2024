@@ -1,8 +1,8 @@
-.retro-title,
-article > header > h3 {
+.retro-title {
   --_offset: .1ex;
 
   font-family: "Fight", var(--font-sans);
+  text-transform: lowercase;
   font-weight: normal;
   line-height: 0.75;
   text-shadow:
