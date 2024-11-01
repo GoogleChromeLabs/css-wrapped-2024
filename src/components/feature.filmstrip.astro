@@ -32,7 +32,7 @@ const features = biomes
   <div class="row">
     {
       shuffle(features)
-        .slice(0, 12)
+        .slice(0, 14)
         .map((feature) => (
           <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
         ))
@@ -43,10 +43,10 @@ const features = biomes
 <style>
   @keyframes pan-x {
     from {
-      transform: translateX(-15vw);
+      transform: translateX(var(--_pan-lower, -15vw));
     }
     to {
-      transform: translateX(5vw);
+      transform: translateX(var(--_pan-upper, 5vw));
     }
   }
 
@@ -76,35 +76,20 @@ const features = biomes
           animation-direction: reverse;
         }
 
-        &:nth-child(1) > .card {
-          block-size: 150px;
-        }
-
-        &:nth-child(2) > .card {
-          block-size: 200px;
-        }
-
-        &:nth-child(3) > .card {
-          block-size: 150px;
+        &:nth-child(3) {
+          --_pan-lower: -20vw;
+          --_pan-upper: 15vw;
         }
 
         > .card {
-          block-size: 200px;
-          aspect-ratio: var(--ratio-widescreen);
-          padding: var(--size-3);
-          background: var(--surface-document);
-          border-radius: var(--radius-3);
-          box-shadow: var(--shadow-1);
-          border: 5px solid transparent;
-          border-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 0H8v4H4v4H0v8h4v4h4v4h8v-4h4v-4h4V8h-4V4h-4V0zm0 4v4h4v8h-4v4H8v-4H4V8h4V4h8z' fill='%2300FF00'/%3E%3C/svg%3E")
-            8 stretch;
+          white-space: nowrap;
+          padding-block: var(--size-2);
+          padding-inline: var(--size-3);
+          background: var(--surface-1);
+          border-radius: var(--radius-round);
+          border: 1px solid var(--surface-2);
 
-          display: grid;
-          place-content: center;
-          place-items: center;
-          text-align: center;
-          overflow: clip;
-
+          display: inline-grid;
           font-size: var(--font-size-3);
 
           &:not(:hover) {
