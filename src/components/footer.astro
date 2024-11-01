@@ -3,19 +3,46 @@
 ---
 
 <footer id="outro">
-  <h3>It's a good time to be a front-end dev.</h3>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+  <h3>It's a good time to be a</h3>
+  <h3 class="retro-title">front-end dev</h3>
+  <p>Made with ❤️ by The Chrome DevRel Team</p>
+  <img height="25vh" src="/biomes/cyberspace-header.png" alt="a cityscape of retro computers">
 </footer>
 
 <style>
+  @keyframes slid-in-cityscape {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
   @layer components.footer {
     footer {
-      block-size: 75vh;
+      padding-block-start: 25vh;
       display: grid;
       place-content: center;
+      place-items: center;
       text-align: center;
-      background: url(/biomes/cyberspace-header.png) center bottom repeat-x;
-      background-size: auto 25vh;
+
+      > h3.retro-title {
+        font-size: clamp(5rem, 11vw, 14rem);
+      }
+
+      > p {
+        margin-block-start: var(--size-5);
+      }
+
+      > img {
+        margin-block-start: var(--size-10);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        > img {
+          animation: slid-in-cityscape linear both;
+          animation-timeline: scroll();
+          animation-range: 98% 100%;
+        }
+      }
     }
   }
 </style>
