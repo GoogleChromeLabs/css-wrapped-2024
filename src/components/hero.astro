@@ -4,7 +4,7 @@ import NavBento from "./nav.bento.astro";
 ---
 
 <section class="hero">
-  <h1 class="retro-title">CSS Wrapped <span>2024</span></h1>
+  <h1 class="retro-title">CSS Wrapped</h1>
   <div class="grid-pile">
     <div class="particles" id="particles">
       <span class="pixel"></span>
@@ -35,7 +35,7 @@ import NavBento from "./nav.bento.astro";
   </div>
   <div>
     <p class="hero-title retro-title">Driving The Web Forward</p>
-    <p>2024 in 3 main categories</p>
+    <p>2024 CSS in 3 main categories</p>
   </div>
   <NavBento />
 </section>
@@ -48,16 +48,54 @@ import NavBento from "./nav.bento.astro";
   const randomNeg = (value) => (Math.random() > 0.5 ? value : -value);
 
   particlesArray.forEach((particle: HTMLElement) => {
+    const { matches:motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)')
+
     let randomX = randomNeg(random(85, 52));
     let randomY = randomNeg(random(85, 0));
+    let randomDelay = random(0, 500);
+    let randomDuration = random(500, 2000);
+    let randomRange = random(10, 200);
 
-    particle.style.translate = `${randomX}cqi ${randomY}cqb`;
-    particle.style.transitionDelay = `${random(0, 500)}ms`;
-    particle.style.transitionDuration = `${random(1500, 7000)}ms`;
+    particle.style.setProperty('--x', `clamp(-45vi, ${randomX}cqi, 45vi)`);
+    particle.style.setProperty('--y', `${randomY}cqb`);
+    particle.style.setProperty('--r', '1turn');
+    particle.style.setProperty('--range', `${randomRange}vh`);
+
+    if (motionOK) {
+      particle.style.transitionDelay = `${randomDelay}ms, ${randomDelay}ms, ${randomDuration}ms`;
+      particle.style.transitionDuration = `${randomDuration}ms, ${randomDuration}ms, 600ms`;
+      particle.style.transitionTimingFunction = 'var(--ease-spring-2), var(--ease-spring-2), var(--ease-3)';
+    }
   });
 </script>
 
 <style>
+  @property --x {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --y {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --r {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0turn;
+  }
+
+  @keyframes particle-scroll {
+    to {
+      --x: 0cqi;
+      --y: 0cqi;
+      --r: 0turn;
+    }
+  }
+
   @layer components.hero {
     .hero {
       margin-block: var(--size-12);
@@ -128,7 +166,16 @@ import NavBento from "./nav.bento.astro";
 
       > span {
         position: absolute;
-        transition: translate 1s var(--ease-spring-5);
+
+        transform-origin: center;
+        translate: var(--x) var(--y);
+        rotate: var(--r);
+
+        @media (prefers-reduced-motion: no-preference) {
+          animation: particle-scroll linear both;
+          animation-timeline: scroll();
+          animation-range: 0vh var(--range);
+        }
 
         &.pixel {
           width: 1rem;
