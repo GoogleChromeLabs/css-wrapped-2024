@@ -106,10 +106,7 @@ const timelines = biomes.reduce(
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>CSS Wrapped 2024</title>
-    <script
-      type="module"
-      src="/baseline-status.min.js"
-    ></script>
+    <script type="module" src="/baseline-status.min.js"></script>
   </head>
   <body>
     <HeaderPrimary />
@@ -181,16 +178,18 @@ const timelines = biomes.reduce(
 
       padding-block-end: var(--size-8);
 
-      background:
-        url(/biomes/cyberspace-motherboard.png) repeat-y,
-        url(/biomes/cyberspace-motherboard.png) repeat-y;
+      background-image: url(/biomes/cyberspace-motherboard.png),
+        url(/biomes/cyberspace-motherboard.png);
       background-position:
-        -10vw 50%,
-        calc(100% + 10vw) 50%;
+        calc(100% + 10vw) 50%,
+        -10vw 50%;
       background-size: 15vw auto;
+      background-repeat: repeat-y;
 
       &.desert {
         --_biome-image: url(/biomes/desert.svg);
+        background-image: url(/biomes/desert-sidebar.png),
+          url(/biomes/desert-sidebar.png);
       }
 
       &.arctic {
