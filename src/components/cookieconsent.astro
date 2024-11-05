@@ -1,0 +1,63 @@
+---
+
+---
+<div id="cookie-consent"></div>
+
+<style is:global>
+    #cookie-consent:not(:empty) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--surface-2);
+        display: grid;
+        transition: translate 0.25s ease;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: var(--size-4);
+        padding: var(--size-4);
+        border-top: 1px solid var(--surface-1);
+
+        @starting-style {
+            translate: 0 100%;
+        }
+    }
+
+    #cookie-consent[hidden] {
+        translate: 0 100%;
+    }
+
+    #cookie-consent p {
+        text-wrap: unset;
+        max-inline-size: auto;
+    }
+
+    #cookie-consent button {
+        white-space: nowrap;
+        background-color: var(--surface-3);
+
+        &:hover {
+            background-color: var(--surface-4);
+        }
+    }
+</style>
+<script>
+  const storageKey = 'css-wrapped-cookie-consent';
+
+  function setupCookieConsent(element) {
+    element.innerHTML = `<div>Chrome.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic. <a href="https://policies.google.com/technologies/cookies">Learn more.</a></div>`;
+
+    const button = document.createElement('button');
+    button.innerHTML = 'I understand'
+    const gotIt = () => {
+      element.setAttribute('hidden', 'hidden');
+      localStorage.setItem(storageKey, 'clicked');
+    };
+    button.addEventListener('click', gotIt);
+    element.appendChild(button);
+  }
+
+  if (localStorage.getItem(storageKey) !== 'clicked') {
+    setupCookieConsent(document.querySelector('#cookie-consent'));
+  }
+</script>
