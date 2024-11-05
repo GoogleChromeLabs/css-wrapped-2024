@@ -254,12 +254,31 @@ const { biomes } = Astro.props;
 
       container-type: size;
       position: relative;
-      width: 2px;
-      border-right: 2px dashed var(--surface-2);
+      width: 10px;
+      background-image: url(/track-grunge.svg);
+      background-repeat: repeat-y;
+      border-right: 10px solid transparent;
+      border-image: linear-gradient(
+        to right,
+        #0000 9px 0,
+        var(--text-1) 0
+      );
+      border-image-slice: 11 fill;
+
+      &::after {
+        content: url(/cactus.svg);
+        width: 15px;
+        height: 5px;
+        rotate: 90deg;
+        position: absolute;
+        top: 50%;
+        left: 25px;
+      }
 
       > [data-icon] {
         max-inline-size: initial;
         color: var(--text-1);
+        margin-inline-start: 3px;
       }
 
       @media (prefers-reduced-motion: no-preference) {

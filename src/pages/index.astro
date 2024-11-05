@@ -166,7 +166,6 @@ const timelines = biomes.reduce(
       grid-row: 1;
 
       display: grid;
-      row-gap: 10vh;
       grid-template-columns: subgrid;
     }
 
@@ -178,8 +177,8 @@ const timelines = biomes.reduce(
 
       padding-block-end: var(--size-8);
 
-      background-image: url(/biomes/cyberspace-motherboard.png),
-        url(/biomes/cyberspace-motherboard.png);
+      --_biome-sidebar: url(/biomes/cyberspace-sidebar.png);
+      background-image: var(--_biome-sidebar), var(--_biome-sidebar);
       background-position:
         calc(100% + 10vw) 50%,
         -10vw 50%;
@@ -188,16 +187,17 @@ const timelines = biomes.reduce(
 
       &.desert {
         --_biome-image: url(/biomes/desert.svg);
-        background-image: url(/biomes/desert-sidebar.png),
-          url(/biomes/desert-sidebar.png);
+        --_biome-sidebar: url(/biomes/desert-sidebar.png);
       }
 
       &.arctic {
         --_biome-image: url(/biomes/arctic.svg);
+        --_biome-sidebar: url(/biomes/arctic-sidebar.png);
       }
 
       &.jungle {
         --_biome-image: url(/biomes/jungle.svg);
+        --_biome-sidebar: url(/biomes/jungle-sidebar.png);
       }
     }
   }
