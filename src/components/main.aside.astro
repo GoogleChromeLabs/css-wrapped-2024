@@ -296,26 +296,6 @@ const { biomes } = Astro.props;
           }
         }
       }
-
-      @container (width >= 30ch) {
-        &::before,
-        &::after {
-          content: "";
-          aspect-ratio: 1;
-          background: var(--surface-3);
-          border-radius: var(--radius-round);
-          display: block;
-          top: -10px;
-          left: -4px;
-          width: 10px;
-          position: absolute;
-        }
-
-        &::after {
-          top: auto;
-          bottom: -10px;
-        }
-      }
     }
 
     .mobile-sidenav {
