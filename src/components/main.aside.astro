@@ -71,34 +71,31 @@ const { biomes } = Astro.props;
   </div>
 </aside>
 
-<!-- flip car based on scroll direction -->
 <script>
+  // open details to appropriate section
+  const { matches: mobileLayout } = window.matchMedia("(width <= 960px)");
+  const layoutEvent = window.matchMedia("(width <= 960px)");
+
+  // flip car based on scroll direction
   const tracks = document.querySelectorAll(".track");
 
-  document.addEventListener(
-    "scroll",
-    (e) => {
-      const st = window.pageYOffset || document.documentElement.scrollTop;
+  function decideFlip(e) {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    // @ts-ignore
+    const direction = st > e.target.lastScrollTop ? "down" : "up";
+
+    for (let track of tracks) {
       // @ts-ignore
-      const direction = st > e.target.lastScrollTop ? "down" : "up";
+      track.style.setProperty(
+        "--scroll-direction",
+        direction == "down" ? 1 : -1
+      );
+    }
 
-      for (let track of tracks) {
-        // @ts-ignore
-        track.style.setProperty(
-          "--scroll-direction",
-          direction == "down" ? 1 : -1
-        );
-      }
+    // @ts-ignore
+    e.target.lastScrollTop = st <= 0 ? 0 : st;
+  }
 
-      // @ts-ignore
-      e.target.lastScrollTop = st <= 0 ? 0 : st;
-    },
-    { passive: true }
-  );
-</script>
-
-<!-- open details to appropriate section -->
-<script>
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -115,9 +112,31 @@ const { biomes } = Astro.props;
     }
   );
 
-  document.querySelectorAll(".biome > section").forEach((biome) => {
-    observer.observe(biome);
-  });
+  function observeForSidenav() {
+    document.querySelectorAll(".biome > section").forEach((biome) => {
+      observer.observe(biome);
+    });
+    document.addEventListener("scroll", decideFlip, { passive: true });
+  }
+
+  function unobserveForSidenav() {
+    document.querySelectorAll(".biome > section").forEach((biome) => {
+      observer.unobserve(biome);
+    });
+    document.removeEventListener("scroll", decideFlip);
+  }
+
+  layoutEvent.onchange = (e) => {
+    if (e.matches) {
+      unobserveForSidenav();
+    } else {
+      observeForSidenav();
+    }
+  };
+
+  if (!mobileLayout) {
+    observeForSidenav();
+  }
 </script>
 
 <style>

@@ -48,7 +48,9 @@ import NavBento from "./nav.bento.astro";
   const randomNeg = (value) => (Math.random() > 0.5 ? value : -value);
 
   particlesArray.forEach((particle: HTMLElement) => {
-    const { matches:motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)')
+    const { matches: motionOK } = window.matchMedia(
+      "(prefers-reduced-motion: no-preference)"
+    );
 
     let randomX = randomNeg(random(85, 52));
     let randomY = randomNeg(random(85, 0));
@@ -56,36 +58,43 @@ import NavBento from "./nav.bento.astro";
     let randomDuration = random(500, 2000);
     let randomRange = random(10, 200);
 
-    particle.style.setProperty('--x', `clamp(-45vi, ${randomX}cqi, 45vi)`);
-    particle.style.setProperty('--y', `${randomY}cqb`);
-    particle.style.setProperty('--r', '1turn');
-    particle.style.setProperty('--range', `${randomRange}vh`);
+    particle.style.setProperty("--x", `clamp(-45vi, ${randomX}cqi, 45vi)`);
+    particle.style.setProperty("--y", `${randomY}cqb`);
+    particle.style.setProperty("--r", "1turn");
+    particle.style.setProperty("--range", `${randomRange}vh`);
 
     if (motionOK) {
       particle.style.transitionDelay = `${randomDelay}ms, ${randomDelay}ms, ${randomDuration}ms`;
       particle.style.transitionDuration = `${randomDuration}ms, ${randomDuration}ms, 600ms`;
-      particle.style.transitionTimingFunction = 'var(--ease-spring-1), var(--ease-spring-1), var(--ease-3)';
+      particle.style.transitionTimingFunction =
+        "var(--ease-spring-1), var(--ease-spring-1), var(--ease-3)";
     }
   });
 </script>
 
 <style>
   @property --x {
-    syntax: '<length>';
+    syntax: "<length>";
     inherits: false;
     initial-value: 0;
   }
 
   @property --y {
-    syntax: '<length>';
+    syntax: "<length>";
     inherits: false;
     initial-value: 0;
   }
 
   @property --r {
-    syntax: '<angle>';
+    syntax: "<angle>";
     inherits: false;
     initial-value: 0turn;
+  }
+
+  @property --range {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0;
   }
 
   @keyframes particle-scroll {
@@ -106,19 +115,9 @@ import NavBento from "./nav.bento.astro";
       gap: var(--size-8);
 
       > h1 {
-        font-size: clamp(5rem,11vw,14rem);
+        font-size: clamp(5rem, 11vw, 14rem);
         text-align: center;
         max-inline-size: 100%;
-
-        > span {
-          display: inline-block;
-          border-radius: var(--radius-2);
-          margin-inline-start: var(--size-2);
-          padding-inline: var(--size-3);
-          padding-block: var(--size-1);
-          text-box: trim-both cap alphabetic;
-          box-shadow: 0 0 0 var(--border-size-2);
-        }
       }
 
       p {
@@ -144,12 +143,7 @@ import NavBento from "./nav.bento.astro";
       place-content: center;
 
       @media (prefers-reduced-motion: no-preference) {
-        transition: clip-path 3s var(--ease-2);
-        clip-path: inset(0 0 0 0 round 30px);
-
-        @starting-style {
-          clip-path: inset(100px 100px 100px 100px round 30px);
-        }
+        animation: scale-down 3s var(--ease-2) reverse;
       }
 
       > svg {
