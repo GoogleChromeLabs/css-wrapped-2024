@@ -16,7 +16,6 @@
       padding: var(--size-7) var(--_inline-padding);
       border: 1px solid var(--surface-2);
       border-radius: var(--radius-3);
-      box-shadow: var(--shadow-3);
       font-weight: 300;
 
       @media (width <= 720px) {
@@ -41,6 +40,10 @@
             text-shadow: none;
           }
         }
+      }
+
+      > p {
+        max-inline-size: 100%;
       }
 
       > footer {

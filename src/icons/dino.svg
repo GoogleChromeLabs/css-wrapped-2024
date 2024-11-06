@@ -1,5 +1,36 @@
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.01 104.02">
-  <g id="Layer_1-2" data-name="Layer 1">
-    <path d="m97.01,26.57V4.83h-4.92V0h-38.62v4.94h-4.93v31.75h-4.98v4.98h-6.96v4.98h-6.96v3.98h-4.98v4.84h-10.02v-4.94h-4.98v-3.94h-4.97v-9.84H0v28.66h4.92v4.98h4.93v4.93h4.98v4.98h4.98v4.98h4.98v3.98h4.98v14.76h8.69v-4.85h-3.8v-13.86h9v3.95h4.98v14.77h9.67v-4.82h-4.8v-18.96h4.93v-4.98h4.98v-7.96h4.97v-16.74h5.09v4.79h4.71v-8.82h-9.75v-10.02h18.68v-4.86h-13.71v-5.09h23.63Zm-33.64-14.8h-4.9v-4.95h4.9v4.95Z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 97 114.5">
+  <!-- Generator: Adobe Illustrator 29.0.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 192)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #515151;
+        stroke: #666;
+        stroke-width: 3px;
+      }
+
+      .st0, .st1, .st2 {
+        stroke-miterlimit: 10;
+      }
+
+      .st1 {
+        fill: #2b2b2b;
+        stroke: #ff00f3;
+        stroke-width: 1.5px;
+      }
+
+      .st2 {
+        fill: #ff00e7;
+        stroke: #515151;
+      }
+    </style>
+  </defs>
+  <line class="st0" x1="66.2" y1="107.2" x2="66.2" y2="108.7"/>
+  <line class="st0" x1="19.9" y1="107.2" x2="19.9" y2="108.7"/>
+  <circle class="st1" cx="19.9" cy="111" r="2.7"/>
+  <circle class="st1" cx="66.2" cy="111" r="2.7"/>
+  <path class="st2" d="M9,98.7h68c1.1,0,2,.9,2,2h0c0,3.3-2.7,6-6,6H13c-3.3,0-6-2.7-6-6h0c0-1.1.9-2,2-2Z"/>
+  <g id="Layer_1-2">
+    <path d="M97,26.6V4.8h-4.9V0h-38.6v4.9h-4.9v31.7h-5v5h-7v5h-7v4h-5v4.8h-10v-4.9h-5v-3.9h-5v-9.8H0v28.7h4.9v5h4.9v4.9h5v5h5v5h5v4h5v14.8h8.7v-4.8h-3.8v-13.9h9v3.9h5v14.8h9.7v-4.8h-4.8v-19h4.9v-5h5v-8h5v-16.7h5.1v4.8h4.7v-8.8h-9.8v-10h18.7v-4.9h-13.7v-5.1h23.6,0ZM63.4,11.8h-4.9v-4.9h4.9v4.9Z"/>
   </g>
 </svg>

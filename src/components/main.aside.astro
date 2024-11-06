@@ -37,7 +37,7 @@ const { biomes } = Astro.props;
 <aside>
   <div class="dynamic-aside">
     <div class="track">
-      <Icon name="dino" size="1.5rem" />
+      <Icon name="dino" size="2.5rem" />
     </div>
     <nav>
       {
@@ -153,7 +153,7 @@ const { biomes } = Astro.props;
 
     .dynamic-aside {
       display: grid;
-      grid-template-columns: 40px 1fr;
+      grid-template-columns: 50px 1fr;
       align-self: start;
       position: sticky;
       margin-block-start: 30vh; /* todo: use JS to calc this? */
@@ -265,7 +265,7 @@ const { biomes } = Astro.props;
       );
       border-image-slice: 11 fill;
 
-      &::after {
+      &::before {
         content: url(/cactus.svg);
         width: 15px;
         height: 5px;
@@ -278,7 +278,6 @@ const { biomes } = Astro.props;
       > [data-icon] {
         max-inline-size: initial;
         color: var(--text-1);
-        margin-inline-start: 3px;
       }
 
       @media (prefers-reduced-motion: no-preference) {
