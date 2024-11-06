@@ -1,0 +1,52 @@
+---
+interface Props {
+  name: string;
+}
+
+const authors = {
+  rachel: {
+    name: "Rachel Andrew",
+    url: "https://rachelandrew.co.uk",
+    image: "/authors/rachel.jpg",
+  },
+  una: {
+    name: "Una Kravets",
+    url: "https://una.im",
+    image: "/authors/una.jpg",
+  },
+  adam: {
+    name: "Adam Argyle",
+    url: "https://nerdy.dev",
+    image: "/authors/argyle.jpg",
+  },
+  bramus: {
+    name: "Bramus Van Damme",
+    url: "https://bram.us",
+    image: "/authors/bramus.jpg",
+  },
+};
+
+const { name } = Astro.props;
+const author = authors[name];
+---
+
+<address class="author">
+  <img width="40" height="40" loading="lazy" src={author.image} alt="Profile picture" />
+  <a rel="author" href={author.url}>{author.name}</a>
+</address>
+
+<style>
+  .author {
+    display: flex;
+    gap: var(--size-2);
+    place-items: center;
+
+    > img {
+      border-radius: var(--radius-round);
+    }
+
+    > a {
+      font-style: normal;
+    }
+  }
+</style>

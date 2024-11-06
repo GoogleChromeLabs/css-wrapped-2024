@@ -3,6 +3,7 @@ import FeatureLayout from "../_layout.astro";
 import CodePen from "../../components/codepen.astro";
 import slugify from "./../../util/slugify";
 import { Code } from "astro:components";
+import Author from "../../components/author.astro";
 export const title = "Custom Scrollbars";
 const slug = slugify(title);
 ---
@@ -10,6 +11,7 @@ const slug = slugify(title);
 <FeatureLayout>
   <header>
     <h3 id={slug} set:html={title} />
+    <Author name="bramus" />
     <div class="support">
       <baseline-status featureId="scrollbar-color"></baseline-status>
       <baseline-status featureId="scrollbar-width"></baseline-status>
@@ -44,38 +46,35 @@ const slug = slugify(title);
   </p>
 
   <figure>
-    <CodePen id="web-dot-dev/yLwMexO" height={500}>
-      <figcaption>
-        Custom Scrollbars demo, with a fallback to <code
-          >::-webkit-scrollbar-*</code
-        >
-      </figcaption>
-    </CodePen>
-  </figure>
-
-  <section class="resources">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color"
-          ><code>scrollbar-color</code> on MDN</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width"
-          ><code>scrollbar-width</code> on MDN</a
-        >
-      </li>
-    </ul>
-  </section>
-  <footer>
-    <a href="https://codepen.io/web-dot-dev/pen/yLwMexO">Try demo</a>
-    <div class="articles">
-      <a href="https://developer.chrome.com/docs/css-ui/scrollbar-styling"
-        >Article on developer.chrome</a
+    <CodePen id="web-dot-dev/yLwMexO" height={500} />
+    <figcaption>
+      Custom Scrollbars demo, with a fallback to <code
+        >::-webkit-scrollbar-*</code
       >
-    </div>
-  </footer>
+    </figcaption>
+  </figure>
 </FeatureLayout>
+
+<section class="resources">
+  <h4>Resources</h4>
+  <ul>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color"
+        ><code>scrollbar-color</code> on MDN</a
+      >
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width"
+        ><code>scrollbar-width</code> on MDN</a
+      >
+    </li>
+  </ul>
+</section>
+<footer>
+  <a href="https://codepen.io/web-dot-dev/pen/yLwMexO">Try demo</a>
+  <div class="articles">
+    <a href="https://developer.chrome.com/docs/css-ui/scrollbar-styling"
+      >Article on developer.chrome</a
+    >
+  </div>
+</footer>

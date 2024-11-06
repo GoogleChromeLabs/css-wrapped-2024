@@ -1,48 +1,69 @@
 ---
 import FeatureLayout from "./../_layout.astro";
-import { Icon } from "astro-icon/components";
+import Author from "../../components/author.astro";
+import Video from "../../components/video.astro";
+import CodePen from "../../components/codepen.astro";
+import { Code } from "astro:components";
+
 import slugify from "./../../util/slugify";
+
 export const title = "Scroll Snap Events";
 const slug = slugify(title);
 ---
 
 <FeatureLayout>
   <header>
-    <h3 id={slug} set:html={title}></h3>
-    <!-- <div class="support">
-      <baseline-status featureId="scrollbar-width"></baseline-status>
-    </div> -->
+    <h3 id={slug} set:html={title} />
+    <Author name="adam" />
+    <div class="support">
+      <baseline-status featureId="scroll-snap-events"></baseline-status>
+    </div>
   </header>
   <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
     nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
     culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
   </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
+  <Code
+    lang="js"
+    theme="css-variables"
+    code={`scroller.addEventListener('scrollsnapchange', event => {
+  console.log(event.snapTargetBlock);
+  console.log(event.snapTargetInline);
+})`}
+  />
+  <Video src="/video/snap-change.mp4" />
   <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
     nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
     culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
   </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
+  <Code
+    lang="js"
+    theme="css-variables"
+    code={`scroller.addEventListener('scrollsnapchanging', event => {
+  console.log(event.snapTargetBlock);
+  console.log(event.snapTargetInline);
+})`}
+  />
+  <Video src="/video/snap-changing.mp4" />
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut tenetur
+    cupiditate libero molestiae ad dicta rerum expedita dignissimos quis totam
+    labore, facere, eligendi laudantium fuga doloribus enim ipsum quia commodi!
+  </p>
+  <CodePen id="web-dot-dev/LYKOOpd" height={300} />
   <p>
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
     officia tenetur expedita, quidem nisi itaque.
   </p>
   <footer>
-    <a href="#">Try demo</a>
+    <a href="https://codepen.io/web-dot-dev/pen/jOjaaEP">Try demo</a>
     <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
+      <a href="https://developer.chrome.com/blog/scroll-snap-event"
+        >Article on developer.chrome.com</a
+      >
+      <a href="https://developer.mozilla.org/docs/Web/API/SnapEvent">MDN</a>
     </div>
   </footer>
 </FeatureLayout>
