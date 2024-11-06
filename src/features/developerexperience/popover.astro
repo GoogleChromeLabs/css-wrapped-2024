@@ -1,6 +1,11 @@
 ---
 import FeatureLayout from "./../_layout.astro";
+import Author from "../../components/author.astro";
+import Video from "../../components/video.astro";
+import CodePen from "../../components/codepen.astro";
+import { Code } from "astro:components";
 import { Icon } from "astro-icon/components";
+
 import slugify from "./../../util/slugify";
 export const title = "Popover";
 const slug = slugify(title);
@@ -8,7 +13,7 @@ const slug = slugify(title);
 
 <FeatureLayout>
   <header>
-    <h3 id={slug} set:html={title}></h3>
+    <h3 id={slug} set:html={title} />
     <div class="support">
       <baseline-status featureId="popover"></baseline-status>
     </div>
