@@ -107,6 +107,13 @@ const timelines = biomes.reduce(
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>CSS Wrapped 2024</title>
+    <link
+      rel="preload"
+      href="/fight.otf"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <script type="module" src="/baseline-status.min.js"></script>
   </head>
   <body>
@@ -205,10 +212,13 @@ const timelines = biomes.reduce(
   }
 </style>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-754F24EHD8"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-754F24EHD8"
+></script>
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-754F24EHD8');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-754F24EHD8");
 </script>
