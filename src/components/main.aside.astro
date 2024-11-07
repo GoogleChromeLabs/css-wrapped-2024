@@ -73,8 +73,8 @@ const { biomes } = Astro.props;
 
 <script>
   // open details to appropriate section
-  const { matches: mobileLayout } = window.matchMedia("(width <= 960px)");
-  const layoutEvent = window.matchMedia("(width <= 960px)");
+  const { matches: mobileLayout } = window.matchMedia("(width <= 1200px)");
+  const layoutEvent = window.matchMedia("(width <= 1200px)");
 
   // flip car based on scroll direction
   const tracks = document.querySelectorAll(".track");
@@ -146,7 +146,7 @@ const { biomes } = Astro.props;
       grid-row: 1;
       container: main-aside / inline-size;
 
-      @media (width <= 960px) {
+      @media (width <= 1200px) {
         display: none;
       }
     }
@@ -258,11 +258,7 @@ const { biomes } = Astro.props;
       background-image: url(/track-grunge.svg);
       background-repeat: repeat-y;
       border-right: 10px solid transparent;
-      border-image: linear-gradient(
-        to right,
-        #0000 9px 0,
-        var(--text-1) 0
-      );
+      border-image: linear-gradient(to right, #0000 9px 0, var(--text-1) 0);
       border-image-slice: 11 fill;
 
       &::before {
@@ -312,7 +308,7 @@ const { biomes } = Astro.props;
       padding-block: var(--size-3);
       padding-inline: var(--_left-pad) var(--size-5);
 
-      @media (width > 960px) {
+      @media (width > 1200px) {
         display: none;
       }
 

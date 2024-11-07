@@ -93,7 +93,7 @@ import NavBento from "./nav.bento.astro";
   @layer components.hero {
     .hero {
       margin-block: var(--size-10);
-      max-inline-size: 1024px;
+      max-inline-size: min(1024px, 75vw);
       margin-inline: auto;
       padding-inline: var(--size-5);
       display: grid;
