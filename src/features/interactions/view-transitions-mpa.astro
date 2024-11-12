@@ -16,6 +16,7 @@ const slug = slugify(title);
 <FeatureLayout>
   <header>
     <h3 id={slug} set:html={title} />
+    <Author name="bramus" />
     <div class="support">
       <baseline-status featureId="view-transitions"></baseline-status>
     </div>
@@ -40,16 +41,16 @@ const slug = slugify(title);
       loading="lazy"
       allowtransparency="true"
       allowfullscreen="true"></iframe>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam,
-      sed officia tenetur expedita, quidem nisi itaque.
-    </p>
-    <footer>
-      <a href="#">Try demo</a>
-      <div class="articles">
-        <a href="#">Article on web.dev</a>
-        <a href="#">MDN</a>
-      </div>
-    </footer>
   </YouTube>
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
+    officia tenetur expedita, quidem nisi itaque.
+  </p>
+  <footer>
+    <a href="#">Try demo</a>
+    <div class="articles">
+      <a href="#">Article on web.dev</a>
+      <a href="#">MDN</a>
+    </div>
+  </footer>
 </FeatureLayout>
