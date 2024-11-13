@@ -14,6 +14,7 @@ const slug = slugify(title);
 <FeatureLayout>
   <header>
     <h3 id={slug} set:html={title} />
+    <Author name="adam" />
     <div class="support">
       <baseline-status featureId="line-clamp"></baseline-status>
     </div>
