@@ -188,24 +188,31 @@ const timelines = biomes.reduce(
 
       --_biome-sidebar: url(/biomes/cyberspace-sidebar.png);
       background-image: var(--_biome-sidebar), var(--_biome-sidebar);
+      background-size: 997px 2562px;
       background-position:
-        calc(100% + 750px) 50%,
-        -750px 50%;
+        -850px 0,
+        calc(100% + 850px) 0;
       background-repeat: repeat-y;
+
+      @media (width > 1280px) {
+        background-position:
+          -750px 0,
+          calc(100% + 750px) 0;
+      }
 
       &.desert {
         --_biome-image: url(/biomes/desert.svg);
-        --_biome-sidebar: url(/biomes/desert-sidebar.png);
+        --_biome-sidebar: url(/biomes/desert-sidebar.svg);
       }
 
       &.arctic {
         --_biome-image: url(/biomes/arctic.svg);
-        --_biome-sidebar: url(/biomes/arctic-sidebar.png);
+        --_biome-sidebar: url(/biomes/arctic-sidebar.svg);
       }
 
       &.jungle {
         --_biome-image: url(/biomes/jungle.svg);
-        --_biome-sidebar: url(/biomes/jungle-sidebar.png);
+        --_biome-sidebar: url(/biomes/jungle-sidebar.svg);
       }
     }
   }
