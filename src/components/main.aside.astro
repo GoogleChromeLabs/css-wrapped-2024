@@ -261,14 +261,20 @@ const { biomes } = Astro.props;
       border-image: linear-gradient(to right, #0000 9px 0, var(--text-1) 0);
       border-image-slice: 11 fill;
 
-      &::before {
+      &::before,
+      &::after {
         content: url(/cactus.svg);
         width: 15px;
         height: 5px;
         rotate: 90deg;
         position: absolute;
-        top: 50%;
-        left: 25px;
+        top: 80%;
+        left: 22px;
+      }
+
+      &::after {
+        top: 20%;
+        left: 30px;
       }
 
       > [data-icon] {
