@@ -14,40 +14,53 @@ const slug = slugify(title);
 <FeatureLayout>
   <header>
     <h3 id={slug} set:html={title} />
+    <Author name="adam" />
     <div class="support">
       <baseline-status featureId="paint-order"></baseline-status>
     </div>
   </header>
   <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
+    When using <code>text-stroke</code>, the <code>paint-order</code> property can
+    be used to control the order in which the text fill and the desired stroke are
+    stacked / rendered together. This can be useful when you want to ensure that
+    the stroke is rendered on top of the fill.
   </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
   <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
+    The default paint order is: <code>fill</code>, <code>stroke</code>, then <code
+      >markers</code
+    >.
   </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
   <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
+    The following video shows how the result of the text stroke is undesirable
+    if the text is filled white and then given a black stroke. Switch those
+    around, so the stroke is drawn first and then filled, and the result is
+    quite nice!
+  </p>
+  <Video src="/video/paint-order.mp4" />
+  <p>
+    The CSS to control this is one line. Set the <code>paint-order</code>
+    to draw the stroke before the fill by specifing those keywords in that order.
+  </p>
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`h1 {
+  paint-order: stroke fill;
+
+  color: white;
+  -webkit-text-stroke: 5px black;
+}`}
+  />
+  <p>Try it for yourself in this Codepen:</p>
+  <CodePen id="web-dot-dev/dyxryKE" height={600} />
+  <p>
+    Some folks say that the ability to control <code>paint-order</code> has finally
+    made <code>text-stroke</code> usable in production. What do you think?
   </p>
   <footer>
-    <a href="#">Try demo</a>
+    <a href="https://codepen.io/web-dot-dev/pen/dyxryKE">Try demo</a>
     <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
+      <a href="https://developer.mozilla.org/docs/Web/CSS/paint-order">MDN</a>
     </div>
   </footer>
 </FeatureLayout>
