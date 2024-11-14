@@ -1,11 +1,12 @@
 ---
 import slugify from "./../util/slugify";
-const { title, description, features } = Astro.props;
+const { title, image, description, features } = Astro.props;
 ---
 
 <header>
+  <img src={image} alt="" width="1280" height="720" />
   <h2 class="retro-title">{title}</h2>
-  <!-- <p>{description}</p> -->
+  <p>{description}</p>
 </header>
 <section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
   <div class="features-list">
@@ -24,16 +25,15 @@ const { title, description, features } = Astro.props;
 <style>
   @layer components.biome {
     header {
-      grid-column: fullbleed;
-      display: grid;
-      grid-template-columns: subgrid;
-      place-items: start;
-      gap: var(--size-2);
+      grid-column: main-features;
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-5);
       margin-block-end: var(--size-8);
-      padding-block: var(--size-11);
-      background: var(--surface-1);
-      background: var(--_biome-image) repeat-x fixed;
-      background-size: cover;
+
+      > img {
+        border-radius: var(--radius-4);
+      }
 
       > h2 {
         grid-column: main-features;

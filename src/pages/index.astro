@@ -36,6 +36,7 @@ const biomes = [
     title: "Components",
     description: "Lorem ipsum dolor sit amet components adipisicing elit.",
     backdrop: "desert",
+    image: "/biomes/desert.svg",
     features: [
       FieldSizing,
       AnimateToHeightAuto,
@@ -48,6 +49,7 @@ const biomes = [
     title: "Interactions",
     description: "Lorem ipsum dolor sit amet interactions adipisicing elit.",
     backdrop: "arctic",
+    image: "/biomes/arctic.svg",
     features: [
       ScrollbarStyling,
       ViewTransitionsMPA,
@@ -60,6 +62,7 @@ const biomes = [
     description:
       "Lorem ipsum dolor sit amet developer experience adipisicing elit.",
     backdrop: "jungle",
+    image: "/biomes/jungle.svg",
     features: [
       BackdropInheritance,
       HighlightInheritance,
@@ -175,35 +178,6 @@ const timelines = biomes.reduce(
       grid-template-columns: subgrid;
 
       padding-block-end: var(--size-8);
-
-      --_biome-sidebar: url(/biomes/cyberspace-sidebar.png);
-      background-image: var(--_biome-sidebar), var(--_biome-sidebar);
-      background-size: 997px 2562px;
-      background-position:
-        -850px 0,
-        calc(100% + 850px) 0;
-      background-repeat: repeat-y;
-
-      @media (width > 1280px) {
-        background-position:
-          -750px 0,
-          calc(100% + 750px) 0;
-      }
-
-      &.desert {
-        --_biome-image: url(/biomes/desert.svg);
-        --_biome-sidebar: url(/biomes/desert-sidebar.svg);
-      }
-
-      &.arctic {
-        --_biome-image: url(/biomes/arctic.svg);
-        --_biome-sidebar: url(/biomes/arctic-sidebar.svg);
-      }
-
-      &.jungle {
-        --_biome-image: url(/biomes/jungle.svg);
-        --_biome-sidebar: url(/biomes/jungle-sidebar.svg);
-      }
     }
   }
 </style>

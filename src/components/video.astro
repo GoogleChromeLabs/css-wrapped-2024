@@ -19,23 +19,23 @@ const { src, width = 720, height = 480 } = Astro.props;
   preload="metadata"></video>
 
 <style>
-  @keyframes rounded-mask-reveal {
+  /* @keyframes rounded-mask-reveal {
     from {
       clip-path: inset(10% 10% 10% 10% round var(--radius-3));
     }
     to {
       clip-path: inset(0% 0% 0% 0% round var(--radius-3));
     }
-  }
+  } */
 
   @layer components.video {
-    @supports (animation-timeline: view()) {
+    /* @supports (animation-timeline: view()) {
       video {
         animation: rounded-mask-reveal linear both;
         animation-timeline: view();
         animation-range: cover 0% cover 25%;
       }
-    }
+    } */
 
     video {
       border-radius: var(--radius-3);
