@@ -6,7 +6,7 @@ interface Props {
 const authors = {
   rachel: {
     name: "Rachel Andrew",
-    url: "https://rachelandrew.co.uk",
+    url: "https://developer.chrome.com/authors/rachel-andrew",
     image: "/authors/rachel.jpg",
   },
   una: {
@@ -16,12 +16,12 @@ const authors = {
   },
   adam: {
     name: "Adam Argyle",
-    url: "https://nerdy.dev",
+    url: "https://developer.chrome.com/authors/adam-argyle",
     image: "/authors/argyle.jpg",
   },
   bramus: {
     name: "Bramus Van Damme",
-    url: "https://bram.us",
+    url: "https://developer.chrome.com/authors/bramus",
     image: "/authors/bramus.jpg",
   },
 };
@@ -31,7 +31,13 @@ const author = authors[name];
 ---
 
 <address class="author">
-  <img width="40" height="40" loading="lazy" src={author.image} alt="Profile picture" />
+  <img
+    width="40"
+    height="40"
+    loading="lazy"
+    src={author.image}
+    alt="Profile picture"
+  />
   <a rel="author" href={author.url}>{author.name}</a>
 </address>
 
