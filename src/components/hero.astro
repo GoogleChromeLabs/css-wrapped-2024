@@ -25,9 +25,9 @@ import NavBento from "./nav.bento.astro";
       <span class="plus"></span>
       <span class="plus"></span>
       <span class="plus"></span>
-      <span class="star"></span>
-      <span class="star"></span>
-      <span class="star"></span>
+      <span class="plus"></span>
+      <span class="plus"></span>
+      <span class="plus"></span>
     </div>
     <div class="video">
       <Icon name="play" />
@@ -159,7 +159,6 @@ import NavBento from "./nav.bento.astro";
         &.pixel {
           width: 1rem;
           height: 1rem;
-          opacity: 0.8;
           background: var(--blue-5);
 
           &:nth-of-type(2n) {
@@ -168,11 +167,10 @@ import NavBento from "./nav.bento.astro";
         }
 
         &.plus {
-          --_color: color-mix(in oklab, var(--blue-5), transparent 25%);
+          --_color: var(--blue-5);
 
           width: 3rem;
           height: 3rem;
-          opacity: 0.8;
           background: linear-gradient(
               to right,
               #0000 0 1rem,
@@ -185,39 +183,10 @@ import NavBento from "./nav.bento.astro";
               var(--_color) 1rem 2rem,
               #0000 2rem 3rem
             );
-          background-blend-mode: screen;
 
           &:nth-of-type(2n) {
             --_color: var(--blue-3);
           }
-        }
-
-        &.star {
-          width: 5rem;
-          height: 5rem;
-          opacity: 0.8;
-          background: conic-gradient(
-              color-mix(in oklab, var(--blue-5), transparent 25%) 0 0
-            ),
-            linear-gradient(
-              to right,
-              #0000 0 2rem,
-              color-mix(in oklab, var(--blue-6), transparent 25%) 2rem 3rem,
-              #0000 3rem 5rem
-            ),
-            linear-gradient(
-              to bottom,
-              #0000 0 2rem,
-              color-mix(in oklab, var(--blue-4), transparent 25%) 2rem 3rem,
-              #0000 3rem 5rem
-            );
-          background-size:
-            3rem 3rem,
-            cover,
-            cover;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-blend-mode: screen;
         }
       }
     }
