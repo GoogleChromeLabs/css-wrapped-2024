@@ -35,7 +35,7 @@ import NavBento from "./nav.bento.astro";
   </div>
   <div>
     <p class="hero-title retro-title">Driving The Web Forward</p>
-    <p>2024 CSS in 3 main categories</p>
+    <p class="sub-title"><span>2024</span> CSS cruised in 3 main categories</p>
   </div>
   <NavBento />
 </section>
@@ -115,6 +115,18 @@ import NavBento from "./nav.bento.astro";
         margin-block-start: var(--size-12);
         margin-block-end: var(--size-5);
         font-size: clamp(4rem, 7vw, 10rem);
+      }
+
+      .sub-title {
+        font-size: var(--font-size-4);
+        font-weight: 200;
+
+        > span {
+          border: 1px solid var(--surface-4);
+          border-radius: var(--radius-3);
+          padding-block: var(--size-1);
+          padding-inline: var(--size-2);
+        }
       }
     }
 
