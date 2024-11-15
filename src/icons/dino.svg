@@ -4,7 +4,7 @@
   <defs>
     <style>
       #stan {
-        fill: light-dark(black, white);
+        fill: CanvasText;
       }
       .st0 {
         fill: none;
@@ -17,7 +17,7 @@
       }
 
       .st2 {
-        fill: #ff00e7;
+        fill: VisitedText;
       }
 
       .st1 {
