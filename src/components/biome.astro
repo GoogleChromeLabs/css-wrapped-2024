@@ -33,6 +33,14 @@ const { title, image, description, features } = Astro.props;
 
       > img {
         border-radius: var(--radius-4);
+
+        @supports (animation-timeline: view()) {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: biome-header linear both;
+            animation-timeline: view();
+            animation-range: exit -10% exit 100%;
+          }
+        }
       }
 
       > h2 {
@@ -59,6 +67,14 @@ const { title, image, description, features } = Astro.props;
     .features-list {
       display: grid;
       gap: var(--size-10);
+    }
+  }
+</style>
+<style is:global>
+  @keyframes biome-header {
+    to {
+      opacity: 0;
+      transform: translateY(5vh) scale(0.9);
     }
   }
 </style>
