@@ -102,6 +102,8 @@ const { biomes } = Astro.props;
     section {
       max-inline-size: 100%;
       overflow-x: clip;
+      position: relative;
+      z-index: 0;
     }
 
     .hero {
@@ -146,6 +148,8 @@ const { biomes } = Astro.props;
         display: grid;
 
         svg {
+          --scroll-direction: 1;
+
           @media (prefers-reduced-motion: no-preference) {
             @supports (animation-timeline: view()) {
               animation: journeyed linear both;
@@ -235,10 +239,10 @@ const { biomes } = Astro.props;
 <style is:global>
   @keyframes journeyed {
     from {
-      transform: translateX(0) scaleX(calc(var(--scroll-direction, 0)));
+      transform: translateX(0) scaleX(calc(var(--scroll-direction, 1)));
     }
     to {
-      transform: translateX(75vw) scaleX(calc(var(--scroll-direction, 0)));
+      transform: translateX(75vw) scaleX(calc(var(--scroll-direction, 1)));
     }
   }
 </style>
