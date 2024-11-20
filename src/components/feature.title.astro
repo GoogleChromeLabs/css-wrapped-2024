@@ -1,0 +1,29 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+}
+
+const { slug, title } = Astro.props;
+
+---
+
+<h3><a href={`#${slug}`} name={slug}>#</a> <span set:html={title}></span></h3>
+
+<style>
+  h3 {
+    margin-left: -0.3em;
+    gap: 0.1rem;
+    display: flex;
+    align-items: center;
+  }
+  a {
+    text-decoration: none;
+    font-size: 0.65em;
+    visibility: hidden;
+
+    h3:hover & {
+      visibility: visible;
+    }
+  }
+</style>

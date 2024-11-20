@@ -1,5 +1,6 @@
 ---
 import FeatureLayout from "./../_layout.astro";
+import Title from "../../components/feature.title.astro";
 import Author from "../../components/author.astro";
 import Video from "../../components/video.astro";
 import CodePen from "../../components/codepen.astro";
@@ -13,7 +14,7 @@ const slug = slugify(title);
 
 <FeatureLayout>
   <header>
-    <h3 id={slug} set:html={title} />
+    <Title slug={slug} title={title}>
     <!-- <div class="support">
       <baseline-status featureId="scrollbar-color"></baseline-status>
     </div> -->
