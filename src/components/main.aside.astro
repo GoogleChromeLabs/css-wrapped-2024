@@ -76,15 +76,15 @@ const { biomes } = Astro.props;
   const { matches: mobileLayout } = window.matchMedia("(width <= 1200px)");
   const layoutEvent = window.matchMedia("(width <= 1200px)");
 
-  // flip car based on scroll direction
-  const tracks = document.querySelectorAll(".track");
+  // flip dino based on scroll direction
+  const flippers = document.querySelectorAll(".track, .narrative");
 
   function decideFlip(e) {
     const st = window.pageYOffset || document.documentElement.scrollTop;
     // @ts-ignore
     const direction = st > e.target.lastScrollTop ? "down" : "up";
 
-    for (let track of tracks) {
+    for (let track of flippers) {
       // @ts-ignore
       track.style.setProperty(
         "--scroll-direction",
@@ -94,6 +94,7 @@ const { biomes } = Astro.props;
 
     // @ts-ignore
     e.target.lastScrollTop = st <= 0 ? 0 : st;
+    console.log(st);
   }
 
   const observer = new IntersectionObserver(
@@ -116,14 +117,12 @@ const { biomes } = Astro.props;
     document.querySelectorAll(".biome > section").forEach((biome) => {
       observer.observe(biome);
     });
-    document.addEventListener("scroll", decideFlip, { passive: true });
   }
 
   function unobserveForSidenav() {
     document.querySelectorAll(".biome > section").forEach((biome) => {
       observer.unobserve(biome);
     });
-    document.removeEventListener("scroll", decideFlip);
   }
 
   layoutEvent.onchange = (e) => {
@@ -137,6 +136,8 @@ const { biomes } = Astro.props;
   if (!mobileLayout) {
     observeForSidenav();
   }
+
+  document.addEventListener("scroll", decideFlip, { passive: true });
 </script>
 
 <style>

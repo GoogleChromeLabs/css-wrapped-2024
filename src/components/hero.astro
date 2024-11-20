@@ -55,7 +55,7 @@ const { biomes } = Astro.props;
 
   particlesArray.forEach((particle: HTMLElement) => {
     const { matches: motionOK } = window.matchMedia(
-      "(prefers-reduced-motion: no-preference)",
+      "(prefers-reduced-motion: no-preference)"
     );
 
     let randomX = randomNeg(random(70, 50));
@@ -227,8 +227,11 @@ const { biomes } = Astro.props;
 
 <style is:global>
   @keyframes journeyed {
+    from {
+      transform: translateX(0) scaleX(calc(var(--scroll-direction, 0)));
+    }
     to {
-      transform: translateX(75vw);
+      transform: translateX(75vw) scaleX(calc(var(--scroll-direction, 0)));
     }
   }
 </style>
