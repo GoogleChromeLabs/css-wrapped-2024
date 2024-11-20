@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import ThemeSwitch from "./theme.switch.astro";
 ---
 
-<header id="intro">
+<nav>
   <a href="https://www.google.com/chrome/dr/download/">
     <Icon name="chrome" size="1.5rem" />
   </a>
@@ -17,11 +17,11 @@ import ThemeSwitch from "./theme.switch.astro";
       <Icon name="hamburger" size="1.5rem" />
     </button>
   </div>
-</header>
+</nav>
 
 <style>
   @layer components.primary-header {
-    header {
+    nav {
       display: flex;
       place-items: center;
       justify-content: space-between;
