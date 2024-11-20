@@ -6,7 +6,7 @@ const { title, image, description, features } = Astro.props;
 <header>
   <img src={image} alt="" width="1280" height="720" />
   <h2 class="retro-title">{title}</h2>
-  <p>{description}</p>
+  <p set:html={description} />
 </header>
 <section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
   <div class="features-list">
