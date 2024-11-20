@@ -5,7 +5,8 @@
 
 @layer base, reset, theme, components, utilities;
 
-@import "open-props/style" layer(base); /* todo: import only what's needed */
+@import "open-props/style" layer(base);
+/* todo: import only what's needed */
 @import "open-props/normalize" layer(reset);
 @import "open-props/switch/light" layer(theme);
 @import "open-props/switch/dark" layer(theme);
@@ -21,7 +22,7 @@
 }
 
 @view-transition {
-  navigation: auto;
+	navigation: auto;
 }
 
 @layer components.page {

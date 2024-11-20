@@ -1,0 +1,41 @@
+---
+const { biomes } = Astro.props;
+import slugify from "./../util/slugify";
+import Biome from "../components/biome.astro";
+---
+
+<div class="biomes">
+  {
+    biomes.map((biome) => {
+      return (
+        <div
+          class={`biome ${biome.backdrop}`}
+          style={`view-timeline-name: --vtl--${slugify(biome.title)};`}
+        >
+          <Biome {...biome} />
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  @layer components.biomes {
+    .biomes {
+      grid-column: fullbleed;
+      grid-row: 1;
+
+      display: grid;
+      grid-template-columns: subgrid;
+    }
+
+    .biome {
+      grid-column: fullbleed;
+
+      display: grid;
+      grid-template-columns: subgrid;
+
+      padding-block-end: var(--size-8);
+    }
+  }
+</style>

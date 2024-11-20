@@ -5,7 +5,7 @@ import slugify from "./../util/slugify";
 import HeaderPrimary from "../components/header.primary.astro";
 import Hero from "../components/hero.astro";
 import FeatureFilmstrip from "../components/feature.filmstrip.astro";
-import Biome from "../components/biome.astro";
+import Biomes from "../components/biomes.astro";
 import Footer from "../components/footer.astro";
 import MainAside from "../components/main.aside.astro";
 import CookieConsent from "../components/cookieconsent.astro";
@@ -114,21 +114,7 @@ const timelines = biomes.reduce(
 
     <main style={`timeline-scope: ${timelines.join(", ")}`}>
       <MainAside biomes={biomes} />
-
-      <div class="biomes">
-        {
-          biomes.map((biome) => {
-            return (
-              <div
-                class={`biome ${biome.backdrop}`}
-                style={`view-timeline-name: --vtl--${slugify(biome.title)};`}
-              >
-                <Biome {...biome} />
-              </div>
-            );
-          })
-        }
-      </div>
+      <Biomes biomes={biomes} />
     </main>
 
     <Footer />
@@ -137,7 +123,7 @@ const timelines = biomes.reduce(
 </html>
 
 <style>
-  @layer page.biomes {
+  @layer components.main {
     main {
       display: grid;
       gap: var(--size-4);
@@ -159,23 +145,6 @@ const timelines = biomes.reduce(
           auto
           [fullbleed-end];
       }
-    }
-
-    .biomes {
-      grid-column: fullbleed;
-      grid-row: 1;
-
-      display: grid;
-      grid-template-columns: subgrid;
-    }
-
-    .biome {
-      grid-column: fullbleed;
-
-      display: grid;
-      grid-template-columns: subgrid;
-
-      padding-block-end: var(--size-8);
     }
   }
 </style>
