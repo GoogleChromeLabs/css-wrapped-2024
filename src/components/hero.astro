@@ -5,45 +5,47 @@ import NavBento from "./nav.bento.astro";
 const { biomes } = Astro.props;
 ---
 
-<section class="hero">
-  <h1 class="retro-title">CSS Wrapped</h1>
-  <div class="grid-pile">
-    <div class="particles" id="particles">
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="pixel"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
-      <span class="plus"></span>
+<section>
+  <div class="hero">
+    <h1 class="retro-title">CSS Wrapped</h1>
+    <div class="grid-pile">
+      <div class="particles" id="particles">
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+        <span class="plus"></span>
+      </div>
+      <div class="video">
+        <Icon name="play" />
+      </div>
     </div>
-    <div class="video">
-      <Icon name="play" />
+    <div class="narrative">
+      <Icon name="dino" size="5rem" />
+      <p class="sub-title">
+        <span><b>2024 CSS</b></span> journeyed<br />through the forest, over the
+        mountains, and across the seas…
+      </p>
+      <p class="hero-title retro-title">Pushing The Web Forward</p>
     </div>
+    <NavBento biomes={biomes} />
   </div>
-  <div class="narrative">
-    <Icon name="dino" size="5rem" />
-    <p class="sub-title">
-      <span><b>2024 CSS</b></span> journeyed<br />through the forest, over the
-      mountains, and across the seas…
-    </p>
-    <p class="hero-title retro-title">Pushing The Web Forward</p>
-  </div>
-  <NavBento biomes={biomes} />
 </section>
 
 <script>
@@ -97,6 +99,11 @@ const { biomes } = Astro.props;
   }
 
   @layer components.hero {
+    section {
+      max-inline-size: 100%;
+      overflow-x: clip;
+    }
+
     .hero {
       margin-block: var(--size-10);
       max-inline-size: min(1024px, 75vw);
@@ -142,7 +149,7 @@ const { biomes } = Astro.props;
           @media (prefers-reduced-motion: no-preference) {
             @supports (animation-timeline: view()) {
               animation: journeyed linear both;
-              animation-timeline: view(block);
+              animation-timeline: view(y);
               animation-range: 25% 100%;
             }
           }
@@ -184,7 +191,7 @@ const { biomes } = Astro.props;
           animation:
             particle-scroll linear both,
             particle-enter 1s ease;
-          animation-timeline: scroll(), auto;
+          animation-timeline: scroll(y root), auto;
           animation-range: 0vh var(--range);
         }
 
