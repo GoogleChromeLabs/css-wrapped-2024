@@ -154,7 +154,7 @@ const { biomes } = Astro.props;
             @supports (animation-timeline: view()) {
               animation: journeyed linear both;
               animation-timeline: view(y);
-              animation-range: 25% 100%;
+              animation-range: 25% 75%;
             }
           }
         }
@@ -242,7 +242,7 @@ const { biomes } = Astro.props;
       transform: translateX(0) scaleX(calc(var(--scroll-direction, 1)));
     }
     to {
-      transform: translateX(75vw) scaleX(calc(var(--scroll-direction, 1)));
+      transform: translateX(90vw) scaleX(calc(var(--scroll-direction, 1)));
     }
   }
 </style>
