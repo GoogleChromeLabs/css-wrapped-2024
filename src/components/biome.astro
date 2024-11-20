@@ -45,7 +45,12 @@ const { title, image, description, features } = Astro.props;
 
       > h2 {
         grid-column: main-features;
-        font-size: clamp(5rem, 9vw, 10rem);
+        font-size: clamp(5rem, 9vw, 9rem);
+      }
+
+      > p {
+        font-size: var(--font-size-4);
+        font-weight: 200;
       }
     }
 

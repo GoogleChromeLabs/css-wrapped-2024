@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import NavBento from "./nav.bento.astro";
+
+const { biomes } = Astro.props;
 ---
 
 <section class="hero">
@@ -33,11 +35,15 @@ import NavBento from "./nav.bento.astro";
       <Icon name="play" />
     </div>
   </div>
-  <div>
-    <p class="hero-title retro-title">Driving The Web Forward</p>
-    <p class="sub-title"><span>2024</span> CSS cruised in 3 main categories</p>
+  <div class="narrative">
+    <Icon name="dino" size="5rem" />
+    <p class="sub-title">
+      <span><b>2024 CSS</b></span> journeyed<br />through the forest, over the
+      mountains, and across the seas…
+    </p>
+    <p class="hero-title retro-title">Pushing The Web Forward</p>
   </div>
-  <NavBento />
+  <NavBento biomes={biomes} />
 </section>
 
 <script>
@@ -49,7 +55,7 @@ import NavBento from "./nav.bento.astro";
 
   particlesArray.forEach((particle: HTMLElement) => {
     const { matches: motionOK } = window.matchMedia(
-      "(prefers-reduced-motion: no-preference)"
+      "(prefers-reduced-motion: no-preference)",
     );
 
     let randomX = randomNeg(random(70, 50));
@@ -112,20 +118,34 @@ import NavBento from "./nav.bento.astro";
       }
 
       .hero-title {
-        margin-block-start: var(--size-12);
-        margin-block-end: var(--size-5);
         font-size: clamp(4rem, 7vw, 10rem);
       }
 
       .sub-title {
         font-size: var(--font-size-4);
         font-weight: 200;
+        line-height: 1.75;
 
         > span {
-          border: 1px solid var(--surface-4);
-          border-radius: var(--radius-3);
+          border: 2px solid var(--surface-4);
+          border-radius: var(--radius-2);
           padding-block: var(--size-1);
           padding-inline: var(--size-2);
+        }
+      }
+
+      .narrative {
+        margin-block: var(--size-12) var(--size-10);
+        display: grid;
+
+        svg {
+          @media (prefers-reduced-motion: no-preference) {
+            @supports (animation-timeline: view()) {
+              animation: journeyed linear both;
+              animation-timeline: view(block);
+              animation-range: 25% 100%;
+            }
+          }
         }
       }
     }
@@ -201,6 +221,14 @@ import NavBento from "./nav.bento.astro";
           }
         }
       }
+    }
+  }
+</style>
+
+<style is:global>
+  @keyframes journeyed {
+    to {
+      transform: translateX(75vw);
     }
   }
 </style>

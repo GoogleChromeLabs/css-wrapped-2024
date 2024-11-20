@@ -1,17 +1,29 @@
 ---
+const { biomes } = Astro.props;
 
+const counts = {
+  components: biomes[0].features.length,
+  interactions: biomes[1].features.length,
+  developerExperience: biomes[2].features.length,
+};
 ---
 
 <nav class="bento">
   <ul>
     <li class="arctic">
-      <a href="#developer-experience"><span>Developer Experience</span></a>
+      <a href="#developer-experience"
+        ><span><b>{counts.developerExperience} </b>DX Features</span></a
+      >
     </li>
     <li class="desert">
-      <a href="#components"><span>Components</span></a>
+      <a href="#components"
+        ><span><b>{counts.components} </b>Components</span></a
+      >
     </li>
     <li class="jungle">
-      <a href="#interactions"><span>Interactions</span></a>
+      <a href="#interactions"
+        ><span><b>{counts.interactions} </b>Interactions</span></a
+      >
     </li>
   </ul>
 </nav>
@@ -33,6 +45,7 @@
         display: grid;
         border-radius: var(--radius-3);
         overflow: clip;
+        grid-column: span 1;
 
         &:first-of-type {
           grid-row: span 2;
@@ -54,6 +67,12 @@
 
         > a {
           display: grid;
+          font-size: var(--font-size-fluid-2);
+          font-weight: 100;
+
+          &:hover {
+            text-decoration: none;
+          }
 
           > span {
             grid-area: 1 / 1;

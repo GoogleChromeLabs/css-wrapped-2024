@@ -80,11 +80,11 @@ const timelines = biomes.reduce(
   (timelines, biome) => [
     `--vtl--${slugify(biome.title)}`,
     ...biome.features.map(
-      (feature) => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`
+      (feature) => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`,
     ),
     ...timelines,
   ],
-  []
+  [],
 );
 ---
 
@@ -109,7 +109,7 @@ const timelines = biomes.reduce(
   </head>
   <body>
     <HeaderPrimary />
-    <Hero />
+    <Hero biomes={biomes} />
     <FeatureFilmstrip biomes={biomes} />
 
     <main style={`timeline-scope: ${timelines.join(", ")}`}>
