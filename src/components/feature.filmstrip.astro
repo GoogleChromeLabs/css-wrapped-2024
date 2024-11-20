@@ -1,6 +1,5 @@
 ---
 import slugify from "./../util/slugify";
-import shuffle from "./../util/shuffle";
 
 const { biomes } = Astro.props;
 
@@ -11,42 +10,54 @@ const features = biomes
 ---
 
 <div class="feature-grid">
-  <div class="row">
-    {
-      shuffle(features)
-        .slice(0, 18)
-        .map((feature) => (
-          <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
+  <section>
+    <h3><b>{biomes[0].features.length}</b> Component Features</h3>
+    <div class="scroll-stack">
+      {
+        biomes[0].features.map((feature) => (
+          <a
+            class="item"
+            href={`#${slugify(biomes[0].title)}`}
+            set:html={feature.title}
+          />
         ))
-    }
-  </div>
-  <div class="row">
-    {
-      shuffle(features)
-        .slice(0, 18)
-        .map((feature) => (
-          <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
+      }
+    </div>
+  </section>
+  <section>
+    <h3><b>{biomes[1].features.length}</b> Interaction Features</h3>
+    <div class="scroll-stack">
+      {
+        biomes[1].features.map((feature) => (
+          <a
+            class="item"
+            href={`#${slugify(biomes[1].title)}`}
+            set:html={feature.title}
+          />
         ))
-    }
-  </div>
-  <div class="row">
-    {
-      shuffle(features)
-        .slice(0, 18)
-        .map((feature) => (
-          <a class="card" href={`#${slugify(feature)}`} set:html={feature} />
+      }
+    </div>
+  </section>
+  <section>
+    <h3><b>{biomes[2].features.length}</b> Developer Experience Features</h3>
+    <div class="scroll-stack">
+      {
+        biomes[2].features.map((feature) => (
+          <a
+            class="item"
+            href={`#${slugify(biomes[2].title)}`}
+            set:html={feature.title}
+          />
         ))
-    }
-  </div>
+      }
+    </div>
+  </section>
 </div>
 
 <style>
-  @keyframes pan-x {
+  @keyframes slide-in {
     from {
-      transform: translateX(var(--_pan-lower, -15vw));
-    }
-    to {
-      transform: translateX(var(--_pan-upper, 5vw));
+      transform: translateX(-100cqi) scale(0.75);
     }
   }
 
@@ -58,43 +69,136 @@ const features = biomes
       padding-block: var(--size-10) var(--size-13);
       max-inline-size: 100vw;
       overflow: clip;
+    }
 
-      > .row {
-        display: grid;
-        grid-auto-flow: column;
+    section {
+      display: grid;
+      gap: var(--size-3);
+    }
+
+    h3 {
+      margin-inline: var(--size-3);
+      inline-size: 100%;
+      font-size: var(--font-size-5);
+      font-weight: 100;
+
+      @media (width >= 720px) {
+        margin-inline: 5vw;
+      }
+
+      @media (width >= 1200px) {
+        max-inline-size: min(1024px, 75vw);
+        margin-inline: auto;
+        font-size: var(--font-size-7);
+      }
+    }
+
+    .scroll-stack {
+      container-type: inline-size scroll-state;
+      inline-size: 100cqi;
+
+      display: flex;
+
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+
+      gap: var(--size-3);
+      padding-inline: 5vw;
+      scroll-padding-inline: 5vw;
+      padding-block: var(--size-1) var(--size-10);
+
+      @media (width >= 1200px) {
+        padding-inline: 25vw;
+        scroll-padding-inline: 25vw;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        flex-shrink: 0;
+      }
+
+      &::before {
+        order: 0;
+        inline-size: 25cqi;
+      }
+
+      &::after {
+        order: 11;
+        inline-size: 80cqi;
+      }
+
+      .item {
+        white-space: nowrap;
+        scroll-snap-align: start;
+
+        display: flex;
         place-content: center;
-        gap: var(--size-3);
+        place-items: center;
 
-        @media (prefers-reduced-motion: no-preference) {
-          @supports (animation-timeline: view()) {
-            animation: pan-x linear both;
-            animation-timeline: view(block);
+        flex-shrink: 0;
+        text-align: center;
+        padding-inline: var(--size-9);
+        padding-block: var(--size-8);
+        background: var(--surface-2);
+        box-shadow: var(--shadow-5);
+        border-radius: var(--radius-3);
+        overflow: clip;
+
+        font-size: var(--font-size-4);
+        font-weight: 200;
+
+        @media (width >= 720px) {
+          font-size: var(--font-size-5);
+          padding-inline: var(--size-11);
+          padding-block: var(--size-10);
+        }
+
+        @supports (animation-timeline: view()) {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: slide-in linear both;
+            animation-timeline: view(x);
+            animation-range: cover -75cqi contain 20cqi;
           }
         }
 
-        &:nth-child(2n-1) {
-          animation-direction: reverse;
+        &:nth-child(1) {
+          order: 10;
+          z-index: 1;
         }
-
+        &:nth-child(2) {
+          order: 9;
+          z-index: 2;
+        }
         &:nth-child(3) {
-          --_pan-lower: -20vw;
-          --_pan-upper: 15vw;
+          order: 8;
+          z-index: 3;
         }
-
-        > .card {
-          white-space: nowrap;
-          padding-block: var(--size-2);
-          padding-inline: var(--size-3);
-          background: var(--surface-1);
-          border-radius: var(--radius-round);
-          border: 1px solid var(--surface-2);
-
-          display: inline-grid;
-          font-size: var(--font-size-3);
-
-          &:not(:hover) {
-            color: var(--text-1);
-          }
+        &:nth-child(4) {
+          order: 7;
+          z-index: 4;
+        }
+        &:nth-child(5) {
+          order: 6;
+          z-index: 5;
+        }
+        &:nth-child(6) {
+          order: 5;
+          z-index: 6;
+        }
+        &:nth-child(7) {
+          order: 4;
+          z-index: 7;
+        }
+        &:nth-child(8) {
+          order: 3;
+          z-index: 8;
+        }
+        &:nth-child(9) {
+          order: 2;
+          z-index: 9;
         }
       }
     }
