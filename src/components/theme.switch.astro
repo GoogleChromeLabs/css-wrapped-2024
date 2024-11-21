@@ -157,6 +157,18 @@
         stroke-linecap: round;
       }
 
+      &:is(:hover, :focus-visible) {
+        --icon-fill: var(--icon-fill-hover);
+
+        .sun-beams {
+          transform: rotateZ(20deg);
+        }
+
+        > .sun-and-moon > .moon > circle {
+          cx: 20px;
+        }
+      }
+
       [data-theme="dark"] & {
         --icon-fill: hsl(210 10% 70%);
         --icon-fill-hover: hsl(210 15% 90%);
