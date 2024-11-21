@@ -66,7 +66,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
   particlesArray.forEach((particle: HTMLElement) => {
     const { matches: motionOK } = window.matchMedia(
-      "(prefers-reduced-motion: no-preference)",
+      "(prefers-reduced-motion: no-preference)"
     );
 
     let randomX = randomNeg(random(70, 50));
@@ -118,7 +118,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
   @keyframes h1-leave {
     to {
-      transform: translateY(40vh) rotateZ(-0.15turn);
+      transform: translateY(200%) rotateZ(-0.15turn);
     }
   }
 
@@ -207,7 +207,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
           }
         }
 
-        svg {
+        > svg {
           @media (prefers-reduced-motion: no-preference) {
             @supports (animation-timeline: view()) {
               animation: journeyed linear both;
