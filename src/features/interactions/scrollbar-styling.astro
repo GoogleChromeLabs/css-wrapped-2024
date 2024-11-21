@@ -14,14 +14,12 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout>
-  <header>
-    <Title slug={slug} title={title} />
-    <Author name="bramus" />
-    <div class="support">
-      <baseline-status featureId="scrollbar-color"></baseline-status>
-      <baseline-status featureId="scrollbar-width"></baseline-status>
-    </div>
-  </header>
+  <Title slug={slug} title={title} />
+
+  <div class="support">
+    <baseline-status featureId="scrollbar-color"></baseline-status>
+    <baseline-status featureId="scrollbar-width"></baseline-status>
+  </div>
 
   <p>
     Styling scrollbars has long been possible with the <code
@@ -76,6 +74,9 @@ const slug = slugify(title);
       </li>
     </ul>
   </section>
+
+  <Author name="bramus" />
+
   <footer>
     <a href="https://codepen.io/web-dot-dev/pen/yLwMexO">Try demo</a>
     <div class="articles">

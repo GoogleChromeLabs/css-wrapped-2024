@@ -13,13 +13,11 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout>
-  <header>
-    <Title slug={slug} title={title} />
-    <Author name="adam" />
-    <div class="support">
-      <baseline-status featureId="paint-order"></baseline-status>
-    </div>
-  </header>
+  <Title slug={slug} title={title} />
+
+  <div class="support">
+    <baseline-status featureId="paint-order"></baseline-status>
+  </div>
   <p>
     When using <code>text-stroke</code>, the <code>paint-order</code> property can
     be used to control the order in which the text fill and the desired stroke are
@@ -58,6 +56,7 @@ const slug = slugify(title);
     Some folks say that the ability to control <code>paint-order</code> has finally
     made <code>text-stroke</code> usable in production. What do you think?
   </p>
+  <Author name="adam" />
   <footer>
     <a href="https://codepen.io/web-dot-dev/pen/dyxryKE">Try demo</a>
     <div class="articles">

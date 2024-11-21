@@ -13,12 +13,10 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout>
-  <header>
-    <Title slug={slug} title={title} />
-    <div class="support">
-      <baseline-status featureId="details-name"></baseline-status>
-    </div>
-  </header>
+  <Title slug={slug} title={title} />
+  <div class="support">
+    <baseline-status featureId="details-name"></baseline-status>
+  </div>
   <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
     nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
@@ -44,6 +42,7 @@ const slug = slugify(title);
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
     officia tenetur expedita, quidem nisi itaque.
   </p>
+  <Author name="bramus" />
   <footer>
     <a href="#">Try demo</a>
     <div class="articles">

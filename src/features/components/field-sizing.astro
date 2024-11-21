@@ -14,13 +14,10 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout>
-  <header>
-    <Title slug={slug} title={title} />
-    <Author name="adam" />
-    <div class="support">
-      <baseline-status featureId="field-sizing"></baseline-status>
-    </div>
-  </header>
+  <Title slug={slug} title={title} />
+  <div class="support">
+    <baseline-status featureId="field-sizing"></baseline-status>
+  </div>
   <p>
     Without <code>field-sizing</code>, to create a content-sized input field you
     had to either guess at an average size of a text field input or use
@@ -50,6 +47,7 @@ const slug = slugify(title);
     This will work for any font, any font size, any language and any writing
     mode. What used to be high effort will now be low effort.
   </p>
+  <Author name="adam" />
   <footer>
     <a href="https://codepen.io/web-dot-dev/pen/poYmRvp">Try demo</a>
     <div class="articles">
