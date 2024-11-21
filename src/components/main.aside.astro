@@ -88,7 +88,7 @@ const { biomes } = Astro.props;
       // @ts-ignore
       track.style.setProperty(
         "--scroll-direction",
-        direction == "down" ? 1 : -1
+        direction == "down" ? 1 : -1,
       );
     }
 
@@ -101,7 +101,7 @@ const { biomes } = Astro.props;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const details = document.querySelector(
-            `#${entry.target.getAttribute("data-details-target")}`
+            `#${entry.target.getAttribute("data-details-target")}`,
           );
           details.setAttribute("open", "");
         }
@@ -109,7 +109,7 @@ const { biomes } = Astro.props;
     },
     {
       threshold: 0,
-    }
+    },
   );
 
   function observeForSidenav() {
@@ -268,11 +268,10 @@ const { biomes } = Astro.props;
         rotate: 90deg;
         position: absolute;
         top: 80%;
-        left: 22px;
-        z-index: -1;
+        left: 18px;
       }
 
-      &::after {
+      &::before {
         top: 20%;
         left: 30px;
       }
