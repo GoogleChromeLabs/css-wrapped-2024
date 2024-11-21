@@ -32,7 +32,7 @@ const counts = {
   @layer components.bento {
     nav.bento > ul {
       display: grid;
-      --_size: 25vmin;
+      --_size: 25cqi;
       grid: repeat(2, var(--_size)) / repeat(3, var(--_size));
       gap: var(--size-3);
       max-inline-size: max-content;
@@ -40,7 +40,7 @@ const counts = {
       padding: 0;
 
       @media (width >= 780px) {
-        --_size: 30vmin;
+        --_size: 30cqi;
       }
 
       > li {
