@@ -47,10 +47,6 @@
       }
 
       h3 {
-        position: sticky;
-        top: var(--size-2);
-        z-index: 1;
-
         font-family: "Fight", var(--font-sans);
         text-transform: lowercase;
         font-weight: normal;
@@ -59,17 +55,24 @@
 
         text-shadow: 0 4px 0 light-dark(var(--gray-3), var(--gray-11));
 
-        @media (width <= 540px) {
+        @media (width > 650px) {
+          position: sticky;
+          top: var(--size-2);
+          z-index: 1;
+        }
+
+        /* @media (width <= 540px) {
           @supports (animation-timeline: view()) {
             @media (prefers-reduced-motion: no-preference) {
               animation: mobile-sticky-adjustment ease-out both;
               animation-timeline: view();
-              animation-range: exit-crossing calc(var(--size-3) * -1) exit-crossing var(--size-5);
+              animation-range: exit-crossing calc(var(--size-3) * -1)
+                exit-crossing var(--size-5);
               animation-timeline: var(--vt-name);
               transform-origin: left top;
             }
           }
-        }
+        } */
 
         > code {
           font-size: 0.6em;
