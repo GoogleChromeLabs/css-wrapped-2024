@@ -23,6 +23,13 @@ const { title, image, description, features } = Astro.props;
 </section>
 
 <style>
+  @keyframes biome-header {
+    to {
+      opacity: 0;
+      transform: translateY(5vh) scale(0.9);
+    }
+  }
+
   @layer components.biome {
     header {
       grid-column: main-features;
@@ -76,14 +83,6 @@ const { title, image, description, features } = Astro.props;
     .features-list {
       display: grid;
       gap: var(--size-10);
-    }
-  }
-</style>
-<style is:global>
-  @keyframes biome-header {
-    to {
-      opacity: 0;
-      transform: translateY(5vh) scale(0.9);
     }
   }
 </style>
