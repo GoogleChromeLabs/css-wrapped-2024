@@ -3,6 +3,9 @@ import { Icon } from "astro-icon/components";
 import NavBento from "./nav.bento.astro";
 
 const { biomes } = Astro.props;
+const totalFeatures = biomes.reduce((total, biome) => {
+  return (total += biome.features.length);
+}, 0);
 ---
 
 <section>
@@ -41,12 +44,14 @@ const { biomes } = Astro.props;
       <p class="sub-title">
         <span><b>2024 CSS</b></span>&nbsp; journeyed
       </p>
-      <p>
+      <p class="sub-title">
         through the <b>forest</b>, over the <b>mountains</b>, and across the <b
           >seas</b
         >…
       </p>
       <p class="hero-title retro-title">Pushing The Web Forward</p>
+      <p class="sub-title">adding {totalFeatures} new features</p>
+
       <NavBento biomes={biomes} />
     </div>
   </div>
