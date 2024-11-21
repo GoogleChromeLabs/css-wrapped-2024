@@ -29,6 +29,12 @@ const counts = {
 </nav>
 
 <style>
+  @keyframes bento-enter {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
   @layer components.bento {
     nav.bento > ul {
       display: grid;
@@ -51,6 +57,14 @@ const counts = {
         border-radius: var(--radius-3);
         overflow: clip;
         grid-column: span 1;
+
+        @supports (animation-timeline: view()) {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: bento-enter var(--ease-out-3) both;
+            animation-timeline: view();
+            animation-range: 0% 15%;
+          }
+        }
 
         &:first-of-type {
           grid-row: span 2;

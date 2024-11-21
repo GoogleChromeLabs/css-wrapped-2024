@@ -15,7 +15,7 @@ const { title, image, description, features } = Astro.props;
     {
       features.map((Feature) => (
         <div
-          style={`view-timeline-name: --vtl--${slugify(title)}--${slugify(Feature.title)}`}
+          style={`--vt-name: --vtl--${slugify(title)}--${slugify(Feature.title)}`}
         >
           <Feature.default />
         </div>
@@ -99,6 +99,10 @@ const { title, image, description, features } = Astro.props;
     .features-list {
       display: grid;
       gap: var(--size-10);
+
+      > div {
+        view-timeline-name: var(--vt-name);
+      }
     }
   }
 </style>

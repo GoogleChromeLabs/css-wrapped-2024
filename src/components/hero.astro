@@ -42,7 +42,8 @@ const totalFeatures = biomes.reduce((total, biome) => {
     <div class="narrative">
       <Icon name="dino" size="5rem" />
       <p class="sub-title">
-        <span><b>2024 CSS</b></span>&nbsp; journeyed
+        Chrome and <span class="callout">2024 <Icon name="css" /></span>
+        journeyed
       </p>
       <p class="sub-title">
         through the <b>forest</b>, over the <b>mountains</b>, and across the <b
@@ -50,7 +51,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
         >…
       </p>
       <p class="hero-title retro-title">Pushing The Web Forward</p>
-      <p class="sub-title">adding {totalFeatures} new features</p>
+      <p class="sub-title">adding <b>{totalFeatures} new features</b></p>
 
       <NavBento biomes={biomes} />
     </div>
@@ -109,10 +110,10 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
   @keyframes journeyed {
     from {
-      transform: translateX(-25vw) scaleX(calc(var(--scroll-direction, 1)));
+      transform: translateX(-10vw) scaleX(calc(var(--scroll-direction, 1)));
     }
     to {
-      transform: translateX(90vw) scaleX(calc(var(--scroll-direction, 1)));
+      transform: translateX(100vw) scaleX(calc(var(--scroll-direction, 1)));
     }
   }
 
@@ -137,7 +138,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
     }
 
     .hero {
-      margin-block: var(--size-10) 20vh;
+      margin-block: var(--size-10) 10vh;
       max-inline-size: 90vw;
       margin-inline: auto;
       padding-inline: var(--size-3);
@@ -146,6 +147,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
       @media (width >= 720px) {
         max-inline-size: min(1024px, 75vw);
+        margin-block: var(--size-10) 15vh;
         padding-inline: var(--size-5);
         gap: var(--size-8);
       }
@@ -158,8 +160,8 @@ const totalFeatures = biomes.reduce((total, biome) => {
         @supports (animation-timeline: view()) {
           @media (prefers-reduced-motion: no-preference) {
             animation: h1-leave linear both;
-            animation-timeline: view();
-            animation-range: cover 80% cover 100%;
+            animation-timeline: scroll();
+            animation-range: 0vh 15vh;
           }
         }
       }
@@ -172,19 +174,29 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
       .hero-title {
         font-size: 15cqi;
-        margin-block-end: var(--size-9);
+        margin-block: var(--size-8);
       }
 
       .sub-title {
         font-size: var(--font-size-4);
         font-weight: 200;
-        line-height: 2.25;
 
-        > span {
+        @media (width >= 720px) {
+          line-height: 2.25;
+        }
+
+        > .callout {
+          display: inline-flex;
+          gap: var(--size-2);
+          place-items: center;
+          font-weight: bold;
+          line-height: 1cap;
+
           border: 2px solid var(--surface-4);
           border-radius: var(--radius-2);
-          padding-block: var(--size-1);
+          padding-block: var(--size-2);
           padding-inline: var(--size-2);
+          margin-inline: var(--size-1);
         }
       }
 

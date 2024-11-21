@@ -32,9 +32,16 @@
       background-image: url(/public/biomes/cyberspace-sidebar.png),
         url(/public/biomes/cyberspace-sidebar.png);
       background-position:
-        -10% 100%,
-        110% 100%;
-      background-size: auto 80vh;
+        -150px 100%,
+        calc(100% + 150px) 100%;
+      background-size: 300px auto;
+
+      @media (width <= 720px) {
+        padding-block-start: 15vh;
+        background-position:
+          -250px 100%,
+          calc(100% + 250px) 100%;
+      }
 
       > h3.retro-title {
         font-size: clamp(5rem, 11vw, 14rem);

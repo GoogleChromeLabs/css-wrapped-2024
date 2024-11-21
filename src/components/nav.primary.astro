@@ -37,6 +37,14 @@ import ThemeSwitch from "./theme.switch.astro";
         block-size: var(--size-9);
       }
 
+      /* @supports (animation-timeline: view()) {
+        @media (prefers-reduced-motion: no-preference) {
+          animation: fade-out linear reverse both;
+          animation-timeline: scroll();
+          animation-range: 50vh 75vh;
+        }
+      } */
+
       > .page-controls {
         display: flex;
         place-items: center;

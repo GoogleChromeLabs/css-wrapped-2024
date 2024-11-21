@@ -13,6 +13,12 @@
     }
   }
 
+  @keyframes mobile-sticky-adjustment {
+    to {
+      transform: translateX(var(--size-7)) scale(0.7);
+    }
+  }
+
   @layer components.feature {
     article {
       --_inline-padding: var(--size-8);
@@ -54,8 +60,15 @@
         text-shadow: 0 4px 0 light-dark(var(--gray-3), var(--gray-11));
 
         @media (width <= 540px) {
-          top: var(--size-8);
-          background-color: var(--surface-1);
+          @supports (animation-timeline: view()) {
+            @media (prefers-reduced-motion: no-preference) {
+              animation: mobile-sticky-adjustment ease-out both;
+              animation-timeline: view();
+              animation-range: exit-crossing calc(var(--size-3) * -1) exit-crossing var(--size-5);
+              animation-timeline: var(--vt-name);
+              transform-origin: left top;
+            }
+          }
         }
 
         > code {

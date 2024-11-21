@@ -36,8 +36,8 @@ const biomes = [
     description: `<p>We travelled <b>over the mountains</b> to bring  
     <a href="#anchor-positioning">exciting overlay UX with anchor</a>, 
     the power to <a href="#animate-to-height-auto">animate to height auto</a>, 
-    easily turn <a href="#exclusive-details"><code>&lt;details&gt;</code> into an accordion<a>, 
-    get more access to <a href="#styleable-details"><code>&lt;details&gt;</code> styling</a>,
+    easily turn <a href="#exclusive-details">details into an accordion<a>, 
+    get more access to <a href="#styleable-details">details styling</a>,
     and <a href="#field-sizing">intrinsically size form elements</a>!</p>`,
     backdrop: "desert",
     image: "/biomes/desert.svg",
@@ -96,11 +96,11 @@ const timelines = biomes.reduce(
   (timelines, biome) => [
     `--vtl--${slugify(biome.title)}`,
     ...biome.features.map(
-      (feature) => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`,
+      (feature) => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`
     ),
     ...timelines,
   ],
-  [],
+  []
 );
 ---
 
