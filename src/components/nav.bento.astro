@@ -44,6 +44,7 @@ const counts = {
       }
 
       > li {
+        container-type: inline-size;
         list-style-type: none;
         padding: 0;
         display: grid;
@@ -55,14 +56,6 @@ const counts = {
           grid-row: span 2;
           grid-column: span 2;
           max-inline-size: 100%;
-
-          > a {
-            font-size: var(--font-size-fluid-2);
-
-            @media (width >= 780px) {
-              font-size: var(--font-size-fluid-3);
-            }
-          }
         }
 
         &.desert a::after {
@@ -80,10 +73,7 @@ const counts = {
         > a {
           display: grid;
           font-weight: 100;
-
-          @media (width >= 780px) {
-            font-size: var(--font-size-fluid-1);
-          }
+          font-size: 13cqi;
 
           &:hover {
             text-decoration: none;
