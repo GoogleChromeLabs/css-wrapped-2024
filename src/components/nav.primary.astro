@@ -22,17 +22,19 @@ import ThemeSwitch from "./theme.switch.astro";
 <style>
   @layer components.primary-header {
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+
+      block-size: var(--size-8);
       display: flex;
       place-items: center;
       justify-content: space-between;
-      padding-block: var(--size-3);
       padding-inline: var(--size-5);
       background: var(--surface-document);
 
-      @media (width <= 1200px) {
-        position: sticky;
-        top: 0;
-        z-index: 1;
+      @media (width >= 540px) {
+        block-size: var(--size-9);
       }
 
       > .page-controls {

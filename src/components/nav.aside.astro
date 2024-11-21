@@ -156,19 +156,25 @@ const { biomes } = Astro.props;
       grid-template-columns: 50px 1fr;
       align-self: start;
       position: sticky;
-      top: var(--size-3);
-      block-size: calc(100dvh - (var(--size-3) * 2));
+      top: var(--size-9);
+      block-size: calc(100dvh - var(--size-3) - var(--size-9));
 
       > nav {
         block-size: max-content;
         display: grid;
         border-radius: var(--radius-3);
         overflow: clip;
-        box-shadow: var(--shadow-5);
+
+        summary,
+        details {
+          background: none;
+        }
+
+        summary::marker {
+          margin-right: 20px;
+        }
 
         > details {
-          background: light-dark(white, var(--surface-2));
-
           @media (prefers-reduced-motion: no-preference) {
             interpolate-size: allow-keywords;
           }
@@ -222,13 +228,13 @@ const { biomes } = Astro.props;
           position: relative;
 
           padding-inline: var(--size-3);
-          padding-block: var(--size-2);
+          padding-block: var(--size-1);
 
           &::before {
             content: "";
             position: absolute;
             top: 0;
-            left: 0;
+            left: 4px;
             background: var(--link);
 
             inline-size: 3px;

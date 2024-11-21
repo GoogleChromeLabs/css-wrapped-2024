@@ -7,13 +7,20 @@
 </article>
 
 <style>
+  @keyframes feature-header {
+    to {
+      transform: translateX(5ch);
+    }
+  }
+
   @layer components.feature {
     article {
       --_inline-padding: var(--size-8);
 
       display: grid;
-      gap: var(--size-8);
-      padding: var(--size-7) var(--_inline-padding);
+      gap: var(--size-7);
+      padding-block: var(--size-7);
+      padding-inline: var(--_inline-padding);
       border: 1px solid var(--surface-2);
       background: var(--surface-1);
       border-radius: var(--radius-3);
@@ -23,35 +30,41 @@
       contain-intrinsic-block-size: 100vh; */
 
       @media (width <= 720px) {
-        --_inline-padding: var(--size-3);
         gap: var(--size-5);
+        padding-block: var(--size-5);
       }
 
-      /* @media (width <= 960px) {
-        border-width: 0;
-      } */
+      @media (width <= 480px) {
+        --_inline-padding: var(--size-3);
+        gap: var(--size-3);
+        padding-block: var(--size-3);
+      }
 
-      > header {
-        display: grid;
-        gap: var(--size-6);
+      h3 {
+        position: sticky;
+        top: var(--size-2);
+        z-index: 1;
 
-        > h3 {
-          font-family: "Fight", var(--font-sans);
-          text-transform: lowercase;
-          font-weight: normal;
-          line-height: 0.75;
-          font-size: clamp(3rem, 5vw, 6rem);
+        font-family: "Fight", var(--font-sans);
+        text-transform: lowercase;
+        font-weight: normal;
+        line-height: 0.75;
+        font-size: var(--font-size-8);
 
-          text-shadow: 0 4px 0 light-dark(var(--gray-3), var(--gray-11));
+        text-shadow: 0 4px 0 light-dark(var(--gray-3), var(--gray-11));
 
-          > code {
-            font-size: 0.6em;
-            text-shadow: none;
-          }
+        @media (width <= 540px) {
+          top: var(--size-8);
+          background-color: var(--surface-1);
+        }
 
-          > a {
-            scroll-margin-block-start: 3.5rem;
-          }
+        > code {
+          font-size: 0.6em;
+          text-shadow: none;
+        }
+
+        > a {
+          scroll-margin-block-start: var(--size-3);
         }
       }
 
@@ -66,7 +79,6 @@
         gap: var(--size-2);
         border-block-start: 1px solid var(--surface-2);
         padding-block-start: var(--size-6);
-        margin-block-start: var(--size-5);
 
         > .articles {
           display: flex;
