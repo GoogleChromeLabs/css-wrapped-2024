@@ -5,8 +5,10 @@ const { title, image, description, features } = Astro.props;
 
 <header>
   <img src={image} alt="" width="1280" height="720" />
-  <h2 class="retro-title">{title}</h2>
-  <p set:html={description} />
+  <div>
+    <h2 class="retro-title">{title}</h2>
+    <p set:html={description} />
+  </div>
 </header>
 <section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
   <div class="features-list">
@@ -42,7 +44,7 @@ const { title, image, description, features } = Astro.props;
         margin-block-end: 10vh;
       }
 
-      > img {
+      img {
         border-radius: var(--radius-4);
 
         @supports (animation-timeline: view()) {
@@ -54,12 +56,26 @@ const { title, image, description, features } = Astro.props;
         }
       }
 
-      > h2 {
-        grid-column: main-features;
-        font-size: clamp(5rem, 9vw, 9rem);
+      > div {
+        display: grid;
+        max-inline-size: var(--size-content-3);
+        margin: auto;
+        gap: var(--size-3);
+
+        @supports (animation-timeline: view()) {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: biome-story linear both;
+            animation-timeline: view();
+            animation-range: cover 30% cover 50%;
+          }
+        }
       }
 
-      > p {
+      h2 {
+        font-size: clamp(5rem, 9vw, 7rem);
+      }
+
+      p {
         font-size: var(--font-size-4);
         font-weight: 200;
       }

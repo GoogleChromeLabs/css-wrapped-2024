@@ -113,8 +113,7 @@ const { biomes } = Astro.props;
 
   @keyframes h1-leave {
     to {
-      opacity: 0;
-      transform: translateY(10vh) scale(0.9) rotateX(0.25turn);
+      transform: translateY(40vh) rotateZ(-0.15turn);
     }
   }
 
@@ -138,12 +137,12 @@ const { biomes } = Astro.props;
       margin-inline: auto;
       padding-inline: var(--size-3);
       display: grid;
-      gap: 10vw;
+      gap: var(--size-5);
 
       @media (width >= 720px) {
         max-inline-size: min(1024px, 75vw);
         padding-inline: var(--size-5);
-        gap: 15vw;
+        gap: var(--size-8);
       }
 
       > h1 {
@@ -155,7 +154,7 @@ const { biomes } = Astro.props;
           @media (prefers-reduced-motion: no-preference) {
             animation: h1-leave linear both;
             animation-timeline: view();
-            animation-range: exit -10% exit 100%;
+            animation-range: cover 80% cover 100%;
           }
         }
       }
@@ -187,6 +186,11 @@ const { biomes } = Astro.props;
       .narrative {
         display: grid;
         container: narrative / inline-size;
+        margin-block: 10vh;
+
+        @media (width >= 1024px) {
+          margin-block: 25vh;
+        }
 
         > p {
           @supports (animation-timeline: view()) {
