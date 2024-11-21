@@ -2,12 +2,12 @@
 import "../styles/global.css";
 import slugify from "./../util/slugify";
 
-import HeaderPrimary from "../components/header.primary.astro";
+import PrimaryNav from "../components/nav.primary.astro";
 import Hero from "../components/hero.astro";
 import FeatureFilmstrip from "../components/feature.filmstrip.astro";
 import Biomes from "../components/biomes.astro";
 import Footer from "../components/footer.astro";
-import MainAside from "../components/main.aside.astro";
+import AsideNav from "../components/nav.aside.astro";
 import CookieConsent from "../components/cookieconsent.astro";
 
 import * as FieldSizing from "../features/components/field-sizing.astro";
@@ -124,12 +124,12 @@ const timelines = biomes.reduce(
     <script type="module" src="/baseline-status.min.js"></script>
   </head>
   <body>
-    <HeaderPrimary />
+    <PrimaryNav />
     <Hero biomes={biomes} />
     <!-- <FeatureFilmstrip biomes={biomes} /> -->
 
     <main style={`timeline-scope: ${timelines.join(", ")}`}>
-      <MainAside biomes={biomes} />
+      <AsideNav biomes={biomes} />
       <Biomes biomes={biomes} />
     </main>
 
