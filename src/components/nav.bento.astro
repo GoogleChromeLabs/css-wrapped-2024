@@ -32,12 +32,16 @@ const counts = {
   @layer components.bento {
     nav.bento > ul {
       display: grid;
-      --_size: 20vmin;
+      --_size: 25vmin;
       grid: repeat(2, var(--_size)) / repeat(3, var(--_size));
       gap: var(--size-3);
       max-inline-size: max-content;
       margin-inline: auto;
       padding: 0;
+
+      @media (width >= 780px) {
+        --_size: 20vmin;
+      }
 
       > li {
         list-style-type: none;
@@ -53,7 +57,11 @@ const counts = {
           max-inline-size: 100%;
 
           > a {
-            font-size: var(--font-size-fluid-3);
+            font-size: var(--font-size-fluid-2);
+
+            @media (width >= 780px) {
+              font-size: var(--font-size-fluid-3);
+            }
           }
         }
 
@@ -71,8 +79,11 @@ const counts = {
 
         > a {
           display: grid;
-          font-size: var(--font-size-fluid-1);
           font-weight: 100;
+
+          @media (width >= 780px) {
+            font-size: var(--font-size-fluid-1);
+          }
 
           &:hover {
             text-decoration: none;

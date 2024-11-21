@@ -29,7 +29,11 @@ const { title, image, description, features } = Astro.props;
       display: flex;
       flex-flow: column;
       gap: var(--size-5);
-      margin-block-end: 10vh;
+      margin-block-end: 5vh;
+
+      @media (width >= 720px) {
+        margin-block-end: 10vh;
+      }
 
       > img {
         border-radius: var(--radius-4);

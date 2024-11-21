@@ -107,12 +107,18 @@ const { biomes } = Astro.props;
     }
 
     .hero {
-      margin-block: var(--size-10);
-      max-inline-size: min(1024px, 75vw);
+      margin-block: var(--size-10) 20vh;
+      max-inline-size: 90vw;
       margin-inline: auto;
-      padding-inline: var(--size-5);
+      padding-inline: var(--size-3);
       display: grid;
-      gap: var(--size-8);
+      gap: 10vw;
+
+      @media (width >= 720px) {
+        max-inline-size: min(1024px, 75vw);
+        padding-inline: var(--size-5);
+        gap: 15vw;
+      }
 
       > h1 {
         font-size: clamp(5rem, 11vw, 14rem);
@@ -144,7 +150,6 @@ const { biomes } = Astro.props;
       }
 
       .narrative {
-        margin-block: var(--size-12) var(--size-10);
         display: grid;
 
         svg {
