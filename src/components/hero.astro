@@ -39,12 +39,12 @@ const { biomes } = Astro.props;
     <div class="narrative">
       <Icon name="dino" size="5rem" />
       <p class="sub-title">
-        <span><b>2024 CSS</b></span> journeyed<br />through the forest, over the
-        mountains, and across the seas…
+        <span><b>2024 CSS</b></span> journeyed<br />through the <b>forest</b>,
+        over the <b>mountains</b>, and across the <b>seas</b>…
       </p>
       <p class="hero-title retro-title">Pushing The Web Forward</p>
+      <NavBento biomes={biomes} />
     </div>
-    <NavBento biomes={biomes} />
   </div>
 </section>
 
@@ -57,7 +57,7 @@ const { biomes } = Astro.props;
 
   particlesArray.forEach((particle: HTMLElement) => {
     const { matches: motionOK } = window.matchMedia(
-      "(prefers-reduced-motion: no-preference)"
+      "(prefers-reduced-motion: no-preference)",
     );
 
     let randomX = randomNeg(random(70, 50));
@@ -134,12 +134,13 @@ const { biomes } = Astro.props;
 
       .hero-title {
         font-size: clamp(5rem, 8vw, 9rem);
+        margin-block-end: var(--size-9);
       }
 
       .sub-title {
         font-size: var(--font-size-4);
         font-weight: 200;
-        line-height: 1.75;
+        line-height: 2.25;
 
         > span {
           border: 2px solid var(--surface-4);
@@ -153,8 +154,6 @@ const { biomes } = Astro.props;
         display: grid;
 
         svg {
-          --scroll-direction: 1;
-
           @media (prefers-reduced-motion: no-preference) {
             @supports (animation-timeline: view()) {
               animation: journeyed linear both;
