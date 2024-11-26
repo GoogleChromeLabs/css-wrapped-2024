@@ -40,7 +40,7 @@ const biomes = [
     get more access to <a href="#styleable-details">details styling</a>,
     and <a href="#field-sizing">intrinsically size form elements</a>!</p>`,
     backdrop: "desert",
-    image: "/biomes/desert.png",
+    image: "./biomes/desert.png",
     features: [
       FieldSizing,
       AnimateToHeightAuto,
@@ -56,7 +56,7 @@ const biomes = [
       <a href="#scrolldriven-animations">creating scroll animations</a> and even 
       <a href="#scroll-snap-events">events for scroll snap</a>!`,
     backdrop: "arctic",
-    image: "/biomes/arctic.png",
+    image: "./biomes/arctic.png",
     features: [
       ScrollbarStyling,
       ViewTransitionsMPA,
@@ -77,7 +77,7 @@ const biomes = [
       options for <a href="#paintorder">layering text strokes with text fill</a>, 
       and even <a href="#cssom-nested-declarations">more ways to relax CSS nesting</a>!</p>`,
     backdrop: "jungle",
-    image: "/biomes/jungle.png",
+    image: "./biomes/jungle.png",
     features: [
       BackdropInheritance,
       LightDarkFunction,
@@ -111,17 +111,17 @@ const timelines = biomes.reduce(
 <html lang="en" style="view-transition-name: none">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>CSS Wrapped 2024</title>
     <link
       rel="preload"
-      href="/fight.otf"
+      href="./fight.otf"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <script type="module" src="/baseline-status.min.js"></script>
+    <script type="module" src="./baseline-status.min.js"></script>
   </head>
   <body>
     <PrimaryNav />

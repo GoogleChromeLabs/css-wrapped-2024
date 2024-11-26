@@ -4,6 +4,7 @@
  */
 
 import { defineConfig } from "astro/config";
+import { fileURLToPath, URL } from 'node:url';
 import icon from "astro-icon";
 
 export default defineConfig({
@@ -11,4 +12,11 @@ export default defineConfig({
     enabled: false
   },
   integrations: [icon()],
+  vite: {
+    resolve: {
+      alias: {
+        '@public': fileURLToPath(new URL('./public', import.meta.url)),
+      }
+    }
+  }
 });
