@@ -107,8 +107,7 @@ const timelines = biomes.reduce(
 <!--
  Copyright 2024 Google LLC
  SPDX-License-Identifier: Apache-2.0
---><!-- remove the VT until the clientside theme switch is loaded so we dont flash a VT -->
-<html lang="en" style="view-transition-name: none">
+--><html lang="en" style="view-transition-name: none">{/* remove the VT until the clientside theme switch is loaded so we dont flash a VT  */}
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -126,7 +125,7 @@ const timelines = biomes.reduce(
   <body>
     <PrimaryNav />
     <Hero biomes={biomes} />
-    <!-- <FeatureFilmstrip biomes={biomes} /> -->
+    {/* <FeatureFilmstrip biomes={biomes} />  */}
 
     <main style={`timeline-scope: ${timelines.join(", ")}`}>
       <AsideNav biomes={biomes} />
