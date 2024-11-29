@@ -1,14 +1,15 @@
 ---
 import authors from './../data/authors.json';
 
-const authorsArray = Object.values(authors).reverse();
+const authorKeys = Object.keys(authors).reverse();
+const authorInfo = Object.values(authors).reverse();
 ---
 
 <div class="avatars">
-    {authorsArray.map(author => <a href={author.url} title={author.name}><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" src={author.image}></a>)}
+    {authorInfo.map((author, index) => <a name={`author-profile-${authorKeys[index]}`} href={author.url} title={author.name}><span style={`position-anchor: --${authorKeys[index]}`}>{author.name}</span><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" src={author.image} style={`anchor-name: --${authorKeys[index]}`}></a>)}
 </div>
 
-<style define:vars={{ numChildren: authorsArray.length }}>
+<style>
     .avatars {
         --color-core-primary: var(--link);
         --color-core-tertiary: var(--link-visited);
@@ -22,7 +23,7 @@ const authorsArray = Object.values(authors).reverse();
         --hover-overlap-size: 4em;
         --border-size: 0.5em;
 
-        --num-children: var(--numChildren);
+        --num-children: 4; // Ideally, this is computed. Oh well
         --num-children-1: calc(var(--num-children) - 1);
         
         display: grid;
@@ -48,7 +49,7 @@ const authorsArray = Object.values(authors).reverse();
         --grid-cell-size-to-use: calc(var(--hover-overlap-size, var(--avatar-size)) + (var(--border-size) * var(--num-children)));
     }
 
-    .avatars > * {
+    .avatars > a {
         width: var(--avatar-size);
         aspect-ratio: 1;
         height: auto;
@@ -74,6 +75,28 @@ const authorsArray = Object.values(authors).reverse();
     .avatars :is(:hover, :focus) > img {
         transform-origin: 50% 50%;
         --border-color: var(--color-core-tertiary);
-        scale: 1.2;
+        scale: 1.1;
+    }
+
+    .avatars span {
+        display: none;
+    }
+    @supports (position-area: bottom center) {
+        .avatars span {
+            position: absolute;
+            position-area: bottom;
+            white-space: nowrap;
+            height: auto;
+            z-index: 2;
+            color: unset;
+            border: 1px solid var(--surface-2);
+            background: var(--surface-1);
+            border-radius: var(--radius-3);
+            padding: var(--size-2);
+        }
+
+        .avatars :is(:hover, :focus) > span {
+            display: block;
+        }
     }
 </style>
