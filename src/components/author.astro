@@ -3,28 +3,7 @@ interface Props {
   name: string;
 }
 
-const authors = {
-  rachel: {
-    name: "Rachel Andrew",
-    url: "https://developer.chrome.com/authors/rachel-andrew",
-    image: "./authors/rachel.jpg",
-  },
-  una: {
-    name: "Una Kravets",
-    url: "https://una.im",
-    image: "./authors/una.jpg",
-  },
-  adam: {
-    name: "Adam Argyle",
-    url: "https://developer.chrome.com/authors/adam-argyle",
-    image: "./authors/argyle.jpg",
-  },
-  bramus: {
-    name: "Bramus Van Damme",
-    url: "https://developer.chrome.com/authors/bramus",
-    image: "./authors/bramus.jpg",
-  },
-};
+import authors from './../data/authors.json';
 
 const { name } = Astro.props;
 const author = authors[name];
