@@ -19,7 +19,16 @@
 	src: url(/fight.otf);
 	font-weight: normal;
 	font-style: normal;
+	font-display: swap;
 }
+
+@font-face {
+	font-family: "Fight Fallback";
+	src: local(Arial);
+	size-adjust: 57.86%;
+	ascent-override: normal;
+	descent-override: normal;
+  }
 
 @view-transition {
 	navigation: auto;
