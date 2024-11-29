@@ -1,34 +1,34 @@
 ---
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+
 interface Props {
   id: string;
   width?: number;
   height?: number;
-  title?: string;
 }
 
 const {
   id,
   width = 560,
   height = 315,
-  title = "YouTube video player",
 } = Astro.props;
-const src = `https://www.youtube.com/embed/${id}`;
+const posterURL = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const embedURL = `https://www.youtube.com/embed/${id}`;
+const watchURL = `https://youtube.com/watch?v=${id}`;
 ---
 
-<iframe
-  width={width}
-  height={height}
-  src={src}
-  title={title}
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerpolicy="strict-origin-when-cross-origin"
-  loading="lazy"
-  allowfullscreen></iframe>
+<script src="lite-youtube-embed"></script>
+
+<lite-youtube videoid={id} style={`background-image: url('${posterURL}');`}>
+  <a href={watchURL} class="lyt-playbtn" title="Play Video">
+    <span class="lyt-visually-hidden">Play Video</span>
+  </a>
+</lite-youtube>
 
 <style define:vars={{ aspectRatio: width / height }}>
   @layer components.youtube {
-    iframe {
+    lite-youtube > iframe {
+      all: unset !important;
       width: 100%;
       height: auto;
       aspect-ratio: var(--aspectRatio);
