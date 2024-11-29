@@ -1,0 +1,79 @@
+---
+import authors from './../data/authors.json';
+
+const authorsArray = Object.values(authors).reverse();
+---
+
+<div class="avatars">
+    {authorsArray.map(author => <a href={author.url} title={author.name}><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" src={author.image}></a>)}
+</div>
+
+<style define:vars={{ numChildren: authorsArray.length }}>
+    .avatars {
+        --color-core-primary: var(--link);
+        --color-core-tertiary: var(--link-visited);
+        --color-core-bg: var(--surface-document);
+        
+        --color-avatars-background: var(--surface-document);
+
+        --gap: 0.1em;
+        --avatar-size: 5em;
+        --overlap-size: 3em;
+        --hover-overlap-size: 4em;
+        --border-size: 0.5em;
+
+        --num-children: var(--numChildren);
+        --num-children-1: calc(var(--num-children) - 1);
+        
+        display: grid;
+        gap: var(--gap);
+        padding: var(--gap);
+        margin: 0 auto;
+        
+        grid-auto-flow: column;
+        grid-template-columns: repeat(var(--num-children), var(--grid-cell-size-to-use));
+        width: calc(var(--grid-cell-size-to-use) * var(--num-children-1) + var(--gap) * var(--num-children) + var(--avatar-size) + var(--border-size));
+        transition: all ease-in-out 0.25s;
+    
+        direction: rtl; /* Reverse the order, so the last one shows first */
+    }
+
+    .avatars {
+        --grid-cell-size-to-use: calc(var(--overlap-size) + (var(--border-size) * var(--num-children)));
+    }
+    :is(
+        .avatars:hover,
+        .avatars:not(hover):has(> :focus) /* Also grow when tabbing into the list */
+    ) {
+        --grid-cell-size-to-use: calc(var(--hover-overlap-size, var(--avatar-size)) + (var(--border-size) * var(--num-children)));
+    }
+
+    .avatars > * {
+        width: var(--avatar-size);
+        aspect-ratio: 1;
+        height: auto;
+        outline: none;
+    }
+
+    .avatars img {
+        width: 100%;
+        height: auto;
+        box-sizing: content-box;
+        
+        --border-color: var(--color-core-primary);
+        outline: var(--border-size) solid var(--border-color);
+        outline-offset: calc(var(--border-size) * -2); /* 1px extra to cater for rounding errors */
+        padding: var(--border-size);
+        
+        border: var(--border-size) solid var(--color-avatars-background);
+        border-radius: var(--avatar-size);
+        // scale: 1;
+        transition: all ease-in-out 0.15s;
+    }
+
+    .avatars :is(:hover, :focus) > img {
+        transform-origin: 50% 50%;
+        --border-color: var(--color-core-tertiary);
+        scale: 1.2;
+    }
+</style>

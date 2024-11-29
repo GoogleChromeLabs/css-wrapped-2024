@@ -1,11 +1,14 @@
 ---
 
+import Authors from "./authors.astro";
+
 ---
 
 <footer id="outro">
   <h3>It's a good time to be a</h3>
   <h3 class="retro-title">front-end dev</h3>
   <p>Made with ❤️ by The Chrome DevRel Team</p>
+  <Authors />
   <img
     height="25vh"
     src="biomes/cyberspace-header.png"
@@ -48,7 +51,7 @@
       }
 
       > p {
-        margin-block-start: var(--size-5);
+        margin-block: var(--size-7);
       }
 
       > img {
