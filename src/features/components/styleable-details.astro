@@ -17,37 +17,45 @@ const slug = slugify(title);
   <!-- <div class="support">
     <baseline-status featureId="scrollbar-width"></baseline-status>
   </div> -->
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+  
+  <p>From Chrome 131 you have more options to style the structure of <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements. You can now use these elements when building disclosure or accordion widgets.</p>
+
+  <p>In particular, the changes introduced in Chrome 131 enable the use of the `display` property on these elements, and add a <code>::details-content</code> pseudo-element to style the part that expands and collapses.</p>
+
+  <p>For example, to create a horizontal exclusive accordion, apply a flex layout that flows in the row direction to each <code>&lt;details&gt;</code> element.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`details {
+  display: flex;
+  flex-direction: row;
+}`}
+  />
+
+  <figure>
+    <CodePen id="web-dot-dev/XWvBZNo" height={680} />
+    <figcaption>Demo: Horizontal exclusive accordion. If your browser has no support, <a href="https://developer.chrome.com/static/blog/styling-details/video/XWvBZNo.mp4">check out the recording</a>.</figcaption>
+    {/* TODO: Make local copy of the MP4 */}
+  </figure>  
+
+  <p>In addition to using more display types, the content of the <code>&lt;details&gt;</code> element automatically gets wrapped in a <code>::details-content</code> pseudo-element. All children of the <code>&lt;details&gt;</code> element except the <code>&lt;summary&gt;</code> get slotted into that pseudo.</p>
+
+  <p>You can use this pseudo to control the part of the details disclosure element that expands and collapses.</p>
+
+  <figure>
+    <CodePen id="web-dot-dev/ExqpQZM" height={600} />
+    <figcaption>Demo: Material UI accordion. If your browser has no support, <a href="https://developer.chrome.com/static/blog/styling-details/video/ExqpQZM.mp4">check out the recording</a>.</figcaption>
+    {/* TODO: Make local copy of the MP4 */}
+  </figure>  
+
   <Author name="bramus" />
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://developer.chrome.com/blog/styling-details">Blog Post “More options for styling &lt;details&gt;” on developer.chrome.com</a></li>
+      <li><a href="https://codepen.io/web-dot-dev/pen/XWvBZNo">Demo: Horizontal exclusive accordion</a></li>
+      <li><a href="https://codepen.io/web-dot-dev/pen/ExqpQZM">Demo: Demo: Material UI accordion</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
