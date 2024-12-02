@@ -17,37 +17,47 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="light-dark"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+  
+  <p>System colors in CSS have the ability to react to the current used color-scheme value. For example, if you declare <code>color: CanvasText</code> in a CSS rule, the color of the matched elements will be either light or dark depending on the <code>color-scheme</code> value.</p>
+
+  <figure>
+    <CodePen id="bramus/xxvJzJK" />{/* Move to web-dot-dev account */}
+    <figcaption>System colors demo.</figcaption>
+  </figure>
+  
+  <p>The <code>light-dark()</code> function exposes the same capability to developers. This function accepts two arguments, both of which must be a <code>&lt;color&gt;</code>.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`:root {
+  color-scheme: light dark;
+  --primary-color: light-dark(#333, #fafafa);
+  --primary-background: light-dark(#e4e4e4, #121212);
+  --highlight-color: light-dark(hotpink, lime);
+}`}
+  />
+
+  <p>By changing the value of <code>color-scheme</code>, either the first or the second value of <code>light-dark()</code> is used.</p>
+
+  <ul>
+    <li>If the used color scheme is <code>light</code> or unknown then the computed value of the first value gets returned.</li>
+    <li>If the used color scheme is <code>dark</code> then the computed value of the second color is returned.</li>
+  </ul>
+
+  <figure>
+    <CodePen id="web-dot-dev/zYXdRKW" height={600} />
+    <figcaption><code>light-dark()</code> demo. Changing the selection changes the <code>color-scheme</code> value</figcaption>
+  </figure>  
+
   <Author name="bramus" />
+
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://web.dev/articles/light-dark">“CSS color-scheme-dependent colors with <code>light-dark()</code>” article on developer.chrome.com</a></li>
+      <li><a href="https://brm.us/light-dark">“Easy Light-Dark Mode Color Switching with <code>light-dark()</code>” article on bram.us</a></li>
+      <li><a href="https://developer.mozilla.org/docs/Web/CSS/color_value/light-dark"><code>light-dark()</code> on MDN</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
