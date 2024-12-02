@@ -124,7 +124,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
   @keyframes h1-leave {
     to {
-      transform: translateY(200%) rotateZ(-0.15turn) scale(0.7);
+      transform: translateY(200%) rotateZ(-0.15turn) scale(0);
     }
   }
 
@@ -315,7 +315,11 @@ const totalFeatures = biomes.reduce((total, biome) => {
     }
 
     .bento-wrapper {
-      padding-block: var(--size-10);
+      padding-block: var(--size-5);
+
+      @media (width >= 720px) {
+        padding-block: var(--size-8);
+      }
     }
   }
 </style>
