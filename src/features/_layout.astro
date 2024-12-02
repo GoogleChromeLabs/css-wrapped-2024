@@ -1,8 +1,12 @@
 ---
+interface Props {
+  slug: string;
+}
 
+const { slug } = Astro.props;
 ---
 
-<article>
+<article id={slug}>
   <slot />
 </article>
 
@@ -44,6 +48,10 @@
         --_inline-padding: var(--size-3);
         gap: var(--size-3);
         padding-block: var(--size-3);
+      }
+
+      &:target {
+        scroll-margin-block-start: var(--size-9);
       }
 
       h3 {

@@ -8,7 +8,7 @@ const { slug, title } = Astro.props;
 
 ---
 
-<h3><a href={`#${slug}`} name={slug}>#</a> <span set:html={title}></span></h3>
+<h3><a href={`#${slug}`}>#</a> <span set:html={title}></span></h3>
 
 <style>
   h3 {
