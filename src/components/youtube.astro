@@ -27,6 +27,10 @@ const watchURL = `https://youtube.com/watch?v=${id}`;
 
 <style define:vars={{ aspectRatio: width / height }}>
   @layer components.youtube {
+    lite-youtube {
+      width: 100%;
+    }
+
     lite-youtube > iframe {
       all: unset !important;
       width: 100%;
