@@ -17,37 +17,59 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="registered-custom-properties"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+  
+  <p>2024 marked the year that <code>@property</code> finally became <a href="https://web.dev/baseline">Baseline Newly available</a>. Having cross-browser support for <code>@property</code> is a very exciting milestone as with <code>@property</code> and its <code>CSS.registerProperty</code> counterpart you can register custom properties to be of a certain type, control their inheritance behavior, and give them an initial value.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`@property --myColor {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: hotpink;
+}`}
+  />
+
+  <p>By registering a custom property to be of a certain type, the browser knows how to interpolate its values when used in transitions and animations.</p>
+
+  <p>By animating a custom property, your CSS becomes more concise and also easier to read, as shown in the following snippet that animates the <code>--angle</code> property from <code>0deg</code> to <code>360deg</code>.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes adjust-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+
+div {
+  --angle: 0deg;
+  animation: 10s adjust-angle linear infinite;
+  rotate: var(--angle);
+}`}
+  />
+
+  <figure>
+    <CodePen id="bramus/rNWByYz" height={600} /> {/* TODO: Move + clean up demo to web-dot-dev */}
+    <figcaption>A demo with a rotating gradient border. The rotation is done by animating the <code>--angle</code> property which the gradient border uses.</figcaption>
+  </figure>  
+
   <Author name="bramus" />
+
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://web.dev/articles/at-property"><code>@property</code>: giving superpowers to CSS variables</a></li>
+      <li><a href="https://web.dev/blog/at-property-baseline"><code>@property</code>: Next-gen CSS variables now with universal browser support</a></li>
+      <li><a href="https://web.dev/blog/at-property-performance">Benchmarking the performance of CSS <code>@property</code></a></li>
+      <li><a href="https://css-tricks.com/exploring-property-and-its-animating-powers/">Exploring <code>@property</code> and its Animating Powers</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
