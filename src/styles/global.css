@@ -42,6 +42,10 @@
 	:where(pre) {
 		max-inline-size: none;
 	}
+
+	:where(code) {
+		padding-block: 2px;
+	}
 }
 
 @layer components.page {
