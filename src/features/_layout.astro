@@ -88,7 +88,7 @@
         max-inline-size: 100%;
       }
 
-      > footer {
+      > footer:not(footer:has(> ul)) {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -103,6 +103,27 @@
 
           > a {
             white-space: nowrap;
+          }
+        }
+      }
+
+      > footer:has(> ul) {
+        border-block-start: 1px solid var(--surface-2);
+        padding-block-start: var(--size-4);
+
+        p {
+          text-transform: uppercase;
+          font-size: var(--font-size-0);
+          margin-block-end: var(--size-1);
+          font-weight: 500;
+        }
+
+        ul {
+          padding-inline-start: var(--size-4);
+
+          li {
+            padding-inline-start: 0;
+            max-inline-size: none;
           }
         }
       }

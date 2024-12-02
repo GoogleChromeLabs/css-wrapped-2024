@@ -20,37 +20,44 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="view-transitions"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <YouTube id="eY6C_-aDdTo">
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas
-      fugiat nemo officiis tempora inventore expedita, consequuntur iste illum
-      animi. Eos culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam
-      repudiandae!
-    </p>
-    <iframe
-      height="300"
-      style="width: 100%;"
-      title="CSS Logo?"
-      src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-      loading="lazy"
-      allowtransparency="true"
-      allowfullscreen="true"></iframe>
-  </YouTube>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+
+  <p>In 2023, Chrome was the first browser to ship same-document view transitions, an exciting addition to the web platform that allows you to have rich and seamless transitions between various views of your website. This year, Chrome continued to push the web forwards by shipping cross-document view transitions in Chrome 126.</p>
+  
+  <p>Cross-document view transitions allow you to run a view transition between two separate documents. As a result, you no longer need to rework your website as a SPA to use view transitions. All it takes is a navigation from one page to another, a core primitive that makes the web “the web”.</p>
+  
+  <figure>
+    TODO: EMBED
+    <figcaption>Recording of the <a href="https://view-transitions.chrome.dev/stack-navigator/mpa/">“Stack Navigator” demo that uses cross-document view transitions</a></figcaption>
+  </figure>
+  
+  <p>To allow a view transition to run between two pages you need to fulfill  two conditions: the navigation must be a same-origin navigation and both pages need to opt in to allow the view transition to run. Opting in is done with the following CSS rule:</p>
+  
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`@view-transition {
+  navigation: auto;
+}`}
+  />
+  
+  <p>Once enabled, cross-document view transitions use the same building blocks as same-document view transitions: add the <code>view-transition-name</code> property to the elements that you want to capture, and the animations are powered by CSS animations.</p>
+
+  <p>Apart from shipping cross-document view transitions, Chrome also shipped a few extra additions to more easily work with view transitions, such as <code>view-transition-class</code>. These changes were announced at Google I/O ’24 in May.</p>
+
+  <figure>
+    <YouTube id="eY6C_-aDdTo"></YouTube>
+    <figcaption>Video from Google I/O ’24: “Multi-page application View Transitions are here”</figcaption>
+  </figure>
+  
+  <p>This year we also welcomed Safari in shipping view transitions and are looking forward to seeing Firefox continue working on their same-document implementation.</p>
+
   <Author name="bramus" />
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://view-transitions.chrome.dev/">View transitions demos on chrome.dev</a></li>
+      <li><a href="https://developer.chrome.com/blog/view-transitions-update-io24">“What's new in view transitions? (Google I/O 2024 update)”</a></li>
+      <li><a href="https://developer.chrome.com/docs/web-platform/view-transitions">Documentation “Smooth transitions with the View Transition API”</a></li>
+    </ul>
   </footer>
 </FeatureLayout>

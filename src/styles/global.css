@@ -34,6 +34,13 @@
 	navigation: auto;
 }
 
+@layer reset {
+	:where(figcaption) {
+		max-inline-size: none;
+		text-wrap: auto;
+	}
+}
+
 @layer components.page {
 	:root {
 		--surface-document: light-dark(white, var(--surface-1));
