@@ -213,11 +213,6 @@ const totalFeatures = biomes.reduce((total, biome) => {
       .narrative {
         display: grid;
         container: narrative / inline-size;
-        margin-block: 10vh;
-
-        @media (width >= 1024px) {
-          margin-block: 25vh;
-        }
 
         > p {
           @supports (animation-timeline: view()) {

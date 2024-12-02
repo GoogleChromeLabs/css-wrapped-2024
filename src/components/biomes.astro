@@ -35,7 +35,9 @@ import Biome from "../components/biome.astro";
       display: grid;
       grid-template-columns: subgrid;
 
-      padding-block-end: var(--size-8);
+      &:not(:last-child) {
+        padding-block-end: var(--size-8);
+      }
     }
   }
 </style>

@@ -18,12 +18,12 @@ const authorInfo = Object.values(authors).reverse();
         --color-avatars-background: var(--surface-document);
 
         --gap: 0.1em;
-        --avatar-size: 5em;
-        --overlap-size: 3em;
-        --hover-overlap-size: 4em;
-        --border-size: 0.5em;
+        --avatar-size: 2.5em;
+        --overlap-size: 1.5em;
+        --hover-overlap-size: 2em;
+        --border-size: 5px;
 
-        --num-children: 4; // Ideally, this is computed. Oh well
+        --num-children: 4; /* Ideally, this is computed. Oh well */
         --num-children-1: calc(var(--num-children) - 1);
         
         display: grid;
@@ -37,6 +37,14 @@ const authorInfo = Object.values(authors).reverse();
         transition: all ease-in-out 0.25s;
     
         direction: rtl; /* Reverse the order, so the last one shows first */
+
+        @media (width >= 720px) {
+            --gap: 0.1em;
+            --avatar-size: 5em;
+            --overlap-size: 3em;
+            --hover-overlap-size: 4em;
+            --border-size: 0.5em;
+        }
     }
 
     .avatars {

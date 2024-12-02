@@ -87,7 +87,10 @@ const { title, image, description, features } = Astro.props;
       display: grid;
       gap: var(--size-3);
       grid-column: main-features;
-      padding-block-end: 10vh;
+
+      &:not(:last-child) {
+        padding-block-end: 10vh;
+      }
 
       > .features-list {
         grid-column: 1;

@@ -24,15 +24,13 @@ import Authors from "./authors.astro";
 
   @layer components.footer {
     footer {
-      margin-block-start: 45svb;
-      padding-block-start: 25svb;
       display: grid;
       place-content: center;
       place-items: center;
       text-align: center;
+      padding-inline: var(--size-3);
       overflow: clip;
       position: relative;
-      padding-block-end: 45svb; /* Reserve space for the footer image */
 
       background-image: url(@public/biomes/cyberspace-sidebar.png),
         url(@public/biomes/cyberspace-sidebar.png);
@@ -42,11 +40,10 @@ import Authors from "./authors.astro";
       background-size: 300px auto;
 
       @media (width <= 720px) {
-        padding-block: 15svb;
-        padding-block-end: 10svb;
         background-position:
           -250px 50%,
           calc(100% + 250px) 50%;
+        padding-block-end: 25svh;
       }
 
       > h3.retro-title {
