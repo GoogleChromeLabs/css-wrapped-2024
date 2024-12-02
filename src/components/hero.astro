@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import NavBento from "./nav.bento.astro";
+import Intro from "./intro.astro";
 
 const { biomes } = Astro.props;
 const totalFeatures = biomes.reduce((total, biome) => {
@@ -39,21 +40,25 @@ const totalFeatures = biomes.reduce((total, biome) => {
         <Icon name="play" />
       </div>
     </div>
+    <div>
+      <p class="sub-title">
+        Chrome and <span class="callout"><Icon name="css" /> CSS</span> in 2024 journeyed<br>
+        through the <b>forest</b>, over the <b>mountains</b>, and across the <b>seas</b>…
+      </p>
+    </div>
     <div class="narrative">
+      <div class="fullheight">
+        <Intro />
+      </div>
+      
       <Icon name="dino" size="5rem" />
-      <p class="sub-title">
-        Chrome and <span class="callout">2024 <Icon name="css" /></span>
-        journeyed
-      </p>
-      <p class="sub-title">
-        through the <b>forest</b>, over the <b>mountains</b>, and across the <b
-          >seas</b
-        >…
-      </p>
-      <p class="hero-title retro-title">Pushing The Web Forward</p>
-      <p class="sub-title">adding <b>{totalFeatures} new features</b></p>
 
-      <NavBento biomes={biomes} />
+      <div class="fullheight">
+        <p class="sub-title">Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2024, highlighting <b>{totalFeatures} new features</b></p>
+        <div class="bento-wrapper">
+          <NavBento biomes={biomes} />
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -129,6 +134,15 @@ const totalFeatures = biomes.reduce((total, biome) => {
     }
   }
 
+  @layer {
+    .fullheight {
+      min-block-size: 100svb;
+      display: grid;
+      place-content: center;
+      place-content: safe center;
+    }
+  }
+
   @layer components.hero {
     section {
       max-inline-size: 100%;
@@ -181,8 +195,13 @@ const totalFeatures = biomes.reduce((total, biome) => {
         font-size: var(--font-size-4);
         font-weight: 200;
 
+        text-align: center;
+        text-wrap: balance;
+        inline-size: 70vi;
+        max-inline-size: 50ch;
+
         @media (width >= 720px) {
-          line-height: 2.25;
+          line-height: 1.85;
         }
 
         > .callout {
@@ -302,6 +321,10 @@ const totalFeatures = biomes.reduce((total, biome) => {
           }
         }
       }
+    }
+
+    .bento-wrapper {
+      padding-block: var(--size-10);
     }
   }
 </style>

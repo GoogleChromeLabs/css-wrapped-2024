@@ -1,0 +1,32 @@
+---
+---
+
+<div class="intro">
+    <p class="hero-title retro-title">2024 has been another amazing year for CSS!</p>
+
+    <p>Cross-document view transitions and scroll-driven animations let you add more interactivity to your applications with a few lines of CSS. You can now animate to <code>height: auto;</code>, style scrollbars, and size text inputs to their contents.</p>
+
+    <p>Many features have become Baseline Newly available this year with exclusive accordions, <code>@property</code>, popover, and <code>@starting-style</code> all interoperable across major browsers.</p>
+
+    <p>Thanks to the hard work by browser engineers, specification writers, and the input of the community, CSS has taken another great leap forward this year. Scroll down to explore these exciting additions to the platform.</p>
+</div>
+
+<style>
+    @layer components.intro {
+      .intro {
+        margin: 0 auto;
+        max-inline-size: 110ch;
+  
+        @media (width <= 1200px) {
+          max-inline-size: 80ch;
+        }
+
+        p {
+            font-size: var(--font-size-4);
+            font-weight: 200;
+            max-inline-size: none;
+            margin-block: var(--size-7);
+        }
+      }
+    }
+  </style>
