@@ -3,8 +3,7 @@
 import Authors from "./authors.astro";
 
 ---
-
-<footer id="outro">
+<footer id="outro" class="fullheight">
   <h3>It's a good time to be a</h3>
   <h3 class="retro-title">front-end dev</h3>
   <p>Made with ❤️ by The Chrome DevRel Team</p>
@@ -25,25 +24,29 @@ import Authors from "./authors.astro";
 
   @layer components.footer {
     footer {
-      padding-block-start: 25vh;
+      margin-block-start: 45svb;
+      padding-block-start: 25svb;
       display: grid;
       place-content: center;
       place-items: center;
       text-align: center;
       overflow: clip;
+      position: relative;
+      padding-block-end: 45svb; /* Reserve space for the footer image */
 
       background-image: url(@public/biomes/cyberspace-sidebar.png),
         url(@public/biomes/cyberspace-sidebar.png);
       background-position:
-        -150px 100%,
-        calc(100% + 150px) 100%;
+        -150px 50%,
+        calc(100% + 150px) 50%;
       background-size: 300px auto;
 
       @media (width <= 720px) {
-        padding-block-start: 15vh;
+        padding-block: 15svb;
+        padding-block-end: 10svb;
         background-position:
-          -250px 100%,
-          calc(100% + 250px) 100%;
+          -250px 50%,
+          calc(100% + 250px) 50%;
       }
 
       > h3.retro-title {
@@ -55,7 +58,9 @@ import Authors from "./authors.astro";
       }
 
       > img {
-        margin-block-start: var(--size-10);
+        position: absolute;
+        bottom: 0;
+        min-width: 62.5rem;
       }
 
       @media (prefers-reduced-motion: no-preference) {
