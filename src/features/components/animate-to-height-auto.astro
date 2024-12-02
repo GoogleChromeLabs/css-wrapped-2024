@@ -17,37 +17,34 @@ const slug = slugify(title);
   <!-- <div class="support">
     <baseline-status featureId="scrollbar-width"></baseline-status>
   </div> -->
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+
+  <p>An often requested CSS feature is the ability to animate to <code>height: auto</code>. A slight variation of that request is to transition the width property instead of the height, or to transition to any of the other intrinsic sizes represented by keywords like <code>min-content</code>, <code>max-content</code>, and <code>fit-content</code>.</p>
+
+  <p>From Chrome 129 you can use the <code>interpolate-size</code> property or the <code>calc-size()</code> function to enable smooth transitions and animations from lengths to intrinsic sizing keywords and back.</p>
+
+  <figure>
+    <CodePen id="web-dot-dev/GRbbNra" />
+    <figcaption>CSS <code>interpolate-size</code> demo. If your browser has no support, you can <a href="https://developer.chrome.com/static/docs/css-ui/animate-to-height-auto/video/animate-to-auto--hover-after.mp4">check the recording</a>.</figcaption>
+  </figure>
+
+  <p>The easiest way to enable this behavior is have the entire page opt-in to it by declaring <code>interpolate-size: allow-keywords</code> on <code>:root</code>.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`/* Opt-in the whole page to animating to/from intrinsic sizing keywords */
+:root {
+    interpolate-size: allow-keywords; /* 👈 */
+}`}
+  />
+  <p>In most cases using <code>interpolate-size</code> should be sufficient. If you need more control over things–such as doing calculations with the resulting pixel value, or transitioning between the same two intrinsic sizing keywords–<a href="https://developer.chrome.com/docs/css-ui/animate-to-height-auto#animate_to_and_from_intrinsic_sizing_keywords_with_calc-size">use <code>calc-size()</code></a> instead.</p>
+
   <Author name="bramus" />
+
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://developer.chrome.com/docs/css-ui/animate-to-height-auto">“Animate to height: auto; (and other intrinsic sizing keywords) in CSS” article on developer.chrome.com</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
