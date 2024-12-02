@@ -39,6 +39,9 @@
 		max-inline-size: none;
 		text-wrap: auto;
 	}
+	:where(pre) {
+		max-inline-size: none;
+	}
 }
 
 @layer components.page {
