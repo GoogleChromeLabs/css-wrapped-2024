@@ -21,3 +21,10 @@
     grid-area: 1/1;
   }
 }
+
+.fullheight {
+  min-block-size: 100svb;
+  display: grid;
+  place-content: center;
+  place-content: safe center;
+}
