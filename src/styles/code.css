@@ -1,6 +1,7 @@
 .astro-code {
   --astro-code-color-text: var(--text-1);
   --astro-code-color-background: light-dark(white, var(--surface-2));
+  box-shadow: var(--shadow-3);
 }
 
 [data-theme="light"] .astro-code {
