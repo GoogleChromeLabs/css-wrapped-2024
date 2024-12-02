@@ -8,7 +8,7 @@ interface Props {
 
 const { id, height = 300, title = 'CodePen demo' } = Astro.props;
 const [ user, hash ] = id.split('/');
-const src = `https://codepen.io/${user}/embed/preview/${hash}?default-tab=result`;
+const src = `https://codepen.io/${user}/embed/${hash}?default-tab=result`;
 const url = `https://codepen.io/${user}/pen/${hash}`;
 
 ---
