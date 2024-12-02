@@ -18,28 +18,17 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="paint-order"></baseline-status>
   </div>
-  <p>
-    When using <code>text-stroke</code>, the <code>paint-order</code> property can
-    be used to control the order in which the text fill and the desired stroke are
-    stacked / rendered together. This can be useful when you want to ensure that
-    the stroke is rendered on top of the fill.
-  </p>
-  <p>
-    The default paint order is: <code>fill</code>, <code>stroke</code>, then <code
-      >markers</code
-    >.
-  </p>
-  <p>
-    The following video shows how the result of the text stroke is undesirable
-    if the text is filled white and then given a black stroke. Switch those
-    around, so the stroke is drawn first and then filled, and the result is
-    quite nice!
-  </p>
+  
+  <p>When using <code>text-stroke</code>, the <code>paint-order</code> property can control the order that the text fill and desired stroke are stacked or rendered together. This can be useful when you want to ensure that the stroke is rendered on top of the fill.</p>
+  
+  <p>The default paint order is: <code>fill</code>, <code>stroke</code>, then <code>markers</code>.</p>
+
+  <p>The following video shows how the result of the text stroke is undesirable if the text is filled white and then given a black stroke. Switch those around, so the stroke is drawn first and then filled, and the result is quite nice!</p>
+
   <Video src="./video/paint-order.mp4" />
-  <p>
-    The CSS to control this is one line. Set the <code>paint-order</code>
-    to draw the stroke before the fill by specifing those keywords in that order.
-  </p>
+  
+  <p>The CSS to control this is one line. Set the <code>paint-order</code> to draw the stroke before the fill by specifying those keywords in that order.</p>
+
   <Code
     lang="css"
     theme="css-variables"
@@ -50,13 +39,15 @@ const slug = slugify(title);
   -webkit-text-stroke: 5px black;
 }`}
   />
-  <p>Try it for yourself in this Codepen:</p>
+
+  <p>Try it for yourself in this CodePen:</p>
+
   <CodePen id="web-dot-dev/dyxryKE" height={600} />
-  <p>
-    Some folks say that the ability to control <code>paint-order</code> has finally
-    made <code>text-stroke</code> usable in production. What do you think?
-  </p>
+  
+  <p>Some folks say that the ability to control <code>paint-order</code> has finally made <code>text-stroke</code> usable in production. What do you think?</p>
+
   <Author name="adam" />
+  
   <footer>
     <a href="https://codepen.io/web-dot-dev/pen/dyxryKE">Try demo</a>
     <div class="articles">
