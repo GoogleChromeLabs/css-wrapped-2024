@@ -14,42 +14,27 @@ const slug = slugify(title);
 
 <FeatureLayout slug={slug}>
   <Title slug={slug} title={title} />
-  <!-- <div class="support">
-    <baseline-status featureId="scrollbar-color"></baseline-status>
-  </div> -->
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
+  
+  {/* Disabled because the baseline widget shows ::backdrop support in general, not the inheritance changes specifically
+  <div class="support">
+    <baseline-status featureId="backdrop"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    scrolling="no"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    frameborder="no"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+   */}
+  <p>Historically the <code>::backdrop</code> pseudo-element didn’t inherit from anywhere. From Chrome 122, this <code>::backdrop</code> pseudo-element has been converted into a tree abiding element, meaning that it inherits any inheritable properties from its originating element.</p>
+
+  <p>Thanks to this change it is possible to override custom property values on specific elements and <code>::backdrop</code> will have access to them. For example, the <code>::backdrop</code> associated with an open <code>&lt;dialog&gt;</code> element can now access the custom properties available in that <code>&lt;dialog&gt;</code>.</p>
+
+  <figure>
+    <CodePen id="web-dot-dev/MWxLzgx" height={600} />
+    <figcaption><code>::backdrop</code> demo</figcaption>
+  </figure>
+  
   <Author name="bramus" />
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://developer.chrome.com/blog/css-backdrop-inheritance">“Changes to CSS <code>::backdrop</code> inheritance” article on developer.chrome.com</a></li>
+      <li><a href="https://codepen.io/web-dot-dev/pen/MWxLzgx">Try a demo</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
