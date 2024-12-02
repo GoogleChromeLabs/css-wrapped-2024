@@ -13,40 +13,40 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout slug={slug}>
-  <Title slug={slug} title={title} />
-  <!-- <div class="support">
-    <baseline-status featureId="scrollbar-width"></baseline-status>
-  </div> -->
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
+  <Title slug={slug} title="Line-breakable &lt;ruby&gt; + CSS ruby-align" />
+
+  <div class="support">
+    <baseline-status featureId="ruby-align"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+
+  <p>From Chrome 128, ruby annotations are line-breakable and you can style ruby text with the <code>ruby-align</code> CSS property. This gives you finer control on how phonetic annotations or other supplemental information above or beside base text with <code>&lt;ruby&gt;</code> should be presented.</p>
+
+  <p>With line-breakable ruby, wrapped ruby annotation text gets placed over wrapped base text, achieving ideal text rendering. Compare this before and after:</p>
+
+  <figure>
+    <img src="./images/ruby_before.png">
+    <figcaption>Rendering result before Chrome 128 with long ruby annotation text.</figcaption>
+  </figure>
+  
+  <figure>
+    <img src="./images/ruby_after.png">
+    <figcaption>Rendering result as of Chrome 128 with long ruby annotation text.</figcaption>
+  </figure>
+
+  <p>The new CSS property <code>ruby-align</code> controls the alignment of ruby base text and ruby annotation text. The property accepts one of the keyword values <code>space-around</code>, <code>space-between</code>, <code>start</code>, and <code>center</code>.</p>
+
+  <figure>
+    <img src="./images/ruby-align.png">
+    <figcaption>Image showing use-case for ruby-align property.</figcaption>
+  </figure>  
+
+  <Author name="bramus" />
+
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://developer.chrome.com/blog/line-breakable-ruby">Line-breakable <code>&lt;ruby&gt;</code> and CSS ruby-align property</a></li>
+      <li><a href="https://developer.mozilla.org/docs/Web/CSS/ruby-align"><code>ruby-align</code> on MDN</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
