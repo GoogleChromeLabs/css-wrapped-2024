@@ -13,41 +13,63 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout slug={slug}>
-  <Title slug={slug} title={title} />
+  <Title slug={slug} title="Entry effects with @starting-style" />
   <div class="support">
     <baseline-status featureId="starting-style"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+  
+  <p>The <code>@starting-style</code> at-rule is used to define styles for an element before it has received the first style update. When setting those targeted properties to transition with CSS transitions, you can use these starting-styles to create entry effects.</p>
+
+  <p>In the following example, newly added <code>&lt;div&gt;</code> elements fade from <code>yellow</code> to their initial background-color which is transparent.</p>
+  
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`div {
+  transition: background-color 0.5s;
+  background-color: transparent;
+
+  @starting-style {
+    background-color: yellow;
+  }
+}`} />
+
+  <figure>
+    <CodePen id="bramus/MWPLgjy" height={500} />{/* TODO: Move to web-dot-dev account + clean up */}
+    <figcaption><code>@starting-style</code> demo</figcaption>
+  </figure>
+
+  <p>Another use case is to animate-in dialogs when opened.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`dialog[open] {
+  opacity: 1;
+  transform: scaleX(1);
+
+  @starting-style {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}`}
+/>
+
+  <figure>
+    <CodePen id="web-dot-dev/dyQxmzg" height={500} />
+    <figcaption><code>@starting-style</code> demo</figcaption>
+  </figure>
+ 
+  <p>Don’t forget to set <code>transition-behavior</code> to <code>allow-discrete</code> when animating discretely animatable properties such as <code>display</code>.</p>
+
   <Author name="bramus" />
+  
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://developer.chrome.com/blog/entry-exit-animations">Four new CSS features for smooth entry and exit animations</a></li>
+      <li><a href="https://developer.mozilla.org/docs/Web/CSS/@starting-style"><code>@starting-style</code> on MDN</a></li>
+      <li><a href="https://nerdy.dev/using-starting-style-and-transition-behavior-for-enter-and-exit-stage-effects">Using <code>@starting-style</code> and <code>transition-behavior</code> for enter and exit stage effects</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
