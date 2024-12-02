@@ -8,7 +8,7 @@ import { Code } from "astro:components";
 import { Icon } from "astro-icon/components";
 
 import slugify from "./../../util/slugify";
-export const title = "Popover";
+export const title = "The Popover API";
 const slug = slugify(title);
 ---
 
@@ -17,37 +17,35 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="popover"></baseline-status>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+  
+  <p>The Popover API provides ways to build layered interfaces like tooltips, menus, teaching UIs, and more.</p>
+
+  <p>To create a popover with default values, all you need is a <code>button</code> to trigger the popover, and an element that is the popover.</p>
+
+  <Code
+    lang="html"
+    theme="css-variables"
+    code={`<button popovertarget="my-popover">Open Popover</button>
+
+<div id="my-popover" popover>
+  <p><p>I am a popover with more information. Hit <kbd>esc</kbd> or click away to close me.<p></p>
+</div>`}
+  />
+
+  <figure>
+    <CodePen id="web-dot-dev/ExJrbjw" height={500} />
+    <figcaption>Simple popover demo</figcaption>
+  </figure>
+  
+  <p>Popovers come with built-in support for top layer promotion, light-dismiss functionality, default focus management, and accessibility features.</p>
+
   <Author name="bramus" />
+  
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://web.dev/blog/popover-api">Popover API lands in Baseline</a></li>
+      <li><a href="https://developer.mozilla.org/docs/Web/API/Popover_API">Popover API on MDN</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
