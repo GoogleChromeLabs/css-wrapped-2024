@@ -22,7 +22,7 @@ const { biomes } = Astro.props;
                 >
                   <a
                     href={`#${slugify(feature.title)}`}
-                    set:html={feature.title}
+                    set:text={feature.title}
                   />
                 </li>
               );
@@ -57,7 +57,7 @@ const { biomes } = Astro.props;
                     >
                       <a
                         href={`#${slugify(feature.title)}`}
-                        set:html={feature.title}
+                        set:text={feature.title}
                       />
                     </li>
                   );
