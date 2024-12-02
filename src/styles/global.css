@@ -25,7 +25,7 @@
 @font-face {
 	font-family: "Fight Fallback";
 	src: local(Arial);
-	size-adjust: 57.86%;
+	size-adjust: 50%;
 	ascent-override: normal;
 	descent-override: normal;
   }
