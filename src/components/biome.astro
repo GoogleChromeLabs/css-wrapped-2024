@@ -75,9 +75,11 @@ const { title, image, description, features } = Astro.props;
         font-size: clamp(5rem, 9vw, 7rem);
       }
 
-      p {
-        font-size: var(--font-size-4);
-        font-weight: 200;
+      @media (width >= 720px) {
+        p {
+          font-size: var(--font-size-4);
+          font-weight: 200;
+        }
       }
     }
 
