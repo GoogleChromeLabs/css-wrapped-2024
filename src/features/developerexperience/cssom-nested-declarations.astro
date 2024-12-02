@@ -13,41 +13,64 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout slug={slug}>
+
   <Title slug={slug} title={title} />
+  
   <!-- <div class="support">
     <baseline-status featureId="scrollbar-width"></baseline-status>
   </div> -->
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
-  </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowtransparency="true"
-    allowfullscreen="true"></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
+
+  <p>To fix some weird quirks with CSS nesting, the <code>CSSNestedDeclarations</code> interface was added to the CSS Nesting spec. With it, declarations that come after style rules no longer shift up.</p>
+  
+  <p>This means that the following CSS snippet gives the <code>.foo</code> element a <code>green</code> background color instead of a <code>red</code> one, as would happen without <code>CSSNestedDeclarations</code>.</p>
+
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`.foo {
+    width: fit-content;
+
+    @media screen {
+        background-color: red;
+    }
+    
+    background-color: green;
+}`}
+  />
+
+  <p>With <code>CSSNestedDeclarations</code> the CSS rule serializes to the following, keeping the <code>background-color: green</code> declaration at its original location:</p>
+
+  <Code
+    theme="css-variables"
+    code={`↳ CSSStyleRule
+  .type = STYLE_RULE
+  .selectorText = ".foo"
+  .resolvedSelectorText = ".foo"
+  .specificity = (0,1,0)
+  .style (CSSStyleDeclaration, 1) =
+    - width: fit-content
+  .cssRules (CSSRuleList, 2) =
+    ↳ CSSMediaRule
+    .type = MEDIA_RULE
+    .cssRules (CSSRuleList, 1) =
+      ↳ CSSNestedDeclarations
+        .style (CSSStyleDeclaration, 1) =
+          - background-color: red
+    ↳ CSSNestedDeclarations
+    .style (CSSStyleDeclaration, 1) =
+      - background-color: green
+`}
+  />
+
+  <p>This addition landed in Chrome 130 and complements <a href="https://developer.chrome.com/blog/css-nesting-relaxed-syntax-update">earlier changes that relaxed the parsing of nested styles</a>.</p>
+
   <Author name="bramus" />
+
   <footer>
-    <a href="#">Try demo</a>
-    <div class="articles">
-      <a href="#">Article on web.dev</a>
-      <a href="#">MDN</a>
-    </div>
+    <p>Resources:</p>
+    <ul>
+      <li><a href="https://web.dev/blog/css-nesting-cssnesteddeclarations">CSS nesting improves with <code>CSSNestedDeclarations</code></a></li>
+      <li><a href="https://codepen.io/web-dot-dev/pen/oNKzGvo"><code>CSSRule</code> debugger</a></li>
+    </ul>
   </footer>
 </FeatureLayout>
