@@ -208,6 +208,11 @@ const totalFeatures = biomes.reduce((total, biome) => {
           padding-block: var(--size-2);
           padding-inline: var(--size-2);
           margin-inline: var(--size-1);
+
+          > svg {
+            /* fix safari oversizing the element */
+            block-size: 1ch;
+          }
         }
       }
 
@@ -245,14 +250,13 @@ const totalFeatures = biomes.reduce((total, biome) => {
       background: var(--surface-3);
       border-radius: var(--radius-3);
       overflow: clip;
-      will-change: transform;
+
+      &:focus-visible {
+        outline-offset: 5px;
+      }
 
       lite-youtube {
         max-width: none !important;
-      }
-
-      @media (prefers-reduced-motion: no-preference) {
-        animation: scale-down 3s var(--ease-2) reverse;
       }
 
       > svg {

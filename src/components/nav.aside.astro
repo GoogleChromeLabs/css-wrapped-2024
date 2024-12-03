@@ -8,30 +8,37 @@ const { biomes } = Astro.props;
 <nav popover id="mobile-menu" class="mobile-sidenav">
   <header>
     <h2 class="retro-title">CSS Wrapped</h2>
+    <button popovertarget="mobile-menu" popovertargetaction="hide">
+      <Icon name="close" title="Close" size="2rem" />
+    </button>
   </header>
-  {
-    biomes.map((biome) => {
-      return (
-        <section>
-          <h2>{biome.title}</h2>
-          <ul>
-            {biome.features.map((feature) => {
-              return (
-                <li
-                  style={`--_view-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
-                >
-                  <a
-                    href={`#${slugify(feature.title)}`}
-                    set:text={feature.title}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      );
-    })
-  }
+  <div>
+    {
+      biomes.map((biome) => {
+        return (
+          <section>
+            <h2>
+              <a href={`#${biome.title.toLowerCase()}`}>{biome.title}</a>
+            </h2>
+            <ul>
+              {biome.features.map((feature) => {
+                return (
+                  <li
+                    style={`--_view-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
+                  >
+                    <a
+                      href={`#${slugify(feature.title)}`}
+                      set:text={feature.title}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        );
+      })
+    }
+  </div>
 </nav>
 
 <aside>
@@ -312,13 +319,11 @@ const { biomes } = Astro.props;
       --_left-pad: var(--size-8);
       --_x: calc(var(--_left-pad) / 2 * -1);
 
+      background: var(--surface-1);
+      border-inline-end: 1px solid var(--surface-2);
       block-size: 100dvh;
       max-block-size: 100dvh;
       overflow: auto;
-
-      display: grid;
-      align-content: start;
-      gap: var(--size-7);
 
       padding-block: var(--size-3);
       padding-inline: var(--_left-pad) var(--size-5);
@@ -355,14 +360,42 @@ const { biomes } = Astro.props;
       }
 
       > header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         > h2 {
           font-size: var(--font-size-8);
+          margin-block-start: -0.25ch;
+        }
+
+        > button {
+          background: var(--surface-1);
+          border: none;
+          padding: var(--size-2);
+          cursor: pointer;
+          color: var(--text-2);
+          border-radius: var(--radius-round);
+          transition:
+            box-shadow 0.7s var(--ease-spring-3),
+            outline-offset 145ms var(--ease-2);
+
+          &:hover {
+            box-shadow: 0 0 0 5px var(--surface-2);
+          }
         }
       }
 
-      > section {
+      > div {
         display: grid;
-        gap: var(--size-2);
+        margin-block-start: var(--size-7);
+        gap: var(--size-7);
+
+        > section {
+          display: grid;
+          gap: var(--size-2);
+          padding-inline-end: var(--size-4);
+        }
       }
 
       h2 {
