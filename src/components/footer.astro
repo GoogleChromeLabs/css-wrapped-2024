@@ -9,7 +9,8 @@ import Authors from "./authors.astro";
   <p>Made with ❤️ by The Chrome DevRel Team</p>
   <Authors />
   <img
-    height="25vh"
+    height="2560"
+    width="514"
     src="biomes/cyberspace-header.png"
     alt="a cityscape of retro computers"
   />
@@ -34,8 +35,8 @@ import Authors from "./authors.astro";
       position: relative;
       padding-block-end: 45svb; /* Reserve space for the footer image */
 
-      background-image: url(@public/biomes/cyberspace-sidebar.png),
-        url(@public/biomes/cyberspace-sidebar.png);
+      background-image: url(/biomes/cyberspace-sidebar.png),
+        url(/biomes/cyberspace-sidebar.png);
       background-position:
         -150px 50%,
         calc(100% + 150px) 50%;

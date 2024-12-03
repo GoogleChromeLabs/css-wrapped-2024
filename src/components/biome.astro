@@ -1,10 +1,10 @@
 ---
 import slugify from "./../util/slugify";
-const { title, image, description, features } = Astro.props;
+const { title, image, alt, description, features } = Astro.props;
 ---
 
 <header>
-  <img src={image} alt="" width="1280" height="720" />
+  <img src={image} alt={alt} width="1280" height="720" loading="lazy" />
   <div>
     <h2 class="retro-title">{title}</h2>
     <p set:html={description} />
