@@ -33,14 +33,15 @@ import * as ScrollSnapEvents from "../features/interactions/scroll-snap-events.a
 const biomes = [
   {
     title: "Components",
-    description: `<p>We traveled <b>over the mountains</b> to bring  
+    description: `We traveled <b>over the mountains</b> to bring
     <a href="#anchor-positioning">exciting overlay UX with anchor</a>, 
-    the power to <a href="#animate-to-height-auto">animate to height auto</a>, 
-    easily turn <a href="#exclusive-details">details into an accordion<a>, 
+    the power to <a href="#animate-to-height-auto">animate to height auto</a>,
+    easily turn <a href="#exclusive-details">details into an accordion</a>,
     get more access to <a href="#styleable-details">details styling</a>,
-    and <a href="#field-sizing">intrinsically size form elements</a>!</p>`,
+    and <a href="#field-sizing">intrinsically size form elements</a>!`,
     backdrop: "desert",
     image: "./biomes/desert.png",
+    alt: "Desert scene in low-res bitmap style",
     features: [
       FieldSizing,
       AnimateToHeightAuto,
@@ -57,6 +58,7 @@ const biomes = [
       <a href="#scroll-snap-events">events for scroll snap</a>!`,
     backdrop: "arctic",
     image: "./biomes/arctic.png",
+    alt: "Arctic scene in low-res bitmap style",
     features: [
       ScrollbarStyling,
       ViewTransitionsMPA,
@@ -66,7 +68,7 @@ const biomes = [
   },
   {
     title: "Developer Experience",
-    description: `<p>Things got even easier after we traveled <b>across the seas.</b></p>
+    description: `Things got even easier after we traveled <b>across the seas.</b></p>
 
       <p>We discovered ways to simplify <a href="#backdrop-inheritance">backdrop inheritance</a>, 
       a magic color function called <a href="#lightdark">light-dark()</a>, 
@@ -75,9 +77,10 @@ const biomes = [
       ways to <a href="#popover">pop into the top-layer</a>, 
       improved <a href="#rubyalign">ruby alignment</a>, 
       options for <a href="#paintorder">layering text strokes with text fill</a>, 
-      and even <a href="#cssom-nested-declarations">more ways to relax CSS nesting</a>!</p>`,
+      and even <a href="#cssom-nested-declarations">more ways to relax CSS nesting</a>!`,
     backdrop: "jungle",
     image: "./biomes/jungle.png",
+    alt: "Jungle scene in low-res bitmap style",
     features: [
       BackdropInheritance,
       LightDarkFunction,
