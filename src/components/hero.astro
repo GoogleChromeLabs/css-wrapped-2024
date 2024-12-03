@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import NavBento from "./nav.bento.astro";
 import Intro from "./intro.astro";
+import Youtube from "./youtube.astro";
 
 const { biomes } = Astro.props;
 const totalFeatures = biomes.reduce((total, biome) => {
@@ -37,7 +38,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
         <span class="plus"></span>
       </div>
       <div class="video">
-        <Icon name="play" />
+        <Youtube id="bcpUS7qXuoA" />
       </div>
     </div>
     <div>
@@ -152,7 +153,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
       @media (width >= 720px) {
         max-inline-size: min(1024px, 75vw);
-        margin-block: var(--size-10) 15vh;
+        margin-block: var(--size-4) 15vh;
         padding-inline: var(--size-5);
         gap: var(--size-8);
       }
@@ -238,13 +239,17 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
     .video {
       z-index: 1;
+      width: 90%;
+      margin: 0 auto;
       aspect-ratio: 16/9;
       background: var(--surface-3);
       border-radius: var(--radius-3);
-
-      display: grid;
-      place-content: center;
+      overflow: clip;
       will-change: transform;
+
+      lite-youtube {
+        max-width: none !important;
+      }
 
       @media (prefers-reduced-motion: no-preference) {
         animation: scale-down 3s var(--ease-2) reverse;
