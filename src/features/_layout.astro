@@ -96,9 +96,30 @@ const { slug } = Astro.props;
         max-inline-size: 100%;
       }
 
+      > footer > a {
+        background: var(--link);
+        color: light-dark(white, black);
+        padding-block: var(--size-2);
+        padding-inline: var(--size-3);
+        border-radius: var(--radius-2);
+        box-shadow: var(--shadow-3);
+        font-weight: bold;
+
+        transition: transform .7s var(--ease-spring-2);
+
+        &:is(:hover, :focus-visible) {
+          text-decoration: none;
+        }
+
+        &:not(:active):is(:hover, :focus-visible) {
+          transform: scale(1.1);
+        }
+      }
+
       > footer:not(footer:has(> ul)) {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
         gap: var(--size-2);
         border-block-start: 1px solid var(--surface-2);
