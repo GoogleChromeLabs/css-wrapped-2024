@@ -89,6 +89,8 @@ const counts = {
           font-weight: 100;
           font-size: 13cqi;
 
+          outline-offset: -5px;
+
           &:hover {
             text-decoration: none;
           }
@@ -112,7 +114,7 @@ const counts = {
               transition: transform 0.75s var(--ease-bounce-2);
             }
 
-            &:hover::after {
+            &:is(:hover, :focus-visible)::after {
               transform: translateY(-1.5lh);
               transition-duration: 1s;
               transition-timing-function: var(--ease-spring-2);
