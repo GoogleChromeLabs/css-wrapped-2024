@@ -8,7 +8,7 @@
   --astro-code-token-function: var(--purple-8);
   --astro-code-token-constant: var(--blue-9);
   --astro-code-token-string-expression: var(--blue-9);
-  --astro-code-token-keyword: var(--pink-6);
+  --astro-code-token-keyword: var(--pink-7);
 }
 
 [data-theme="dark"] .astro-code {

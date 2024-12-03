@@ -46,6 +46,13 @@
 	:where(code) {
 		padding-block: 2px;
 	}
+
+	:not(pre) > code {
+		[data-theme="light"] & {
+			background: white;
+			border: 1px solid var(--surface-2);
+		}
+	}
 }
 
 @layer components.page {
