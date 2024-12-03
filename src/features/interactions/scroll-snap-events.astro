@@ -20,9 +20,15 @@ const slug = slugify(title);
     <baseline-status featureId="scroll-snap-events"></baseline-status>
   </div>
   <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
+    Built-in snap events have made the previously invisible, visible, at the
+    right time, and always correct. This is not a convenience you had without
+    these events. They are the missing piece of the puzzle that makes scroll
+    snapping a complete solution.
+  </p>
+  <p>
+    Two new snap events: <code>scrollSnapChange</code> and <code
+      >scrollSnapChanging</code
+    >.
   </p>
   <Code
     lang="js"
@@ -32,12 +38,20 @@ const slug = slugify(title);
   console.log(event.snapTargetInline);
 })`}
   />
+  <p>
+    The <b>"change"</b> event fires at a similar moment as <a
+      href="https://developer.chrome.com/blog/scrollend-a-new-javascript-event"
+      ><code>scrollend</code></a
+    >, which is essentially when scroll has rested and a user has stopped
+    interacting with the scroller.
+  </p>
   <Video src="./video/snap-change.mp4" />
   <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
+    The <b>"changing"</b> event is eager to fire, calling the callback the moment
+    the scroller has a new snap target. This is useful for a instant UX feedback,
+    providing a mechanism for immediate visual updates based on the user's interaction.
   </p>
+  <Video src="./video/snap-changing.mp4" />
   <Code
     lang="js"
     theme="css-variables"
@@ -46,23 +60,29 @@ const slug = slugify(title);
   console.log(event.snapTargetInline);
 })`}
   />
-  <Video src="./video/snap-changing.mp4" />
   <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut tenetur
-    cupiditate libero molestiae ad dicta rerum expedita dignissimos quis totam
-    labore, facere, eligendi laudantium fuga doloribus enim ipsum quia commodi!
+    Combining these events together, you can create a seamless experience for
+    picking elements with a scroll gesture. Here's a ruler experience that snaps
+    to quarter inch values and uses <a href="#scrolldriven-animations"
+      >scroll driven animation</a
+    > to aid in highlighting the selected value. The "changing" event is used to
+    immediately update the number input value, while the "change" event is used to
+    support and confirm the selected value.
   </p>
   <CodePen id="web-dot-dev/LYKOOpd" height={300} />
   <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
+    Checkout the article on <a
+      href="https://developer.chrome.com/blog/scroll-snap-events"
+      >developer.chrome.com</a
+    > for more details and examples. Also, the demo link below is to a Snap Event
+    visualizer, helping you feel and see the timing of these new events.
   </p>
   <Author name="adam" />
   <footer>
     <a href="https://codepen.io/web-dot-dev/pen/jOjaaEP">Try demo</a>
     <div class="articles">
-      <a href="https://developer.chrome.com/blog/scroll-snap-event"
-        >Article on developer.chrome.com</a
+      <a href="https://developer.chrome.com/blog/scroll-snap-events"
+        >developer.chrome.com</a
       >
       <a href="https://developer.mozilla.org/docs/Web/API/SnapEvent">MDN</a>
     </div>

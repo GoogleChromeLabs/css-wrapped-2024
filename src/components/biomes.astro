@@ -27,6 +27,7 @@ import Biome from "../components/biome.astro";
 
       display: grid;
       grid-template-columns: subgrid;
+      row-gap: 25vh;
     }
 
     .biome {
@@ -35,7 +36,7 @@ import Biome from "../components/biome.astro";
       display: grid;
       grid-template-columns: subgrid;
 
-      &:not(:last-child) {
+      &:not(:last-of-type) {
         padding-block-end: var(--size-8);
       }
     }

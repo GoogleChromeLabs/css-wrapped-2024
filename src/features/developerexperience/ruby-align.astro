@@ -13,40 +13,77 @@ const slug = slugify(title);
 ---
 
 <FeatureLayout slug={slug}>
-  <Title slug={slug} title="Line-breakable &lt;ruby&gt; + CSS ruby-align" />
+  <Title slug={slug} title="Line-breakable <ruby> + CSS ruby-align" />
 
   <div class="support">
     <baseline-status featureId="ruby-align"></baseline-status>
   </div>
 
-  <p>From Chrome 128, ruby annotations are line-breakable and you can style ruby text with the <code>ruby-align</code> CSS property. This gives you finer control on how phonetic annotations or other supplemental information above or beside base text with <code>&lt;ruby&gt;</code> should be presented.</p>
+  <p>
+    From Chrome 128, ruby annotations are line-breakable and you can style ruby
+    text with the <code>ruby-align</code> CSS property. This gives you finer control
+    on how phonetic annotations or other supplemental information above or beside
+    base text with <code>&lt;ruby&gt;</code> should be presented.
+  </p>
 
-  <p>With line-breakable ruby, wrapped ruby annotation text gets placed over wrapped base text, achieving ideal text rendering. Compare this before and after:</p>
+  <p>
+    With line-breakable ruby, wrapped ruby annotation text gets placed over
+    wrapped base text, achieving ideal text rendering. Compare this before and
+    after:
+  </p>
 
   <figure>
-    <img src="./images/ruby_before.png" width=2454 height=651 loading="lazy" alt="Rendering result before Chrome 128 with long ruby annotation text.">
-    <figcaption>Rendering result before Chrome 128 with long ruby annotation text.</figcaption>
+    <img
+      src="./images/ruby_before.png"
+      width="2454"
+      height="651"
+      loading="lazy"
+      alt="Rendering result before Chrome 128 with long ruby annotation text."
+    />
+    <figcaption>
+      Rendering result before Chrome 128 with long ruby annotation text.
+    </figcaption>
   </figure>
-  
+
   <figure>
-    <img src="./images/ruby_after.png" width=584 height=796 loading="lazy" alt="Rendering result from Chrome 128 with long ruby annotation text.">
-    <figcaption>Rendering result as of Chrome 128 with long ruby annotation text.</figcaption>
+    <img
+      src="./images/ruby_after.png"
+      width="584"
+      height="796"
+      loading="lazy"
+      alt="Rendering result from Chrome 128 with long ruby annotation text."
+    />
+    <figcaption>
+      Rendering result as of Chrome 128 with long ruby annotation text.
+    </figcaption>
   </figure>
 
-  <p>The new CSS property <code>ruby-align</code> controls the alignment of ruby base text and ruby annotation text. The property accepts one of the keyword values <code>space-around</code>, <code>space-between</code>, <code>start</code>, and <code>center</code>.</p>
+  <p>
+    The new CSS property <code>ruby-align</code> controls the alignment of ruby base
+    text and ruby annotation text. The property accepts one of the keyword values
+    <code>space-around</code>, <code>space-between</code>, <code>start</code>,
+    and <code>center</code>.
+  </p>
 
   <figure>
-    <img src="./images/ruby-align.png" width=2454 height=651 loading="lazy" alt="Image showing use-case for ruby-align property.">
+    <img
+      src="./images/ruby-align.png"
+      width="2454"
+      height="651"
+      loading="lazy"
+      alt="Image showing use-case for ruby-align property."
+    />
     <figcaption>Image showing use-case for ruby-align property.</figcaption>
-  </figure>  
+  </figure>
 
   <Author name="bramus" />
 
-  <footer>
-    <p>Resources:</p>
-    <ul>
-      <li><a href="https://developer.chrome.com/blog/line-breakable-ruby">Line-breakable <code>&lt;ruby&gt;</code> and CSS ruby-align property</a></li>
-      <li><a href="https://developer.mozilla.org/docs/Web/CSS/ruby-align"><code>ruby-align</code> on MDN</a></li>
-    </ul>
+  <footer style="place-content: end;">
+    <div class="articles">
+      <a href="https://developer.chrome.com/blog/line-breakable-ruby"
+        >developer.chrome.com</a
+      >
+      <a href="https://developer.mozilla.org/docs/Web/CSS/ruby-align">MDN</a>
+    </div>
   </footer>
 </FeatureLayout>

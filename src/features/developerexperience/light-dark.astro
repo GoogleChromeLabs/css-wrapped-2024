@@ -17,15 +17,26 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="light-dark"></baseline-status>
   </div>
-  
-  <p>System colors in CSS have the ability to react to the current used color-scheme value. For example, if you declare <code>color: CanvasText</code> in a CSS rule, the color of the matched elements will be either light or dark depending on the <code>color-scheme</code> value.</p>
+
+  <p>
+    System colors in CSS have the ability to react to the current used
+    color-scheme value. For example, if you declare <code
+      >color: CanvasText</code
+    > in a CSS rule, the color of the matched elements will be either light or dark
+    depending on the <code>color-scheme</code> value.
+  </p>
 
   <figure>
     <CodePen id="bramus/xxvJzJK" />{/* Move to web-dot-dev account */}
     <figcaption>System colors demo.</figcaption>
   </figure>
-  
-  <p>The <code>light-dark()</code> function exposes the same capability to developers. This function accepts two arguments, both of which must be a <code>&lt;color&gt;</code>.</p>
+
+  <p>
+    The <code>light-dark()</code> function exposes the same capability to developers.
+    This function accepts two arguments, both of which must be a <code
+      >&lt;color&gt;</code
+    >.
+  </p>
 
   <Code
     lang="css"
@@ -38,26 +49,59 @@ const slug = slugify(title);
 }`}
   />
 
-  <p>By changing the value of <code>color-scheme</code>, either the first or the second value of <code>light-dark()</code> is used.</p>
+  <p>
+    By changing the value of <code>color-scheme</code>, either the first or the
+    second value of <code>light-dark()</code> is used.
+  </p>
 
   <ul>
-    <li>If the used color scheme is <code>light</code> or unknown then the computed value of the first value gets returned.</li>
-    <li>If the used color scheme is <code>dark</code> then the computed value of the second color is returned.</li>
+    <li>
+      If the used color scheme is <code>light</code> or unknown then the computed
+      value of the first value gets returned.
+    </li>
+    <li>
+      If the used color scheme is <code>dark</code> then the computed value of the
+      second color is returned.
+    </li>
   </ul>
 
   <figure>
     <CodePen id="web-dot-dev/zYXdRKW" height={600} />
-    <figcaption><code>light-dark()</code> demo. Changing the selection changes the <code>color-scheme</code> value</figcaption>
-  </figure>  
+    <figcaption>
+      <code>light-dark()</code> demo. Changing the selection changes the <code
+        >color-scheme</code
+      > value
+    </figcaption>
+  </figure>
+
+  <div class="resources">
+    <p>
+      <Icon name="book" title="Book Icon" />
+      Resources:
+    </p>
+    <ul>
+      <li>
+        <a href="https://brm.us/light-dark"
+          >“Easy Light-Dark Mode Color Switching with <code>light-dark()</code>”
+        </a> article on bram.us
+      </li>
+      <li>
+        <a
+          href="https://developer.mozilla.org/docs/Web/CSS/color_value/light-dark"
+          ><code>light-dark()</code></a
+        > on MDN
+      </li>
+    </ul>
+  </div>
 
   <Author name="bramus" />
 
   <footer>
-    <p>Resources:</p>
-    <ul>
-      <li><a href="https://web.dev/articles/light-dark">“CSS color-scheme-dependent colors with <code>light-dark()</code>” article on developer.chrome.com</a></li>
-      <li><a href="https://brm.us/light-dark">“Easy Light-Dark Mode Color Switching with <code>light-dark()</code>” article on bram.us</a></li>
-      <li><a href="https://developer.mozilla.org/docs/Web/CSS/color_value/light-dark"><code>light-dark()</code> on MDN</a></li>
-    </ul>
+    <a href="https://codepen.io/web-dot-dev/pen/MWxLzgx">Try demo</a>
+    <div class="articles">
+      <a href="https://developer.chrome.com/blog/css-backdrop-inheritance"
+        >developer.chrome.com</a
+      >
+    </div>
   </footer>
 </FeatureLayout>

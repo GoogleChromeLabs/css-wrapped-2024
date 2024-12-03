@@ -105,7 +105,7 @@ const { slug } = Astro.props;
         box-shadow: var(--shadow-3);
         font-weight: bold;
 
-        transition: transform .7s var(--ease-spring-2);
+        transition: transform 0.7s var(--ease-spring-2);
 
         &:is(:hover, :focus-visible) {
           text-decoration: none;
@@ -136,45 +136,26 @@ const { slug } = Astro.props;
         }
       }
 
-      > footer:has(> ul) {
-        border-block-start: 1px solid var(--surface-2);
-        padding-block-start: var(--size-4);
-
-        p {
-          text-transform: uppercase;
-          font-size: var(--font-size-0);
-          margin-block-end: var(--size-1);
-          font-weight: 500;
-        }
-
-        ul {
-          padding-inline-start: var(--size-4);
-
-          li {
-            padding-inline-start: 0;
-            max-inline-size: none;
-          }
-        }
-      }
-
-      & .video-placeholder {
-        aspect-ratio: 16 / 9;
-        background: var(--surface-3);
-        border-radius: var(--radius-3);
-        overflow: clip;
-
-        display: grid;
-        place-content: center;
-
-        > svg {
-          block-size: 5rem;
-          inline-size: 5rem;
-        }
-      }
-
       & .resources {
         display: grid;
         gap: var(--size-3);
+        padding-block: var(--size-4);
+
+        > p {
+          text-transform: uppercase;
+          font-size: var(--font-size-0);
+          font-weight: bold;
+
+          display: flex;
+          place-items: center;
+          gap: var(--size-2);
+
+          > svg {
+            block-size: var(--size-relative-8);
+            inline-size: var(--size-relative-8);
+            color: var(--text-2);
+          }
+        }
 
         > ul {
           display: grid;
@@ -183,6 +164,7 @@ const { slug } = Astro.props;
 
           > li {
             padding-inline-start: 0;
+            max-inline-size: none;
           }
         }
       }

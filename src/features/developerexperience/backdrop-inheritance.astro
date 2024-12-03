@@ -14,27 +14,43 @@ const slug = slugify(title);
 
 <FeatureLayout slug={slug}>
   <Title slug={slug} title={title} />
-  
-  {/* Disabled because the baseline widget shows ::backdrop support in general, not the inheritance changes specifically
+
+  {
+    /* Disabled because the baseline widget shows ::backdrop support in general, not the inheritance changes specifically
   <div class="support">
     <baseline-status featureId="backdrop"></baseline-status>
   </div>
-   */}
-  <p>Historically the <code>::backdrop</code> pseudo-element didn’t inherit from anywhere. From Chrome 122, this <code>::backdrop</code> pseudo-element has been converted into a tree abiding element, meaning that it inherits any inheritable properties from its originating element.</p>
+   */
+  }
+  <p>
+    Historically the <code>::backdrop</code> pseudo-element didn’t inherit from anywhere.
+    From Chrome 122, this <code>::backdrop</code> pseudo-element has been converted
+    into a tree abiding element, meaning that it inherits any inheritable properties
+    from its originating element.
+  </p>
 
-  <p>Thanks to this change it is possible to override custom property values on specific elements and <code>::backdrop</code> will have access to them. For example, the <code>::backdrop</code> associated with an open <code>&lt;dialog&gt;</code> element can now access the custom properties available in that <code>&lt;dialog&gt;</code>.</p>
+  <p>
+    Thanks to this change it is possible to override custom property values on
+    specific elements and <code>::backdrop</code> will have access to them. For example,
+    the <code>::backdrop</code> associated with an open <code
+      >&lt;dialog&gt;</code
+    > element can now access the custom properties available in that <code
+      >&lt;dialog&gt;</code
+    >.
+  </p>
 
   <figure>
     <CodePen id="web-dot-dev/MWxLzgx" height={600} />
     <figcaption><code>::backdrop</code> demo</figcaption>
   </figure>
-  
+
   <Author name="bramus" />
   <footer>
-    <p>Resources:</p>
-    <ul>
-      <li><a href="https://developer.chrome.com/blog/css-backdrop-inheritance">“Changes to CSS <code>::backdrop</code> inheritance” article on developer.chrome.com</a></li>
-      <li><a href="https://codepen.io/web-dot-dev/pen/MWxLzgx">Try a demo</a></li>
-    </ul>
+    <a href="https://codepen.io/web-dot-dev/pen/MWxLzgx">Try demo</a>
+    <div class="articles">
+      <a href="https://developer.chrome.com/blog/css-backdrop-inheritance"
+        >developer.chrome.com</a
+      >
+    </div>
   </footer>
 </FeatureLayout>

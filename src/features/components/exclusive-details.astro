@@ -17,12 +17,29 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="details-name"></baseline-status>
   </div>
-  
-  <p>A common UI pattern on the web is an accordion component. This component consists of several disclosure widgets that individually can be expanded (or collapsed) to reveal (or hide) their content.</p>
 
-  <p>This pattern can be created on the web with a few <code>&lt;details&gt;</code> elements. These are typically grouped visually to indicate that they belong together.</p>
+  <p>
+    A common UI pattern on the web is an accordion component. This component
+    consists of several disclosure widgets that individually can be expanded (or
+    collapsed) to reveal (or hide) their content.
+  </p>
 
-  <p>To make an exclusive accordion, add a name attribute to the <code>&lt;details&gt;</code> elements. When this attribute is used, multiple <code>&lt;details&gt;</code> elements that have the same name value form a semantic group. When you open one of the <code>&lt;details&gt;</code> elements from the group, the previously opened one will automatically close.</p>
+  <p>
+    This pattern can be created on the web with a few <code
+      >&lt;details&gt;</code
+    > elements. These are typically grouped visually to indicate that they belong
+    together.
+  </p>
+
+  <p>
+    To make an exclusive accordion, add a name attribute to the <code
+      >&lt;details&gt;</code
+    > elements. When this attribute is used, multiple <code
+      >&lt;details&gt;</code
+    > elements that have the same name value form a semantic group. When you open
+    one of the <code>&lt;details&gt;</code> elements from the group, the previously
+    opened one will automatically close.
+  </p>
 
   <Code
     lang="html"
@@ -46,14 +63,19 @@ const slug = slugify(title);
     <CodePen id="web-dot-dev/BaMbKyM" height={800} />
     <figcaption>Exclusive Accordion demo</figcaption>
   </figure>
- 
+
   <Author name="bramus" />
 
   <footer>
-    <p>Resources:</p>
-    <ul>
-      <li><a href="https://developer.chrome.com/docs/css-ui/exclusive-accordion">“Exclusive Accordion” article on developer.chrome.com</a></li>
-      <li><a href="https://codepen.io/web-dot-dev/pen/BaMbKyM">Demo</a></li>
-    </ul>
+    <a href="https://codepen.io/web-dot-dev/pen/BaMbKyM">Try demo</a>
+    <div class="articles">
+      <a href="https://developer.chrome.com/docs/css-ui/exclusive-accordion"
+        >developer.chrome.com</a
+      >
+      <a
+        href="https://developer.mozilla.org/docs/Web/HTML/Element/details#name"
+        >MDN</a
+      >
+    </div>
   </footer>
 </FeatureLayout>

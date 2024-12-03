@@ -37,12 +37,12 @@ const totalFeatures = biomes.reduce((total, biome) => {
         <span class="plus"></span>
       </div>
       <div class="video">
-        <Icon name="play" />
+        <Icon name="play" title="Play Icon" />
       </div>
     </div>
     <div>
       <p class="sub-title">
-        Chrome and <span class="callout"><Icon name="css" /> CSS</span> in 2024 journeyed<br>
+        Chrome and <span class="callout"><Icon name="css" size="1ch" title="CSS" /> in 2024</span> journeyed<br>
         through the <b>forest</b>, over the <b>mountains</b>, and across the <b>seas</b>…
       </p>
     </div>
@@ -51,7 +51,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
         <Intro />
       </div>
       
-      <Icon name="dino" size="5rem" />
+      <Icon name="dino" title="Stan the Offlineosaur on a skateboard" size="5rem" />
 
       <div class="fullheight">
         <p class="sub-title">Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2024, highlighting <b>{totalFeatures} new features</b></p>
@@ -198,7 +198,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
         > .callout {
           display: inline-flex;
           gap: var(--size-2);
-          place-items: center;
+          place-items: baseline;
           font-weight: bold;
           line-height: 1cap;
 

@@ -37,7 +37,11 @@ const { biomes } = Astro.props;
 <aside>
   <div class="dynamic-aside">
     <div class="track">
-      <Icon name="dino" size="2.5rem" />
+      <Icon
+        name="dino"
+        title="Stan the Offlineosaur on a skateboard"
+        size="2.5rem"
+      />
     </div>
     <nav>
       {
@@ -88,7 +92,7 @@ const { biomes } = Astro.props;
       // @ts-ignore
       track.style.setProperty(
         "--scroll-direction",
-        direction == "down" ? 1 : -1,
+        direction == "down" ? 1 : -1
       );
     }
 
@@ -101,7 +105,7 @@ const { biomes } = Astro.props;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const details = document.querySelector(
-            `#${entry.target.getAttribute("data-details-target")}`,
+            `#${entry.target.getAttribute("data-details-target")}`
           );
           details.setAttribute("open", "");
         }
@@ -109,7 +113,7 @@ const { biomes } = Astro.props;
     },
     {
       threshold: 0,
-    },
+    }
   );
 
   function observeForSidenav() {

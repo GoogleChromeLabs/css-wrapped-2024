@@ -17,7 +17,8 @@
       }
 
       .st2 {
-        fill: VisitedText;
+        fill: LinkText;
+        fill: var(--link);
       }
 
       .st1 {

@@ -17,8 +17,16 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="registered-custom-properties"></baseline-status>
   </div>
-  
-  <p>2024 marked the year that <code>@property</code> finally became <a href="https://web.dev/baseline">Baseline Newly available</a>. Having cross-browser support for <code>@property</code> is a very exciting milestone as with <code>@property</code> and its <code>CSS.registerProperty</code> counterpart you can register custom properties to be of a certain type, control their inheritance behavior, and give them an initial value.</p>
+
+  <p>
+    2024 marked the year that <code>@property</code> finally became <a
+      href="https://web.dev/baseline">Baseline Newly available</a
+    >. Having cross-browser support for <code>@property</code> is a very exciting
+    milestone as with <code>@property</code> and its <code
+      >CSS.registerProperty</code
+    > counterpart you can register custom properties to be of a certain type, control
+    their inheritance behavior, and give them an initial value.
+  </p>
 
   <Code
     lang="css"
@@ -30,9 +38,17 @@ const slug = slugify(title);
 }`}
   />
 
-  <p>By registering a custom property to be of a certain type, the browser knows how to interpolate its values when used in transitions and animations.</p>
+  <p>
+    By registering a custom property to be of a certain type, the browser knows
+    how to interpolate its values when used in transitions and animations.
+  </p>
 
-  <p>By animating a custom property, your CSS becomes more concise and also easier to read, as shown in the following snippet that animates the <code>--angle</code> property from <code>0deg</code> to <code>360deg</code>.</p>
+  <p>
+    By animating a custom property, your CSS becomes more concise and also
+    easier to read, as shown in the following snippet that animates the <code
+      >--angle</code
+    > property from <code>0deg</code> to <code>360deg</code>.
+  </p>
 
   <Code
     lang="css"
@@ -57,19 +73,46 @@ div {
   />
 
   <figure>
-    <CodePen id="bramus/rNWByYz" height={600} /> {/* TODO: Move + clean up demo to web-dot-dev */}
-    <figcaption>A demo with a rotating gradient border. The rotation is done by animating the <code>--angle</code> property which the gradient border uses.</figcaption>
-  </figure>  
+    <CodePen id="bramus/rNWByYz" height={600} />
+    {/* TODO: Move + clean up demo to web-dot-dev */}
+    <figcaption>
+      A demo with a rotating gradient border. The rotation is done by animating
+      the <code>--angle</code> property which the gradient border uses.
+    </figcaption>
+  </figure>
+
+  <div class="resources">
+    <p>
+      <Icon name="book" title="Book Icon" />
+      Resources:
+    </p>
+    <ul>
+      <li>
+        <a href="https://web.dev/blog/at-property-baseline"
+          ><code>@property</code> goes baseline</a
+        >
+      </li>
+      <li>
+        <a href="https://web.dev/blog/at-property-performance"
+          >Benchmarking the performance of CSS <code>@property</code></a
+        >
+      </li>
+      <li>
+        <a
+          href="https://css-tricks.com/exploring-property-and-its-animating-powers/"
+          >Exploring <code>@property</code> and its Animating Powers</a
+        >
+      </li>
+    </ul>
+  </div>
 
   <Author name="bramus" />
 
   <footer>
-    <p>Resources:</p>
-    <ul>
-      <li><a href="https://web.dev/articles/at-property"><code>@property</code>: giving superpowers to CSS variables</a></li>
-      <li><a href="https://web.dev/blog/at-property-baseline"><code>@property</code>: Next-gen CSS variables now with universal browser support</a></li>
-      <li><a href="https://web.dev/blog/at-property-performance">Benchmarking the performance of CSS <code>@property</code></a></li>
-      <li><a href="https://css-tricks.com/exploring-property-and-its-animating-powers/">Exploring <code>@property</code> and its Animating Powers</a></li>
-    </ul>
+    <a href="https://codepen.io/bramus/pen/rNWByYz">Try demo</a>
+    <div class="articles">
+      <a href="https://web.dev/articles/at-property">web.dev</a>
+      <a href="https://developer.mozilla.org/docs/Web/CSS/anchor">MDN</a>
+    </div>
   </footer>
 </FeatureLayout>
