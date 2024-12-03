@@ -18,34 +18,76 @@ const slug = slugify(title);
     <baseline-status featureId="anchor-positioning"></baseline-status>
   </div>
   <p>
-    A fresh and declarative way to position elements relative to each other. 
-    It's perfect for menus and submenus, tooltips, selects,
-    labels, cards, settings dialogs, and many more. With anchor positioning
-    built into the browser, you can build layered user interfaces without
-    relying on third-party libraries, opening a world of creative possibilities.
+    Anchoring is a fresh and declarative way to position elements relative to
+    each other. It's perfect for menus, tooltips, selects, labels, cards,
+    settings dialogs, and many more. With anchor positioning built into the
+    browser, you can build layered user interfaces without relying on
+    third-party libraries.
   </p>
-  <div class="video-placeholder">
-    <Icon name="play" />
+  <p>
+    It takes 2 elements to create an anchor relationship: the <b>anchor</b> and
+    <b>positioned element(s)</b>.
+  </p>
+  <p>
+    The <b>anchor</b> is the element that the positioned elements orient to. Turn
+    an element into an anchor with one line of CSS:
+  </p>
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`.anchor {
+  anchor-name: --over-easy;
+}`}
+  />
+  <p>
+    The <b>positioned elements</b> are the elements that are positioned relative
+    to the anchor. These point to the anchor they want to be positioned relative
+    to with <code>position-anchor</code>
+    and a 2nd line of CSS to specify the side or area the positioned should be in.
+  </p>
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`.positioned-element {
+  position: fixed;
+  position-anchor: --over-easy;
+  position-area: block-end;
+}`}
+  />
+  <p>
+    All together, the cute egg is the anchor and the text "Over-Easy" is the
+    positioned element.
+  </p>
+  <CodePen id="web-dot-dev/wBwKpmP" height={700} />
+  <p>
+    That property <code>position-area</code> offers all sorts of options! I showed
+    the logical property value <code>block-end</code>, but there's <code
+      >center</code
+    >, <code>button</code>, and tons more. Una made a GUI to help you visualize
+    the options:
+  </p>
+
+  <Video src="./video/anchoring.mp4" />
+
+  <div class="resources">
+    <p>
+      <Icon name="book" title="Book Icon" />
+      Resources:
+    </p>
+    <ul>
+      <li>
+        <a href="http://anchor-tool.com/">anchor-tool.com</a> &mdash; Una's GUI
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=ASb9vO3ARHo"
+          >Over-Easy Mini Web Machine</a
+        > &mdash; CSS anchor + popover
+      </li>
+    </ul>
   </div>
-  <p>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis quas fugiat
-    nemo officiis tempora inventore expedita, consequuntur iste illum animi. Eos
-    culpa corporis ipsum tempora, saepe molestiae. Quasi, quisquam repudiandae!
-  </p>
-  <iframe
-    height="300"
-    style="width: 100%;"
-    title="CSS Logo?"
-    src="https://codepen.io/argyleink/embed/preview/JjQEBBW?default-tab=result&editable=true&theme-id=43079"
-    loading="lazy"
-    allowfullscreen></iframe>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quisquam, sed
-    officia tenetur expedita, quidem nisi itaque.
-  </p>
   <Author name="adam" />
   <footer>
-    <a href="https://codepen.io/collection/ExkRWw">Try demo</a>
+    <a href="https://codepen.io/collection/ExkRWw">Try demos</a>
     <div class="articles">
       <a href="https://developer.chrome.com/blog/anchor-positioning-api"
         >developer.chrome.com</a

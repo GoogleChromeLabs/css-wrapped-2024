@@ -177,6 +177,9 @@ const { slug } = Astro.props;
         padding-inline: var(--_inline-padding);
         padding-block: var(--size-6) var(--size-3);
 
+        /* CLS pacify */
+        min-block-size: 5lh;
+
         > baseline-status {
           padding: 0;
           font-family: var(--font-sans);
