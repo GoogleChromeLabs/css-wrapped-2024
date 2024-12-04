@@ -44,7 +44,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
     </div>
     <div>
       <p class="sub-title">
-        Chrome and <span class="callout"><Icon aria-label="CSS" name="css" size="1ch" title="CSS" /> in 2024</span> journeyed<br>
+        Chrome and <span class="callout"><Icon aria-label="CSS" name="css" size="1ch" title="CSS" /> CSS</span> in 2024 journeyed<br>
         through the <b>forest</b>, over the <b>mountains</b>, and across the <b>seas</b>…
       </p>
     </div>
@@ -239,6 +239,13 @@ const totalFeatures = biomes.reduce((total, biome) => {
               animation-range: 25% 75%;
             }
           }
+          /* Center stan when no SDA or no motion */
+          @media (prefers-reduced-motion: reduce) {
+            margin: 0 auto;
+          }
+          @supports not (animation-timeline: view()) {
+            margin: 0 auto;
+          }
         }
       }
     }
@@ -277,11 +284,16 @@ const totalFeatures = biomes.reduce((total, biome) => {
         transform-origin: center;
 
         @media (prefers-reduced-motion: no-preference) {
-          animation:
-            particle-scroll linear both,
-            particle-enter 1s ease;
-          animation-timeline: scroll(y root), auto;
-          animation-range: 0vh var(--range);
+          @supports (animation-timeline: view()) {
+            animation:
+              particle-scroll linear both,
+              particle-enter 1s ease;
+            animation-timeline: scroll(y root), auto;
+            animation-range: 0vh var(--range);
+          }
+          @supports not (animation-timeline: view()) {
+            animation: particle-enter 1s ease;
+          }
         }
 
         &.pixel {
