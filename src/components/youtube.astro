@@ -5,14 +5,16 @@ interface Props {
   id: string;
   width?: number;
   height?: number;
+  poster?: string;
 }
 
 const {
   id,
   width = 560,
   height = 315,
+  poster,
 } = Astro.props;
-const posterURL = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const posterURL = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const embedURL = `https://www.youtube.com/embed/${id}`;
 const watchURL = `https://youtube.com/watch?v=${id}`;
 ---

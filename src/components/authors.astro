@@ -6,7 +6,7 @@ const authorInfo = Object.values(authors).reverse();
 ---
 
 <div class="avatars">
-    {authorInfo.map((author, index) => <a name={`author-profile-${authorKeys[index]}`} href={author.url} title={author.name}><span style={`position-anchor: --${authorKeys[index]}`}>{author.name}</span><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" src={author.image} style={`anchor-name: --${authorKeys[index]}`}></a>)}
+    {authorInfo.map((author, index) => <a name={`author-profile-${authorKeys[index]}`} href={author.url} title={author.name}><span style={`position-anchor: --${authorKeys[index]}`}>{author.name}</span><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" loading="lazy" src={author.image} style={`anchor-name: --${authorKeys[index]}`}></a>)}
 </div>
 
 <style>
