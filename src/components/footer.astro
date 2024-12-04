@@ -32,6 +32,11 @@ import Authors from "./authors.astro";
       padding-inline: var(--size-3);
       overflow: clip;
       position: relative;
+      padding-block-end: 100px;
+
+      @media (orientation: landscape) {
+        min-block-size: 1100px;
+      }
 
       background-image: url(/biomes/cyberspace-sidebar.png),
         url(/biomes/cyberspace-sidebar.png);
@@ -60,7 +65,7 @@ import Authors from "./authors.astro";
         bottom: 0;
         min-width: 62.5rem;
         width: 100%;
-        max-width: 1500px;
+        max-width: 1250px;
       }
 
       @media (prefers-reduced-motion: no-preference) {

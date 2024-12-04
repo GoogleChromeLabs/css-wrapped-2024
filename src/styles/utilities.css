@@ -23,7 +23,7 @@
 }
 
 .fullheight {
-  min-block-size: 100svb;
+  block-size: 100svb;
   display: grid;
   place-content: center;
   place-content: safe center;
