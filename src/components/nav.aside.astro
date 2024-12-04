@@ -6,40 +6,79 @@ const { biomes } = Astro.props;
 ---
 
 <nav popover id="mobile-menu" class="mobile-sidenav">
-  <header>
-    <h2 class="retro-title">CSS Wrapped</h2>
-    <button popovertarget="mobile-menu" popovertargetaction="hide">
-      <Icon name="close" title="Close" size="2rem" />
-    </button>
-  </header>
-  <div>
-    {
-      biomes.map((biome) => {
-        return (
-          <section>
-            <h2>
-              <a href={`#${slugify(biome.title.toLowerCase())}`}>
-                {biome.title}
-              </a>
-            </h2>
-            <ul>
-              {biome.features.map((feature) => {
-                return (
-                  <li
-                    style={`--_view-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
-                  >
-                    <a
-                      href={`#${slugify(feature.title)}`}
-                      set:text={feature.title}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-        );
-      })
-    }
+  <div class="inner-popover">
+    <header>
+      <h2 class="retro-title">CSS Wrapped</h2>
+      <button popovertarget="mobile-menu" popovertargetaction="hide">
+        <Icon name="close" title="Close" size="2rem" />
+      </button>
+    </header>
+    <div>
+      <section class="toc">
+        <p>Table of Contents</p>
+        <ul>
+          <li>
+            <a href="#to-top">
+              <Icon name="home" size="1.5rem" aria-hidden="true" />
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#introduction">
+              <Icon name="star" size="1.5rem" aria-hidden="true" />
+              Introduction
+            </a>
+          </li>
+          <li>
+            <a href="#outro">
+              <Icon name="check" size="1.5rem" aria-hidden="true" />
+              Footer
+            </a>
+          </li>
+        </ul>
+      </section>
+      {
+        biomes.map((biome) => {
+          return (
+            <section>
+              <h2>
+                <a href={`#${slugify(biome.title.toLowerCase())}`}>
+                  {biome.title}
+                </a>
+              </h2>
+              <ul>
+                {biome.features.map((feature) => {
+                  return (
+                    <li
+                      style={`--_view-timeline: --vtl--${slugify(biome.title)}--${slugify(feature.title)};`}
+                    >
+                      <a
+                        href={`#${slugify(feature.title)}`}
+                        set:text={feature.title}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          );
+        })
+      }
+    </div>
+    <footer>
+      <a
+        href="https://github.com/googlechromelabs/css-wrapped-2024"
+        class="feedback"
+      >
+        <Icon
+          name="github"
+          title="Source on Github"
+          size="1.5rem"
+          aria-hidden="true"
+        />
+        Github
+      </a>
+    </footer>
   </div>
 </nav>
 
@@ -379,7 +418,7 @@ const { biomes } = Astro.props;
       max-block-size: 100dvh;
       overflow: auto;
 
-      padding-block: var(--size-3);
+      padding-block: var(--size-5) 0;
       padding-inline: var(--_left-pad) var(--size-5);
 
       @media (width > 1200px) {
@@ -413,7 +452,7 @@ const { biomes } = Astro.props;
         }
       }
 
-      > header {
+      header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -445,15 +484,49 @@ const { biomes } = Astro.props;
         }
       }
 
-      > div {
+      .toc {
+        a {
+          display: flex;
+          gap: var(--size-2);
+          align-items: center;
+        }
+      }
+
+      footer {
+        position: sticky;
+        bottom: 0;
+
+        padding-block: var(--size-3);
+        background: var(--surface-1);
+        border-top: 1px solid var(--surface-2);
+      }
+
+      .feedback {
+        display: inline-flex;
+        gap: var(--size-2);
+        align-items: center;
+        background: var(--surface-2);
+        padding-inline: var(--size-3);
+        padding-block: var(--size-2);
+        border-radius: var(--radius-2);
+      }
+
+      .inner-popover {
+        block-size: 100%;
         display: grid;
-        margin-block-start: var(--size-7);
+        grid-template-rows: auto 1fr auto;
         gap: var(--size-7);
 
-        > section {
+        > div {
           display: grid;
-          gap: var(--size-2);
-          padding-inline-end: var(--size-4);
+          gap: var(--size-7);
+          align-content: start;
+
+          > section {
+            display: grid;
+            gap: var(--size-2);
+            padding-inline-end: var(--size-4);
+          }
         }
       }
 
