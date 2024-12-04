@@ -39,5 +39,26 @@ const watchURL = `https://youtube.com/watch?v=${id}`;
       height: auto;
       aspect-ratio: var(--aspectRatio);
     }
+
+    /* Make the fallback link the size of the whole component */
+    lite-youtube > a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: var(--radius-3);
+    }
+
+    /* Hide the fallback link when the component loads the button to prevent two tab stops */
+    lite-youtube > a {
+      outline-offset: -5px;
+    }
+
+    /* Hide the fallback link when the component loads the button to prevent two tab stops */
+    lite-youtube:has(button) > a {
+      display: none;
+    }
   }
 </style>
