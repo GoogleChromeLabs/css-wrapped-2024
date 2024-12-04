@@ -18,16 +18,12 @@ const slug = slugify(title);
     <baseline-status featureId="light-dark"></baseline-status>
   </div>
 
-  <p>
-    System colors in CSS have the ability to react to the current used
-    color-scheme value. For example, if you declare <code
-      >color: CanvasText</code
-    > in a CSS rule, the color of the matched elements will be either light or dark
-    depending on the <code>color-scheme</code> value.
-  </p>
+  <p>System colors in CSS have the ability to react to the current used <code>color-scheme</code> value. For example, if you declare <code>color: CanvasText</code> in a CSS rule, the color of the matched elements will be either light or dark depending on the <code>color-scheme</code> value.</p>
+
+  <p>In the following demo, use the dropdown to control the <code>color-scheme</code> of the <code>div</code>. Because the <code>div</code> is styled with system colors, it supports both light and dark styles.</p>
 
   <figure>
-    <CodePen id="bramus/xxvJzJK" />{/* Move to web-dot-dev account */}
+    <CodePen id="web-dot-dev/ByBoMrG" height={500} />
     <figcaption>System colors demo.</figcaption>
   </figure>
 
