@@ -19,64 +19,38 @@ const slug = slugify(title);
   <div class="support">
     <baseline-status featureId="scroll-snap-events"></baseline-status>
   </div>
-  <p>
-    Built-in snap events have made the previously invisible, visible, at the
-    right time, and always correct. This is not a convenience you had without
-    these events. They are the missing piece of the puzzle that makes scroll
-    snapping a complete solution.
-  </p>
-  <p>
-    Two new snap events: <code>scrollSnapChange</code> and <code
-      >scrollSnapChanging</code
-    >.
-  </p>
-  <Code
-    lang="js"
-    theme="css-variables"
-    code={`scroller.addEventListener('scrollsnapchange', event => {
-  console.log(event.snapTargetBlock);
-  console.log(event.snapTargetInline);
-})`}
-  />
-  <p>
-    The <b>"change"</b> event fires at a similar moment as <a
-      href="https://developer.chrome.com/blog/scrollend-a-new-javascript-event"
-      ><code>scrollend</code></a
-    >, which is essentially when scroll has rested and a user has stopped
-    interacting with the scroller.
-  </p>
+
+  <p>Built-in snap events have made previously invisible moments during scrolling, visible, at the right time, and always correct. They are the missing piece of the puzzle that makes scroll snapping a complete solution.</p>
+
+  <p>Two new snap events: <a href="https://developer.mozilla.org/docs/Web/API/Element/scrollsnapchange_event"><code>scrollsnapchange</code></a> and <a href="https://developer.mozilla.org/docs/Web/API/Element/scrollsnapchanging_event"><code>scrollsnapchanging</code></a>.</p>
+
+  <Code lang="js" theme="css-variables" code={`scroller.addEventListener('scrollsnapchange', event=> {
+    console.log(event.snapTargetBlock);
+    console.log(event.snapTargetInline);
+  })`}
+    />
+
+  <p>The <code>scrollsnapchange</code> event fires at a similar moment as <a  href="https://developer.chrome.com/blog/scrollend-a-new-javascript-event"><code>scrollend</code></a>, when scroll has rested and the user has stopped
+  interacting with the scroller.</p>
+
   <Video src="./video/snap-change.mp4" />
-  <p>
-    The <b>"changing"</b> event is eager to fire, calling the callback the moment
-    the scroller has a new snap target. This is useful for a instant UX feedback,
-    providing a mechanism for immediate visual updates based on the user's interaction.
-  </p>
+
+  <p>The <code>scrollsnapchanging</code>event is eager to fire, and calls the callback the moment the scroller has a new snap target. This is useful for instant UX feedback, providing a mechanism for immediate visual updates based on the user's interaction.</p>
+
   <Video src="./video/snap-changing.mp4" />
-  <Code
-    lang="js"
-    theme="css-variables"
-    code={`scroller.addEventListener('scrollsnapchanging', event => {
-  console.log(event.snapTargetBlock);
-  console.log(event.snapTargetInline);
-})`}
-  />
-  <p>
-    Combining these events together, you can create a seamless experience for
-    picking elements with a scroll gesture. Here's a ruler experience that snaps
-    to quarter inch values and uses <a href="#scrolldriven-animations"
-      >scroll driven animation</a
-    > to aid in highlighting the selected value. The "changing" event is used to
-    immediately update the number input value, while the "change" event is used to
-    support and confirm the selected value.
-  </p>
+
+  <Code lang="js" theme="css-variables" code={`scroller.addEventListener('scrollsnapchanging', event=> {
+    console.log(event.snapTargetBlock);
+    console.log(event.snapTargetInline);
+  })`}
+    />
+
+  <p>By combining these events together you can create a seamless experience for picking elements with a scroll gesture. The following ruler experience snaps to quarter inch values and uses <a href="#scroll-driven-animations">scroll driven animation</a> to highlight the selected value. The <code>scrollsnapchanging</code>event is used to immediately update the number input value, while the <code>scrollsnapchange</code> event is used to support and confirm the selected value.</p>
+
   <CodePen id="web-dot-dev/LYKOOpd" height={300} />
-  <p>
-    Checkout the article on <a
-      href="https://developer.chrome.com/blog/scroll-snap-events"
-      >developer.chrome.com</a
-    > for more details and examples. Also, the demo link below is to a Snap Event
-    visualizer, helping you feel and see the timing of these new events.
-  </p>
+
+  <p>Checkout the article on <a  href="https://developer.chrome.com/blog/scroll-snap-events">developer.chrome.com</a> for more details and examples. Also, the following demo link is to a Snap Event visualizer, helping you feel and see the timing of these new events.</p>
+
   <Author name="adam" />
   <footer>
     <a href="https://codepen.io/web-dot-dev/pen/jOjaaEP">Try demo</a>
