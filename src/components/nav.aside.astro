@@ -18,7 +18,9 @@ const { biomes } = Astro.props;
         return (
           <section>
             <h2>
-              <a href={`#${slugify(biome.title.toLowerCase())}`}>{biome.title}</a>
+              <a href={`#${slugify(biome.title.toLowerCase())}`}>
+                {biome.title}
+              </a>
             </h2>
             <ul>
               {biome.features.map((feature) => {
@@ -111,7 +113,9 @@ const { biomes } = Astro.props;
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const details = document.querySelector(`#${entry.target.getAttribute("data-details-target")}`);
+          const details = document.querySelector(
+            `#${entry.target.getAttribute("data-details-target")}`
+          );
           details.setAttribute("open", "");
         }
       });
@@ -125,14 +129,16 @@ const { biomes } = Astro.props;
     (entries) => {
       entries.forEach((entry) => {
         const id = entry.target.getAttribute("id");
-        const $li = document.querySelector(`aside nav details li:has(a[href="#${id}"])`);
+        const $li = document.querySelector(
+          `aside nav details li:has(a[href="#${id}"])`
+        );
 
         if (!$li) return;
 
         if (entry.isIntersecting) {
-          $li.classList.add('in-view');
+          $li.classList.add("in-view");
         } else {
-          $li.classList.remove('in-view');
+          $li.classList.remove("in-view");
         }
       });
     },
@@ -145,9 +151,11 @@ const { biomes } = Astro.props;
     document.querySelectorAll(".biome > section").forEach((biome) => {
       biomeObserver.observe(biome);
 
-      if (!CSS.supports('animation-timeline: view()')) {
-        const features = biome.querySelectorAll('.features-list > div > article');
-        features.forEach(feature => {
+      if (!CSS.supports("animation-timeline: view()")) {
+        const features = biome.querySelectorAll(
+          ".features-list > div > article"
+        );
+        features.forEach((feature) => {
           featureObserver.observe(feature);
         });
       }
@@ -158,9 +166,11 @@ const { biomes } = Astro.props;
     document.querySelectorAll(".biome > section").forEach((biome) => {
       biomeObserver.unobserve(biome);
 
-      if (!CSS.supports('animation-timeline: view()')) {
-        const features = biome.querySelectorAll('.features-list > div > article');
-        features.forEach(feature => {
+      if (!CSS.supports("animation-timeline: view()")) {
+        const features = biome.querySelectorAll(
+          ".features-list > div > article"
+        );
+        features.forEach((feature) => {
           featureObserver.unobserve(feature);
         });
       }
@@ -278,10 +288,10 @@ const { biomes } = Astro.props;
             position: absolute;
             top: 0;
             left: 4px;
-            
+
             inline-size: 3px;
             block-size: 100%;
-            
+
             /* SDA ScrollSpy */
             @supports (animation-timeline: view()) {
               background: var(--link);
@@ -423,6 +433,11 @@ const { biomes } = Astro.props;
           transition:
             box-shadow 0.7s var(--ease-spring-3),
             outline-offset 145ms var(--ease-2);
+
+          > svg {
+            /* safari fix */
+            block-size: 2rem;
+          }
 
           &:hover {
             box-shadow: 0 0 0 5px var(--surface-2);
