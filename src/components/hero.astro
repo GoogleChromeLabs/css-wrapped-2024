@@ -284,11 +284,16 @@ const totalFeatures = biomes.reduce((total, biome) => {
         transform-origin: center;
 
         @media (prefers-reduced-motion: no-preference) {
-          animation:
-            particle-scroll linear both,
-            particle-enter 1s ease;
-          animation-timeline: scroll(y root), auto;
-          animation-range: 0vh var(--range);
+          @supports (animation-timeline: view()) {
+            animation:
+              particle-scroll linear both,
+              particle-enter 1s ease;
+            animation-timeline: scroll(y root), auto;
+            animation-range: 0vh var(--range);
+          }
+          @supports not (animation-timeline: view()) {
+            animation: particle-enter 1s ease;
+          }
         }
 
         &.pixel {
