@@ -25,7 +25,7 @@ const slug = slugify(title);
     third-party libraries.
   </p>
   <p>
-    It takes 2 elements to create an anchor relationship: the <b>anchor</b> and
+    It takes two elements to create an anchor relationship: the <b>anchor</b> and
     <b>positioned element(s)</b>.
   </p>
   <p>
@@ -42,8 +42,8 @@ const slug = slugify(title);
   <p>
     The <b>positioned elements</b> are the elements that are positioned relative
     to the anchor. These point to the anchor they want to be positioned relative
-    to with <code>position-anchor</code>
-    and a 2nd line of CSS to specify the side or area the positioned should be in.
+    to with <code>position-anchor</code> and a second line of CSS to specify the
+    side or area the positioned should be in.
   </p>
   <Code
     lang="css"
@@ -54,18 +54,12 @@ const slug = slugify(title);
   position-area: block-end;
 }`}
   />
-  <p>
-    All together, the cute egg is the anchor and the text "Over-Easy" is the
-    positioned element.
-  </p>
+
+  <p>In the following demo, the cute egg is the anchor and the text "Over-Easy" is the positioned element.</p>
+
   <CodePen id="web-dot-dev/wBwKpmP" height={700} />
-  <p>
-    That property <code>position-area</code> offers all sorts of options! I showed
-    the logical property value <code>block-end</code>, but there's <code
-      >center</code
-    >, <code>button</code>, and tons more. Una made a GUI to help you visualize
-    the options:
-  </p>
+
+  <p>The <code>position-area</code> property offers all sorts of options! The demo uses the logical property value <code>block-end</code>, but there's <code>center</code >, <code>button</code>, and tons more. Una made a GUI to help you visualize the options:</p>
 
   <Video src="./video/anchoring.mp4" />
 
