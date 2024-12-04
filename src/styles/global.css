@@ -69,4 +69,9 @@
 		padding-inline: var(--size-4);
 		border-radius: var(--radius-3);
 	}
+
+	figcaption {
+		text-align: center;
+		font-style: italic;
+	}	
 }
