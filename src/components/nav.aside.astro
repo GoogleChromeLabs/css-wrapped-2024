@@ -107,14 +107,32 @@ const { biomes } = Astro.props;
     e.target.lastScrollTop = st <= 0 ? 0 : st;
   }
 
-  const observer = new IntersectionObserver(
+  const biomeObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const details = document.querySelector(
-            `#${entry.target.getAttribute("data-details-target")}`
-          );
+          const details = document.querySelector(`#${entry.target.getAttribute("data-details-target")}`);
           details.setAttribute("open", "");
+        }
+      });
+    },
+    {
+      threshold: 0,
+    }
+  );
+
+  const featureObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        const $li = document.querySelector(`aside nav details li:has(a[href="#${id}"])`);
+
+        if (!$li) return;
+
+        if (entry.isIntersecting) {
+          $li.classList.add('in-view');
+        } else {
+          $li.classList.remove('in-view');
         }
       });
     },
@@ -125,13 +143,27 @@ const { biomes } = Astro.props;
 
   function observeForSidenav() {
     document.querySelectorAll(".biome > section").forEach((biome) => {
-      observer.observe(biome);
+      biomeObserver.observe(biome);
+
+      if (!CSS.supports('animation-timeline: view()')) {
+        const features = biome.querySelectorAll('.features-list > div > article');
+        features.forEach(feature => {
+          featureObserver.observe(feature);
+        });
+      }
     });
   }
 
   function unobserveForSidenav() {
     document.querySelectorAll(".biome > section").forEach((biome) => {
-      observer.unobserve(biome);
+      biomeObserver.unobserve(biome);
+
+      if (!CSS.supports('animation-timeline: view()')) {
+        const features = biome.querySelectorAll('.features-list > div > article');
+        features.forEach(feature => {
+          featureObserver.unobserve(feature);
+        });
+      }
     });
   }
 
@@ -246,14 +278,26 @@ const { biomes } = Astro.props;
             position: absolute;
             top: 0;
             left: 4px;
-            background: var(--link);
-
+            
             inline-size: 3px;
             block-size: 100%;
+            
+            /* SDA ScrollSpy */
+            @supports (animation-timeline: view()) {
+              background: var(--link);
+              transform: scaleY(0);
+              animation: i-spy linear;
+              animation-timeline: var(--_view-timeline);
+            }
 
-            transform: scaleY(0);
-            animation: i-spy linear;
-            animation-timeline: var(--_view-timeline);
+            @supports not (animation-timeline: view()) {
+              background: transparent;
+            }
+          }
+
+          /* IntersectionObserver-based ScrollSpy */
+          &.in-view::before {
+            background: var(--link);
           }
 
           & code {
