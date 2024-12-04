@@ -113,22 +113,28 @@ const timelines = biomes.reduce(
 --><html lang="en" style="view-transition-name: none">{/* remove the VT until the clientside theme switch is loaded so we dont flash a VT  */}
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width" />
+
     <title>CSS Wrapped 2024</title>
-    <link
-      rel="preload"
-      href="./fight.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="description" content="Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2024.">
+
+    <link rel="preload" href="./fight.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <script type="module" src="./baseline-status.min.js"></script>
+
     <meta property="og:title" content="CSS Wrapped 2024">
     <meta property="og:description" content="Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2024.">
     <meta property="og:image" content="https://chrome.dev/css-wrapped-2024/social.png">
     <meta property="og:url" content="https://chrome.dev/css-wrapped-2024/">
     <meta name="og:site_name" content="CSS Wrapped 2024">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ChromiumDev">
+    <meta name="twitter:title" content="CSS Wrapped 2024">
+    <meta name="twitter:image" content="https://chrome.dev/css-wrapped-2024/social.png">
+    <meta name="twitter:image:alt" content="CSS Wrapped Pushing the Web Forward">
+    <meta name="twitter:description" content="Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2024.">
+
   </head>
   <body>
     <PrimaryNav />
@@ -172,8 +178,7 @@ const timelines = biomes.reduce(
   }
 </style>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-754F24EHD8"
-></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-754F24EHD8"></script>
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
