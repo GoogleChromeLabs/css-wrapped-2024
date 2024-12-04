@@ -27,19 +27,14 @@ const slug = slugify(title);
     backward in direct response.
   </p>
 
+  <p>In the following demo, if your browser has support for CSS scroll-driven animations, the images get unclipped as they cross the scrollport.</p>
+
   <figure>
-    TODO: Embed an SDA demo
-    <figcaption>TODO: Write description for SDA demo</figcaption>
+    <iframe src="https://scroll-driven-animations.style/demos/image-reveal/css/?embed" height="500" loading="lazy"></iframe>
+    <figcaption>Demo featuring <a href="https://scroll-driven-animations.style/demos/image-reveal/css/">self-revealing images</a> powered by scroll-driven animations.</figcaption>
   </figure>
 
-  <p>
-    To support the launch of scroll-driven animations in Chrome 115, Chrome
-    DevRel created <a href="https://goo.gle/learn-scroll-driven-animations"
-      >a 10-part video course named “Unleash the Power of Scroll-Driven
-      Animations”</a
-    > that teaches you all there is to know about scroll-driven animations with CSS
-    or JavaScript.
-  </p>
+  <p>To support the launch of scroll-driven animations in Chrome 115, Chrome DevRel created <a href="https://goo.gle/learn-scroll-driven-animations">“Unleash the Power of Scroll-Driven Animations”</a>, a 10-part video course that teaches you all there is to know about scroll-driven animations with CSS or JavaScript.</p>
 
   <figure>
     <YouTube id="5noL_qFobm0" width={375} height={211} />
@@ -94,3 +89,14 @@ const slug = slugify(title);
     </div>
   </footer>
 </FeatureLayout>
+
+<style>
+  iframe {
+    width: 100%;
+    border-radius: var(--radius-3);
+    overflow: clip;
+    box-shadow: var(--shadow-3);
+    background-color: white;
+    border: 1px solid var(--text-1);
+  }
+</style>
