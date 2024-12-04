@@ -2,13 +2,14 @@
 interface Props {
   slug: string;
   title: string;
+  shorttitle?: string;
 }
 
-const { slug, title } = Astro.props;
+const { slug, title, shorttitle } = Astro.props;
 
 ---
 
-<h3><a href={`#${slug}`}>#</a> <span set:text={title}></span></h3>
+<h3><a href={`#${slug}`}>#</a> <span set:text={title}></span>{shorttitle && <span class="shorttitle" set:text={shorttitle}></span>}</h3>
 
 <style>
   h3 {
@@ -16,6 +17,21 @@ const { slug, title } = Astro.props;
     gap: 0.1rem;
     display: flex;
     align-items: center;
+
+    .shorttitle {
+      display: none;
+    }
+
+    &:has(span.shorttitle) {
+      @media screen and (width <= 720px) {
+        span:not(span.shorttitle) {
+          display: none;
+        }
+        span.shorttitle {
+          display: block;
+        }
+      }
+    }
   }
   a {
     text-decoration: none;
