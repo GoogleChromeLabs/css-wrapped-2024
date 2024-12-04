@@ -52,6 +52,11 @@ const watchURL = `https://youtube.com/watch?v=${id}`;
     }
 
     /* Hide the fallback link when the component loads the button to prevent two tab stops */
+    lite-youtube > a {
+      outline-offset: -5px;
+    }
+
+    /* Hide the fallback link when the component loads the button to prevent two tab stops */
     lite-youtube:has(button) > a {
       display: none;
     }
