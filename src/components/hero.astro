@@ -239,6 +239,13 @@ const totalFeatures = biomes.reduce((total, biome) => {
               animation-range: 25% 75%;
             }
           }
+          /* Center stan when no SDA or no motion */
+          @media (prefers-reduced-motion: reduce) {
+            margin: 0 auto;
+          }
+          @supports not (animation-timeline: view()) {
+            margin: 0 auto;
+          }
         }
       }
     }
