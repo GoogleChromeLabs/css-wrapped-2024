@@ -18,10 +18,10 @@ export default function (title: string) {
         .replaceAll('&lt;', '')
         .replaceAll('&gt;', '')
         // remove special characters
-        .replace(/[^A-Za-z0-9 ]/g, '')
+        .replace(/[^A-Za-z0-9 ]/g, ' ')
         // replace spaces
         .replace(/\s+/g, '-')
-        // remove leading & trailing separtors
+        // remove leading & trailing separators
         .replace(/^-+|-+$/g, '')
         // output lowercase
         .toLowerCase()
