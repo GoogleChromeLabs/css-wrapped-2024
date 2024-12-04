@@ -489,6 +489,11 @@ const { biomes } = Astro.props;
           display: flex;
           gap: var(--size-2);
           align-items: center;
+
+          > svg {
+            /* safari fix */
+            block-size: 1.5rem;
+          }
         }
       }
 
@@ -509,6 +514,11 @@ const { biomes } = Astro.props;
         padding-inline: var(--size-3);
         padding-block: var(--size-2);
         border-radius: var(--radius-2);
+
+        > svg {
+          /* safari fix */
+          block-size: 1.5rem;
+        }
       }
 
       .inner-popover {
