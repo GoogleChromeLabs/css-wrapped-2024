@@ -3,14 +3,18 @@ import slugify from "./../util/slugify";
 const { title, image, alt, description, features } = Astro.props;
 ---
 
-<header>
+<header id={slugify(title)}>
   <img src={image} alt={alt} width="1280" height="720" loading="lazy" />
   <div>
-    <h2 class="retro-title">{title}</h2>
+    
+    <h2 class="retro-title">
+      <a href=`#${slugify(title)}`>#</a>
+      {title}
+    </h2>
     <p set:html={description} />
   </div>
 </header>
-<section id={slugify(title)} data-details-target={`details-${slugify(title)}`}>
+<section data-details-target={`details-${slugify(title)}`}>
   <div class="features-list">
     {
       features.map((Feature) => (
@@ -73,6 +77,19 @@ const { title, image, alt, description, features } = Astro.props;
 
       h2 {
         font-size: clamp(5rem, 9vw, 7rem);
+        margin-left: -0.4em;
+        a {
+          text-decoration: none;
+          font-size: 0.65em;
+          visibility: hidden;
+          height: 100%;
+          display: inline-block;
+          vertical-align: middle;
+
+          h2:hover & {
+            visibility: visible;
+          }
+        }
       }
 
       @media (width >= 720px) {

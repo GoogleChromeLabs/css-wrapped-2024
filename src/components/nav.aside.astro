@@ -18,7 +18,7 @@ const { biomes } = Astro.props;
         return (
           <section>
             <h2>
-              <a href={`#${biome.title.toLowerCase()}`}>{biome.title}</a>
+              <a href={`#${slugify(biome.title.toLowerCase())}`}>{biome.title}</a>
             </h2>
             <ul>
               {biome.features.map((feature) => {
