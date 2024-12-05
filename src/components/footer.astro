@@ -38,6 +38,7 @@ import Authors from "./authors.astro";
       overflow: clip;
       position: relative;
       padding-block-end: 100px;
+      padding-inline: 40px;
 
       @media (orientation: landscape) {
         min-block-size: 1100px !important;
@@ -52,13 +53,13 @@ import Authors from "./authors.astro";
 
       @media (width <= 720px) {
         background-position:
-          -250px 50%,
-          calc(100% + 250px) 50%;
+          -265px 70%,
+          calc(100% + 265px) 70%;
         padding-block-end: 25svh;
       }
 
       > h3.retro-title {
-        font-size: clamp(5rem, 11vw, 14rem);
+        font-size: clamp(4.5rem, 11vw, 14rem);
       }
 
       > p {
