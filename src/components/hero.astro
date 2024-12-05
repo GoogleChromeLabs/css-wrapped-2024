@@ -265,6 +265,14 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
       lite-youtube {
         max-width: none !important;
+
+        > .lty-playbtn {
+          opacity: 0.75;
+          transition: opacity 0.15s ease;
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
 
       > svg {
