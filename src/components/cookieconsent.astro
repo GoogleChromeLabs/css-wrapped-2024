@@ -9,18 +9,22 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: var(--surface-2);
+        background: light-dark(white, var(--surface-2));
         display: grid;
-        transition: translate 0.25s ease;
-        grid-template-columns: auto auto;
-        justify-content: center;
+        grid-auto-flow: column;
+        place-content: center;
         gap: var(--size-4);
         padding: var(--size-4);
         border-top: 1px solid var(--surface-1);
         z-index: 1;
+        transition: translate 0.25s ease;
 
         @starting-style {
             translate: 0 100%;
+        }
+
+        @media (width < 600px) {
+            grid-auto-flow: row;
         }
     }
 
@@ -28,17 +32,22 @@
         translate: 0 100%;
     }
 
-    #cookie-consent p {
-        text-wrap: unset;
-        max-inline-size: auto;
-    }
-
     #cookie-consent button {
         white-space: nowrap;
-        background-color: var(--surface-3);
+        background: var(--surface-4);
+        color: light-dark(black, black);
+        padding-block: var(--size-2);
+        padding-inline: var(--size-4);
+        border-radius: var(--radius-2);
+        box-shadow: var(--shadow-2);
+        font-weight: bold;
+
+        transition:
+            box-shadow 0.7s var(--ease-spring-3),
+            outline-offset 145ms var(--ease-2);
 
         &:hover {
-            background-color: var(--surface-4);
+            box-shadow: 0 0 0 5px color-mix(in oklab, var(--surface-4) 20%, transparent);
         }
     }
 </style>
@@ -46,7 +55,7 @@
   const storageKey = 'css-wrapped-cookie-consent';
 
   function setupCookieConsent(element) {
-    element.innerHTML = `<div>Chrome.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic. <a href="https://policies.google.com/technologies/cookies">Learn more.</a></div>`;
+    element.innerHTML = `<p>Chrome.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic. <a href="https://policies.google.com/technologies/cookies">Learn more.</a></p>`;
 
     const button = document.createElement('button');
     button.innerHTML = 'I understand'
