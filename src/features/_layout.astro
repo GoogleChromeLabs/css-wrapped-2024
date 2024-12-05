@@ -105,14 +105,20 @@ const { slug } = Astro.props;
         box-shadow: var(--shadow-3);
         font-weight: bold;
 
-        transition: transform 0.7s var(--ease-spring-2);
+        transition:
+          box-shadow 0.7s var(--ease-spring-3),
+          outline-offset 145ms var(--ease-2);
+
+        @media (prefers-color-scheme: light) {
+          text-shadow: 0 1px 0 color-mix(in oklab, var(--link) 80%, black);
+        }
+
+        &:hover {
+          box-shadow: 0 0 0 5px color-mix(in oklab, var(--link) 20%, transparent);
+        }
 
         &:is(:hover, :focus-visible) {
           text-decoration: none;
-        }
-
-        &:not(:active):is(:hover, :focus-visible) {
-          transform: scale(1.1);
         }
       }
 
