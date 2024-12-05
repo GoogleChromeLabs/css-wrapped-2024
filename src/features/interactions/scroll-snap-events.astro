@@ -33,11 +33,11 @@ const slug = slugify(title);
   <p>The <code>scrollsnapchange</code> event fires at a similar moment as <a  href="https://developer.chrome.com/blog/scrollend-a-new-javascript-event"><code>scrollend</code></a>, when scroll has rested and the user has stopped
   interacting with the scroller.</p>
 
-  <Video src="./video/snap-change.mp4" />
+  <Video src="./video/snap-change.mp4" width={1920} height={1082} poster="./video/snap-change.png" preload="none" />
 
   <p>The <code>scrollsnapchanging</code>event is eager to fire, and calls the callback the moment the scroller has a new snap target. This is useful for instant UX feedback, providing a mechanism for immediate visual updates based on the user's interaction.</p>
 
-  <Video src="./video/snap-changing.mp4" />
+  <Video src="./video/snap-changing.mp4" width={1920} height={1082} poster="./video/snap-changing.png" preload="none" />
 
   <Code lang="js" theme="css-variables" code={`scroller.addEventListener('scrollsnapchanging', event=> {
     console.log(event.snapTargetBlock);

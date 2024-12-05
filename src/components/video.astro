@@ -3,9 +3,11 @@ interface Props {
   src: string;
   width?: number;
   height?: number;
+  poster?: string;
+  preload?: string;
 }
 
-const { src, width = 720, height = 480 } = Astro.props;
+const { src, width = 720, height = 480, poster = "", preload = "metadata" } = Astro.props;
 ---
 
 <video
@@ -16,7 +18,10 @@ const { src, width = 720, height = 480 } = Astro.props;
   muted
   loop
   playsinline
-  preload="metadata">
+  preload={preload}
+  poster={poster}
+  onmouseenter="event.target.setAttribute('preload','metadata')"
+  style=`aspect-ratio: ${width} / ${height};`>
   Your browser does not support video
 </video>
 
