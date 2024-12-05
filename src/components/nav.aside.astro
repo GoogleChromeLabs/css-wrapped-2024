@@ -92,6 +92,8 @@ const { biomes } = Astro.props;
       />
     </div>
     <nav>
+      <a href="#to-top">Home</a>
+      <a href="#introduction">Introduction</a>
       {
         biomes.map((biome, i) => {
           return (
@@ -119,6 +121,7 @@ const { biomes } = Astro.props;
           );
         })
       }
+      <a href="#outro">Footer</a>
     </nav>
   </div>
 </aside>
@@ -254,8 +257,16 @@ const { biomes } = Astro.props;
       > nav {
         block-size: max-content;
         display: grid;
-        border-radius: var(--radius-3);
-        overflow: clip;
+        gap: var(--size-3);
+
+        > a {
+          font-weight: var(--font-weight-7);
+          color: var(--text-1);
+        }
+
+        details {
+          padding: 0;
+        }
 
         summary,
         details {
