@@ -6,7 +6,6 @@ const { title, image, alt, description, features } = Astro.props;
 <header id={slugify(title)}>
   <img src={image} alt={alt} width="1280" height="720" loading="lazy" />
   <div>
-
     <h2 class="retro-title">
       <a href=`#${slugify(title)}`>#</a>
       {title}
@@ -76,7 +75,7 @@ const { title, image, alt, description, features } = Astro.props;
       }
 
       h2 {
-        font-size: clamp(3rem, 13vi,6.1rem);
+        font-size: clamp(3rem, 13vi, 6.1rem);
         margin-left: -0.4em;
         a {
           text-decoration: none;
