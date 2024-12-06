@@ -61,12 +61,10 @@ const { title, image, alt, description, features } = Astro.props;
       }
 
       > div {
-        container-type: inline-size;
         display: grid;
         max-inline-size: var(--size-content-3);
         margin: auto;
         gap: var(--size-3);
-        inline-size: 100%;
 
         @supports (animation-timeline: view()) {
           @media (prefers-reduced-motion: no-preference) {
@@ -78,7 +76,7 @@ const { title, image, alt, description, features } = Astro.props;
       }
 
       h2 {
-        font-size: clamp(3rem, 19cqi, 7rem);
+        font-size: clamp(3rem, 13vi,6.1rem);
         margin-left: -0.4em;
         a {
           text-decoration: none;
