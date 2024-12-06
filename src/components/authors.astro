@@ -78,10 +78,14 @@ const authorInfo = Object.values(authors);
         transition: all ease-in-out 0.15s;
     }
 
-    .avatars :is(:hover, :focus) > img {
-        transform-origin: 50% 50%;
-        --border-color: var(--color-core-tertiary);
-        scale: 1.1;
+    .avatars > a:is(:hover, :focus) {
+        z-index: calc(var(--num-children) + 1) !important;
+
+        > img {
+            transform-origin: 50% 50%;
+            --border-color: var(--color-core-tertiary);
+            scale: 1.1;
+        }
     }
 
     .avatars span {
