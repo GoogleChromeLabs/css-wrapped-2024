@@ -1,12 +1,12 @@
 ---
 import authors from './../data/authors.json';
 
-const authorKeys = Object.keys(authors).reverse();
-const authorInfo = Object.values(authors).reverse();
+const authorKeys = Object.keys(authors);
+const authorInfo = Object.values(authors);
 ---
 
 <div class="avatars">
-    {authorInfo.map((author, index) => <a name={`author-profile-${authorKeys[index]}`} href={author.url} title={author.name}><span style={`position-anchor: --${authorKeys[index]}`}>{author.name}</span><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" loading="lazy" src={author.image} style={`anchor-name: --${authorKeys[index]}`}></a>)}
+    {authorInfo.map((author, index) => <a name={`author-profile-${authorKeys[index]}`} href={author.url} title={author.name} style={`z-index: ${authorInfo.length - index}`}><span style={`position-anchor: --${authorKeys[index]}`}>{author.name}</span><img alt={`Profile image for ${author.name}`} class="avatar" height="96" width="96" loading="lazy" src={author.image} style={`anchor-name: --${authorKeys[index]}`}></a>)}
 </div>
 
 <style>
@@ -35,8 +35,6 @@ const authorInfo = Object.values(authors).reverse();
         grid-template-columns: repeat(var(--num-children), var(--grid-cell-size-to-use));
         width: calc(var(--grid-cell-size-to-use) * var(--num-children-1) + var(--gap) * var(--num-children) + var(--avatar-size) + var(--border-size));
         transition: all ease-in-out 0.25s;
-    
-        direction: rtl; /* Reverse the order, so the last one shows first */
 
         @media (width >= 720px) {
             --gap: 0.1em;
