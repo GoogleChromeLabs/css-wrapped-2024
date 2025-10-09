@@ -1,5 +1,5 @@
 {
-  "name": "css-wrapped-2024",
+  "name": "css-wrapped-2025",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -8,8 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "gsutil -m rsync -rd dist gs://chrome-dev-demos/public/css-wrapped-2024",
-    "predeploy": "astro check && astro build --base css-wrapped-2024"
+    "deploy": "gsutil -m rsync -rd dist gs://chrome-dev-demos/public/css-wrapped-2025",
+    "predeploy": "astro check && astro build --base css-wrapped-2025"
   },
   "license": "Apache-2.0",
   "dependencies": {

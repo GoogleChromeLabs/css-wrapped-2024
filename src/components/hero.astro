@@ -10,9 +10,9 @@ const totalFeatures = biomes.reduce((total, biome) => {
 }, 0);
 ---
 
-<section>
+<section class="hero-container">
   <div class="hero">
-    <h1 class="retro-title">CSS Wrapped 2024</h1>
+    <!-- <h1 class="retro-title">CSS Wrapped 2025</h1> -->
     <div class="grid-pile">
       <div class="particles" id="particles">
         <span class="pixel"></span>
@@ -37,15 +37,17 @@ const totalFeatures = biomes.reduce((total, biome) => {
         <span class="plus"></span>
         <span class="plus"></span>
       </div>
-      <div class="video">
+      <!-- <div class="video">
         {/* if changing the Video, then update the preload of the image in index.astro */}
         <Youtube id="bcpUS7qXuoA" poster="./hero-video-poster.jpg" />
+      </div> -->
+      <div>
+        <img src="../../public/Wrapped_Circle.png" alt="CSS Wrapped 2025">
       </div>
     </div>
     <div>
       <p class="sub-title">
-        Chrome and <span class="callout"><Icon aria-hidden="true" name="css" size="1ch" title="CSS" /> CSS</span> in 2024 journeyed<br>
-        through the <b>forest</b>, over the <b>mountains</b>, and across the <b>seas</b>…
+        <b>Sculpt</b> dynamic interfaces, <code>stretch</code> your imagination, and <b>play</b> with these powerful new CSS features.
       </p>
     </div>
     <div class="narrative">
@@ -56,7 +58,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
       <Icon name="dino" title="Stan the Offlineosaur on a skateboard" size="5rem" />
 
       <div class="fullheight">
-        <p class="sub-title">Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2024, highlighting <b>{totalFeatures} new features</b></p>
+        <p class="sub-title">Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2025, highlighting <b>{totalFeatures} new features</b></p>
         <div class="bento-wrapper">
           <NavBento biomes={biomes} />
         </div>
@@ -144,18 +146,20 @@ const totalFeatures = biomes.reduce((total, biome) => {
       z-index: 0;
     }
 
+    .hero-container {
+      background: radial-gradient(max(30vw, 300px) circle at min(5vw, 125px) min(30vw, 300px) in oklab, color(display-p3 0.47 0 1 / 0.25), transparent), radial-gradient(max(40vw, 300px) circle at 90vw 50vh in oklab, color(display-p3 1 0.77 0 / 0.25), transparent), radial-gradient(max(30vw, 300px) circle at 30vw 45vh in oklab, color(display-p3 0 1 0.98 / 0.25), transparent)
+    }
+
     .hero {
-      margin-block: var(--size-10) 10vh;
       max-inline-size: 90vw;
       margin-inline: auto;
-      padding-inline: var(--size-3);
+      padding: var(--size-3);
       display: grid;
       gap: var(--size-5);
 
       @media (width >= 720px) {
         max-inline-size: min(1024px, 75vw);
-        margin-block: var(--size-4) 15vh;
-        padding-inline: var(--size-5);
+        padding: var(--size-5);
         gap: var(--size-8);
       }
 
