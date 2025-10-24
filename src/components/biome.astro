@@ -6,7 +6,7 @@ const { title, image, alt, description, features } = Astro.props;
 <header id={slugify(title)}>
   <img src={image} alt={alt} width="1280" height="720" loading="lazy" />
   <div>
-    <h2 class="retro-title">
+    <h2>
       <a href=`#${slugify(title)}`>#</a>
       {title}
     </h2>

@@ -1,19 +1,3 @@
-.retro-title {
-  --_offset: .1ex;
-
-  font-family: "Fight", "Fight Fallback";
-  text-transform: lowercase;
-  font-weight: normal;
-  line-height: 0.75;
-  text-shadow:
-    0 var(--_offset) 0 lime,
-    0 calc(var(--_offset) * 2) 0 light-dark(#999, #000);
-
-  @media (width > 1280px) {
-    --_offset: 5px;
-  }
-}
-
 .grid-pile {
   display: grid;
 

@@ -15,20 +15,20 @@
 @import "./utilities.css" layer(utilities);
 
 @font-face {
-	font-family: 'Fight';
-	src: url(/fight.woff2);
+	font-family: 'Familjen Grotesk';
+	src: url(/FamljenGrotesk.ttf);
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Fight Fallback";
-	src: local(Arial);
-	size-adjust: 50%;
-	ascent-override: normal;
-	descent-override: normal;
-  }
+	font-family: 'Familjen Grotesk Italic';
+	src: url(/FamiljenGrotesk-Italic.ttf);
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
 
 @view-transition {
 	navigation: auto;

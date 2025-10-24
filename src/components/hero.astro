@@ -1,8 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import NavBento from "./nav.bento.astro";
 import Intro from "./intro.astro";
-import Youtube from "./youtube.astro";
 
 const { biomes } = Astro.props;
 const totalFeatures = biomes.reduce((total, biome) => {
@@ -12,7 +10,6 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
 <section class="hero-container">
   <div class="hero">
-    <!-- <h1 class="retro-title">CSS Wrapped 2025</h1> -->
     <div class="grid-pile">
       <div class="confetti" id="confetti">
         <span class="round"></span>
@@ -78,22 +75,22 @@ const totalFeatures = biomes.reduce((total, biome) => {
       </div>
     </div>
     <div>
-      <p class="sub-title">
-        <b>Sculpt</b> dynamic interfaces, <code>stretch</code> your imagination, and <b>play</b> with these powerful new CSS features.
-      </p>
+      <p class="hero-title">
+    New tools to <i>craft</i> a dynamic web.
+  </p>
     </div>
+
     <div class="narrative">
       <div class="fullheight">
         <Intro />
       </div>
-      
-      <Icon name="dino" title="Stan the Offlineosaur on a skateboard" size="5rem" />
 
       <div class="fullheight">
-        <p class="sub-title">Join the Chrome DevRel team and a skateboarding Chrome Dino on a journey through the latest CSS launched for Chrome and the web platform in 2025, highlighting <b>{totalFeatures} new features</b></p>
-        <div class="bento-wrapper">
-          <NavBento biomes={biomes} />
-        </div>
+        <p class="hero-title">
+          We've been crafting new features with you in mind.
+        </p>
+
+        <!-- TODO Replace with new 3x card -->
       </div>
     </div>
   </div>
@@ -179,7 +176,8 @@ const totalFeatures = biomes.reduce((total, biome) => {
     }
 
     .hero-container {
-      background: radial-gradient(max(30vw, 300px) circle at min(5vw, 125px) min(30vw, 300px) in oklab, color(display-p3 0.47 0 1 / 0.25), transparent), radial-gradient(max(40vw, 300px) circle at 90vw 50vh in oklab, color(display-p3 1 0.77 0 / 0.25), transparent), radial-gradient(max(30vw, 300px) circle at 30vw 45vh in oklab, color(display-p3 0 1 0.98 / 0.25), transparent)
+      background: radial-gradient(max(30vw, 300px) circle at min(5vw, 125px) min(30vw, 300px) in oklab, color(display-p3 0.47 0 1 / 0.25), transparent), radial-gradient(max(40vw, 300px) circle at 90vw 50vh in oklab, color(display-p3 1 0.77 0 / 0.25), transparent), radial-gradient(max(30vw, 300px) circle at 30vw 45vh in oklab, color(display-p3 0 1 0.98 / 0.25), transparent);
+      margin-top: calc(var(--size-9) * -1);
     }
 
     .hero {
@@ -191,7 +189,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
 
       @media (width >= 720px) {
         max-inline-size: min(1024px, 75vw);
-        padding: var(--size-5);
+        padding: var(--size-9) var(--size-5);
         gap: var(--size-8);
       }
 
@@ -216,8 +214,15 @@ const totalFeatures = biomes.reduce((total, biome) => {
       }
 
       .hero-title {
-        font-size: 15cqi;
+        font-size: clamp(1.5rem, 8cqi, 6rem);
         margin-block: var(--size-8);
+        font-weight: 700;
+        line-height: 1;
+
+        i {
+          font-family: 'Familjen Grotesk Italic', sans-serif;
+          font-weight: 200;
+        }
       }
 
       .sub-title {
@@ -286,37 +291,6 @@ const totalFeatures = biomes.reduce((total, biome) => {
       }
     }
 
-    .video {
-      z-index: 1;
-      width: 90%;
-      margin: 0 auto;
-      aspect-ratio: 16/9;
-      background: var(--surface-3);
-      border-radius: var(--radius-3);
-      overflow: clip;
-
-      &:focus-visible {
-        outline-offset: 5px;
-      }
-
-      lite-youtube {
-        max-width: none !important;
-
-        > .lty-playbtn {
-          opacity: 0.75;
-          transition: opacity 0.15s ease;
-          &:hover {
-            opacity: 1;
-          }
-        }
-      }
-
-      > svg {
-        block-size: 5rem;
-        inline-size: 5rem;
-      }
-    }
-
     .confetti {
       position: relative;
       display: grid;
@@ -343,7 +317,7 @@ const totalFeatures = biomes.reduce((total, biome) => {
         &.round {
           --shadow-color: dimgray;
           --shadow-strength: 50%;
-          --_size: clamp(0.5rem, 2.5cqi, 1rem);
+          --_size: clamp(0.3rem, 2.5cqi, 1rem);
           width: var(--_size);
           height: var(--_size);
           background: radial-gradient(
@@ -363,11 +337,11 @@ const totalFeatures = biomes.reduce((total, biome) => {
           }
 
           &:nth-of-type(even) { 
-            --_size: clamp(0.8rem, 3cqi, 1.2rem);
+            --_size: clamp(0.5rem, 3cqi, 1.2rem);
           }
 
           &:nth-of-type(3n + 1) { 
-            --_size: clamp(1rem, 3cqi, 1.5rem);
+            --_size: clamp(0.8rem, 3cqi, 1.5rem);
           }
 
           &:nth-of-type(5n + 2) {

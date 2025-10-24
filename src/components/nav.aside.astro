@@ -8,7 +8,7 @@ const { biomes } = Astro.props;
 <nav popover id="mobile-menu" class="mobile-sidenav">
   <div class="inner-popover">
     <header>
-      <h2 class="retro-title">CSS Wrapped</h2>
+      <h2>CSS Wrapped</h2>
       <button popovertarget="mobile-menu" popovertargetaction="hide">
         <Icon name="close" title="Close" aria-label="Close" size="2rem" />
       </button>
@@ -84,13 +84,6 @@ const { biomes } = Astro.props;
 
 <aside>
   <div class="dynamic-aside">
-    <div class="track">
-      <Icon
-        name="dino"
-        title="Stan the Offlineosaur on a skateboard"
-        size="2.5rem"
-      />
-    </div>
     <nav>
       <a href="#to-top">Home</a>
       <a href="#introduction">Introduction</a>
@@ -130,26 +123,6 @@ const { biomes } = Astro.props;
   // open details to appropriate section
   const { matches: mobileLayout } = window.matchMedia("(width <= 1200px)");
   const layoutEvent = window.matchMedia("(width <= 1200px)");
-
-  // flip dino based on scroll direction
-  const flippers = document.querySelectorAll(".track, .narrative");
-
-  function decideFlip(e) {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    // @ts-ignore
-    const direction = st > e.target.lastScrollTop ? "down" : "up";
-
-    for (let track of flippers) {
-      // @ts-ignore
-      track.style.setProperty(
-        "--scroll-direction",
-        direction == "down" ? 1 : -1
-      );
-    }
-
-    // @ts-ignore
-    e.target.lastScrollTop = st <= 0 ? 0 : st;
-  }
 
   const biomeObserver = new IntersectionObserver(
     (entries) => {
@@ -247,12 +220,9 @@ const { biomes } = Astro.props;
     }
 
     .dynamic-aside {
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      align-self: start;
       position: sticky;
       top: var(--size-9);
-      block-size: calc(100dvh - var(--size-3) - var(--size-9));
+      margin-left: var(--size-6);
 
       > nav {
         block-size: max-content;
