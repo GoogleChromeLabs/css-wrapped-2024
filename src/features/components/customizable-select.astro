@@ -1,0 +1,57 @@
+---
+import FeatureLayout from "./../_layout.astro";
+import Title from "../../components/feature.title.astro";
+import Author from "../../components/author.astro";
+import Video from "../../components/video.astro";
+import CodePen from "../../components/codepen.astro";
+import { Code } from "astro:components";
+import { Icon } from "astro-icon/components";
+
+import slugify from "./../../util/slugify";
+
+export const title = "Customizable Select";
+const slug = slugify(title);
+---
+
+<FeatureLayout slug={slug}>
+  <Title slug={slug} title={title} />
+  <div class="support">
+    <baseline-status featureId=""></baseline-status>
+  </div>
+  <p>
+    The <code>&lt;select&gt;</code> element is notoriously difficult to style well. It's possible to style it, but the amount of CSS needed is non-trivial, and it's hard to make it work consistently across browsers. With the <code>&lt;select&gt;</code> element, you can now fully customize its appearance with just a few lines of CSS.
+  </p>
+  <Code
+    lang="css"
+    theme="css-variables"
+    code={`
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+`}
+  />
+  <p>
+    The following video demonstrates how a <code>&lt;select&gt;</code> element can be customized to match the look and feel of your site.
+  </p>
+  <Video src="./video/custom-select.mp4" width={1242} height={698} poster="./video/custom-select.png" preload="none" />
+  <p>
+    The following demo offers a side by side comparison of how inputs behave
+    without custom styling and with custom styling.
+  </p>
+  <CodePen id="web-dot-dev/pen/poYmRvp" height={500} />
+  <p>
+    This will work for any font, any font size, any language and any writing
+    mode. What used to be high effort will now be low effort.
+  </p>
+  <Author name="una" />
+  <footer>
+    <a href="https://codepen.io/web-dot-dev/pen/poYmRvp">Try demo</a>
+    <div class="articles">
+      <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Customizable_select_controls"
+        >developer.mozilla.org</a
+      >
+    </div>
+  </footer>
+</FeatureLayout>

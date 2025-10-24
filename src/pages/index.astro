@@ -15,6 +15,7 @@ import * as AnimateToHeightAuto from "../features/components/animate-to-height-a
 import * as ExclusiveDetails from "../features/components/exclusive-details.astro";
 import * as StyleableDetails from "../features/components/styleable-details.astro";
 import * as AnchorPositioning from "../features/components/anchor-positioning.astro";
+import * as CustomizableSelect from "../features/components/customizable-select.astro";
 
 import * as BackdropInheritance from "../features/developerexperience/backdrop-inheritance.astro";
 import * as LightDarkFunction from "../features/developerexperience/light-dark.astro";
@@ -44,6 +45,7 @@ const biomes = [
     alt: "Desert scene in low-res bitmap style",
     features: [
       FieldSizing,
+      CustomizableSelect,
       AnimateToHeightAuto,
       ExclusiveDetails,
       StyleableDetails,
@@ -97,11 +99,10 @@ const biomes = [
 // Flatten all Biome features to a list of CSS timeline names
 const timelines = biomes.reduce(
   (timelines, biome) => [
-    `--vtl--${slugify(biome.title)}`,
+    ...timelines,
     ...biome.features.map(
       (feature) => `--vtl--${slugify(biome.title)}--${slugify(feature.title)}`
     ),
-    ...timelines,
   ],
   []
 );
