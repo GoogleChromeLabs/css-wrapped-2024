@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "^4.16.15",
+    "astro": "^5.15.7",
     "astro-icon": "^1.1.4",
     "lite-youtube-embed": "^0.3.3",
     "open-props": "^1.7.8",
