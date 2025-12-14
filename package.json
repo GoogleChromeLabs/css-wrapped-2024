@@ -8,8 +8,10 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "gsutil -m rsync -rd dist gs://chrome-dev-demos/public/css-wrapped-2024",
-    "predeploy": "astro check && astro build --base css-wrapped-2024"
+    "deploy": "gcloud storage rsync --recursive --delete-unmatched-destination-objects dist gs://chrome-dev-demos/public/css-wrapped-2024",
+    "predeploy": "astro check && astro build --base css-wrapped-2024",
+    "deploy-preview": "gcloud storage rsync --recursive --delete-unmatched-destination-objects dist gs://chrome-dev-demos/public/css-wrapped-2024--preview",
+    "predeploy-preview": "astro check && astro build --base css-wrapped-2024--preview && touch ./dist/.ignore"
   },
   "license": "Apache-2.0",
   "dependencies": {
